@@ -210,6 +210,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .summary-loader { display: none; position: fixed; inset: 0; z-index: 60; flex-direction: column; align-items: center; justify-content: center; gap: 14px; pointer-events: none; }
 #screen-summary.loading .summary-loader { display: flex; }
 
+/* ลายน้ำหน้าสรุปผล (ทแยง ตัวหนาใหญ่ จาง ๆ — กันเอาไปอ้างเป็นผลสอบจริง) */
+.result-watermark { position: fixed; inset: 0; z-index: 5; pointer-events: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; transform: rotate(-28deg); opacity: .12; transition: opacity .5s ease .25s; }
+.result-watermark .wm-l1 { font-size: 46px; font-weight: 800; color: var(--text); white-space: nowrap; line-height: 1.1; }
+.result-watermark .wm-l2 { font-size: 19px; font-weight: 800; color: var(--text); white-space: nowrap; }
+#screen-summary.loading .result-watermark { opacity: 0; transition: none; }
+@media (max-width: 400px) { .result-watermark .wm-l1 { font-size: 38px; } .result-watermark .wm-l2 { font-size: 16px; } }
+
 /* โอเวอร์เลย์โหลด (ไอคอนหมุน) ก่อนเข้าหน้าสรุป */
 .loading-overlay { position: fixed; inset: 0; background: var(--bg); display: none; flex-direction: column; align-items: center; justify-content: center; gap: 16px; z-index: 200; }
 .loading-overlay.show { display: flex; }

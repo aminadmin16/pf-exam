@@ -2,7 +2,7 @@
    คลังข้อสอบสอบราชการไทย ครบ ภาค ก / ข / ค
    *** สร้างอัตโนมัติจาก questions.xlsx โดย _batches/xlsx-to-questions.js — อย่าแก้ไฟล์นี้ตรง ๆ ***
    แก้ข้อสอบที่ questions.xlsx แล้วรัน  npm run data
-   ภาค ก 619 + เฉพาะทาง 402 = 1021 ข้อ
+   ภาค ก 644 + เฉพาะทาง 402 = 1046 ข้อ
    ============================================================ */
 
 window.SUBJECTS = {
@@ -9812,6 +9812,156 @@ window.QUESTIONS = [
     "question": "ประโยคใดใช้ภาษากระชับ ไม่ฟุ่มเฟือย",
     "choices": ["เขาเดินทางกลับบ้าน", "เขาเดินทางกลับไปยังที่บ้านของเขา", "เขาทำการเดินทางกลับไปสู่บ้าน", "เขาเดินทางกลับคืนสู่บ้านของเขาเอง"], "answer": 0,
     "explanation": "ตอบ เขาเดินทางกลับบ้าน\n\nประโยคนี้สื่อความครบถ้วนและกระชับที่สุด ส่วนข้ออื่นมีคำฟุ่มเฟือย เช่น ‘ทำการ’, ‘ที่บ้านของเขา’, ‘กลับคืนสู่...ของเขาเอง’ ทำให้เยิ่นเย้อโดยไม่จำเป็น", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1022, "subject": "english", "topic": "Grammar: Tense",
+    "question": "Choose the correct answer: She ______ to school every day.",
+    "choices": ["go", "goes", "going", "gone"], "answer": 1,
+    "explanation": "ตอบ goes\n\nประโยค Present Simple ที่มี every day และประธานเอกพจน์บุรุษที่ 3 (She) กริยาต้องเติม -s → goes", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1023, "subject": "english", "topic": "Grammar: Tense",
+    "question": "Choose the correct answer: They ______ TV when I came home.",
+    "choices": ["watch", "watched", "were watching", "have watched"], "answer": 2,
+    "explanation": "ตอบ were watching\n\nเหตุการณ์กำลังดำเนินอยู่ในอดีตแล้วมีอีกเหตุการณ์มาแทรก ใช้ Past Continuous (was/were + V-ing) → were watching", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1024, "subject": "english", "topic": "Vocabulary: Synonym",
+    "question": "The word \"happy\" is closest in meaning to ______.",
+    "choices": ["sad", "glad", "angry", "tired"], "answer": 1,
+    "explanation": "ตอบ glad\n\nhappy (มีความสุข) มีความหมายใกล้เคียงกับ glad มากที่สุด ส่วน sad=เศร้า, angry=โกรธ, tired=เหนื่อย", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1025, "subject": "english", "topic": "Vocabulary: Synonym",
+    "question": "The word \"huge\" is closest in meaning to ______.",
+    "choices": ["tiny", "enormous", "narrow", "weak"], "answer": 1,
+    "explanation": "ตอบ enormous\n\nhuge (ใหญ่มาก) มีความหมายเหมือน enormous ส่วน tiny=เล็กจิ๋ว, narrow=แคบ, weak=อ่อนแอ", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1026, "subject": "english", "topic": "Grammar: Preposition",
+    "question": "Choose the correct preposition: I will meet you ______ Monday.",
+    "choices": ["in", "on", "at", "by"], "answer": 1,
+    "explanation": "ตอบ on\n\nหน้าวัน (Monday, Sunday ...) ใช้บุพบท on เสมอ → on Monday", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1027, "subject": "english", "topic": "Grammar: Preposition",
+    "question": "Choose the correct preposition: She is good ______ mathematics.",
+    "choices": ["at", "on", "in", "for"], "answer": 0,
+    "explanation": "ตอบ at\n\nสำนวน good at + สิ่งที่เชี่ยวชาญ (เก่งด้านใด) → good at mathematics", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1028, "subject": "english", "topic": "Grammar: Preposition",
+    "question": "Choose the correct preposition: The cat is hiding ______ the table.",
+    "choices": ["on", "under", "at", "of"], "answer": 1,
+    "explanation": "ตอบ under\n\nซ่อนอยู่ ‘ใต้’ โต๊ะ ใช้ under (on=บน, at=ที่, of=ของ)", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1029, "subject": "english", "topic": "Grammar: Agreement",
+    "question": "Choose the correct verb: Each of the students ______ a book.",
+    "choices": ["have", "has", "are", "were"], "answer": 1,
+    "explanation": "ตอบ has\n\nEach of + นามพหูพจน์ ถือเป็นเอกพจน์ ใช้กริยาเอกพจน์ → has", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1030, "subject": "english", "topic": "Grammar: Agreement",
+    "question": "Choose the correct verb: The news ______ good today.",
+    "choices": ["are", "were", "is", "have"], "answer": 2,
+    "explanation": "ตอบ is\n\nnews เป็นนามนับไม่ได้ ถือเป็นเอกพจน์ ใช้กริยาเอกพจน์ → is", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1031, "subject": "english", "topic": "Grammar: Agreement",
+    "question": "Choose the correct verb: Neither of the answers ______ correct.",
+    "choices": ["are", "is", "were", "have"], "answer": 1,
+    "explanation": "ตอบ is\n\nNeither of + นามพหูพจน์ ถือเป็นเอกพจน์ ใช้กริยาเอกพจน์ → is", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1032, "subject": "english", "topic": "Grammar: Article",
+    "question": "Choose the correct article: She is ______ honest person.",
+    "choices": ["a", "an", "the", "-"], "answer": 1,
+    "explanation": "ตอบ an\n\nhonest ขึ้นต้นด้วยเสียงสระ (h ไม่ออกเสียง) จึงใช้ an → an honest person", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1033, "subject": "english", "topic": "Grammar: Article",
+    "question": "Choose the correct article: I saw ______ elephant at the zoo.",
+    "choices": ["a", "an", "the", "-"], "answer": 1,
+    "explanation": "ตอบ an\n\nelephant ขึ้นต้นด้วยเสียงสระ จึงใช้ an → an elephant", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1034, "subject": "english", "topic": "Grammar: Article",
+    "question": "Choose the correct article: ______ sun rises in the east.",
+    "choices": ["A", "An", "The", "-"], "answer": 2,
+    "explanation": "ตอบ The\n\nสิ่งที่มีเพียงหนึ่งเดียว (the sun) ใช้ the เสมอ → The sun rises in the east", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1035, "subject": "english", "topic": "Grammar: Comparison",
+    "question": "Choose the correct answer: This box is ______ than that one.",
+    "choices": ["heavy", "heavier", "heaviest", "more heavy"], "answer": 1,
+    "explanation": "ตอบ heavier\n\nเปรียบเทียบขั้นกว่า (2 สิ่ง) ของคำพยางค์สั้น เติม -er → heavier ... than", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1036, "subject": "english", "topic": "Grammar: Comparison",
+    "question": "Choose the correct answer: She is the ______ student in the class.",
+    "choices": ["clever", "cleverer", "cleverest", "more clever"], "answer": 2,
+    "explanation": "ตอบ cleverest\n\nเปรียบเทียบขั้นสุด (the ... -est) → the cleverest student in the class", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1037, "subject": "english", "topic": "Grammar: Comparison",
+    "question": "Choose the correct answer: This book is ______ interesting than the other one.",
+    "choices": ["more", "most", "much", "very"], "answer": 0,
+    "explanation": "ตอบ more\n\ninteresting เป็นคำหลายพยางค์ ขั้นกว่าใช้ more + adjective → more interesting than", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1038, "subject": "english", "topic": "Vocabulary: Antonym",
+    "question": "Choose the opposite of \"increase\".",
+    "choices": ["grow", "decrease", "expand", "rise"], "answer": 1,
+    "explanation": "ตอบ decrease\n\nตรงข้ามกับ increase (เพิ่มขึ้น) คือ decrease (ลดลง) ส่วน grow/expand/rise ล้วนแปลว่าเพิ่ม/ขยาย", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1039, "subject": "english", "topic": "Vocabulary: Antonym",
+    "question": "Choose the opposite of \"ancient\".",
+    "choices": ["old", "modern", "past", "historic"], "answer": 1,
+    "explanation": "ตอบ modern\n\nตรงข้ามกับ ancient (โบราณ) คือ modern (สมัยใหม่)", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1040, "subject": "english", "topic": "Vocabulary: Antonym",
+    "question": "Choose the opposite of \"difficult\".",
+    "choices": ["hard", "tough", "easy", "complex"], "answer": 2,
+    "explanation": "ตอบ easy\n\nตรงข้ามกับ difficult (ยาก) คือ easy (ง่าย) ส่วน hard/tough/complex แปลว่ายาก/ซับซ้อน", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1041, "subject": "english", "topic": "Grammar: Modal",
+    "question": "Choose the correct modal: You ______ wear a helmet when riding a motorcycle. It's the law.",
+    "choices": ["can", "must", "may", "might"], "answer": 1,
+    "explanation": "ตอบ must\n\nสิ่งที่เป็นข้อบังคับ/กฎหมาย ใช้ must (จำเป็นต้อง) → must wear a helmet", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1042, "subject": "english", "topic": "Grammar: Modal",
+    "question": "Choose the correct modal: ______ I borrow your pen, please?",
+    "choices": ["May", "Must", "Should", "Would"], "answer": 0,
+    "explanation": "ตอบ May\n\nการขออนุญาตอย่างสุภาพ ใช้ May I ...? → May I borrow your pen, please?", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1043, "subject": "english", "topic": "Grammar: Modal",
+    "question": "Choose the correct modal: She ______ swim very well when she was young.",
+    "choices": ["can", "could", "must", "should"], "answer": 1,
+    "explanation": "ตอบ could\n\nความสามารถในอดีต ใช้ could → could swim very well when she was young", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1044, "subject": "english", "topic": "Grammar: Question Word",
+    "question": "Choose the correct question word: ______ is your birthday?",
+    "choices": ["What", "When", "Where", "Who"], "answer": 1,
+    "explanation": "ตอบ When\n\nถามเกี่ยวกับเวลา (วันเกิด) ใช้ When → When is your birthday?", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1045, "subject": "english", "topic": "Grammar: Question Word",
+    "question": "Choose the correct question word: ______ book is this? It's mine.",
+    "choices": ["Who", "Whose", "Which", "What"], "answer": 1,
+    "explanation": "ตอบ Whose\n\nถามความเป็นเจ้าของ ใช้ Whose → Whose book is this? It's mine.", "freq": 3, "predicted": true
+  },
+  {
+    "id": 1046, "subject": "english", "topic": "Grammar: Question Word",
+    "question": "Choose the correct question word: ______ do you go to school? By bus.",
+    "choices": ["How", "Why", "When", "Who"], "answer": 0,
+    "explanation": "ตอบ How\n\nถามวิธีการ/พาหนะ ใช้ How (คำตอบคือ By bus) → How do you go to school?", "freq": 3, "predicted": true
   }
 ];
 
