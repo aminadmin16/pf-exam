@@ -921,19 +921,29 @@
   function closeCheck() { $("check-modal").classList.remove("show"); }
 
   /* ============================================================
+     ผังข้อสอบ ภาค ก (แสดงก่อนเข้าสอบเสมือนจริง / เต็มทั้งปี)
+     ============================================================ */
+  let blueprintCallback = null;
+  function showBlueprint(onStart) {
+    blueprintCallback = onStart;
+    $("blueprint-modal").classList.add("show");
+  }
+  function closeBlueprint() { $("blueprint-modal").classList.remove("show"); blueprintCallback = null; }
+
+  /* ============================================================
      ผูก Event
      ============================================================ */
   function bind() {
     document.querySelectorAll("[data-level]").forEach((el) => el.addEventListener("click", () => { currentLevel = el.getAttribute("data-level"); document.querySelectorAll("[data-level]").forEach((b) => b.classList.toggle("active", b === el)); updateStructureCriteria(); }));
     document.querySelectorAll("[data-feedback]").forEach((el) => el.addEventListener("click", () => { currentFeedback = el.getAttribute("data-feedback"); document.querySelectorAll("[data-feedback]").forEach((b) => b.classList.toggle("active", b === el)); }));
     document.querySelectorAll("[data-source]").forEach((el) => el.addEventListener("click", () => { currentSource = el.getAttribute("data-source"); document.querySelectorAll("[data-source]").forEach((b) => b.classList.toggle("active", b === el)); }));
-    document.querySelectorAll("[data-action]").forEach((el) => el.addEventListener("click", () => { const a = el.getAttribute("data-action"); if (a === "start-full") startCore("full"); else if (a === "quick") startCore("quick"); else if (a === "predicted") startCore("predicted"); else if (a === "donate") openDonate(); }));
+    document.querySelectorAll("[data-action]").forEach((el) => el.addEventListener("click", () => { const a = el.getAttribute("data-action"); if (a === "start-full") showBlueprint(function () { startCore("full"); }); else if (a === "quick") startCore("quick"); else if (a === "predicted") startCore("predicted"); else if (a === "donate") openDonate(); }));
     $("toggle-subjects").addEventListener("click", () => $("subject-pick").classList.toggle("show"));
     document.querySelectorAll("[data-count]").forEach((el) => el.addEventListener("click", () => { currentSubjectCount = parseInt(el.getAttribute("data-count"), 10); document.querySelectorAll("[data-count]").forEach((b) => b.classList.toggle("active", b === el)); }));
     document.querySelectorAll("[data-subject]").forEach((el) => el.addEventListener("click", () => startCore("subject", el.getAttribute("data-subject"), currentSubjectCount)));
     $("toggle-years").addEventListener("click", () => $("year-pick").classList.toggle("show"));
     document.querySelectorAll("[data-yscope]").forEach((el) => el.addEventListener("click", () => { currentYearScope = el.getAttribute("data-yscope"); document.querySelectorAll("[data-yscope]").forEach((b) => b.classList.toggle("active", b === el)); }));
-    document.querySelectorAll("[data-year]").forEach((el) => el.addEventListener("click", () => startYear(parseInt(el.getAttribute("data-year"), 10))));
+    document.querySelectorAll("[data-year]").forEach((el) => el.addEventListener("click", () => { const yr = parseInt(el.getAttribute("data-year"), 10); if (currentYearScope === "full") showBlueprint(function () { startYear(yr, "full"); }); else startYear(yr); }));
 
     const pb = $("partB-pick"), pc = $("partC-pick");
     (window.SPECIAL_BANK_ORDER || []).forEach((b) => {
@@ -984,7 +994,10 @@
     $("donate-modal").addEventListener("click", (e) => { if (e.target === $("donate-modal")) closeDonate(); });
     $("check-close").addEventListener("click", closeCheck);
     $("check-modal").addEventListener("click", (e) => { if (e.target === $("check-modal")) closeCheck(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeDonate(); closeCheck(); $("confirm-modal").classList.remove("show"); } });
+    $("bp-close").addEventListener("click", closeBlueprint);
+    $("blueprint-modal").addEventListener("click", (e) => { if (e.target === $("blueprint-modal")) closeBlueprint(); });
+    $("bp-start").addEventListener("click", () => { const fn = blueprintCallback; closeBlueprint(); if (fn) fn(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeDonate(); closeCheck(); closeBlueprint(); $("confirm-modal").classList.remove("show"); } });
 
     // ธีม สว่าง/มืด/อ่าน
     applyTheme((function () { try { return localStorage.getItem("kp_theme") || "light"; } catch (e) { return "light"; } })());

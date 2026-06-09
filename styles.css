@@ -670,6 +670,22 @@ mark { background: #fff2a8; color: inherit; padding: 0 3px; border-radius: 4px; 
 [data-theme="dark"] .btn-explain, [data-theme="dark"] .btn-ghost { color: var(--text); }
 [data-theme="dark"] .dn-ph { background: var(--surface-2); }
 
+/* ผังข้อสอบ ภาค ก (Blueprint modal) */
+.bp-modal { max-width: 480px; max-height: 88vh; overflow-y: auto; }
+.bp-title { font-size: 18px; font-weight: 800; margin-bottom: 4px; }
+.bp-intro { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin-bottom: 14px; }
+.bp-subject { border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; margin-bottom: 10px; border-left: 4px solid var(--sc, var(--primary)); }
+.bp-head { font-size: 14.5px; font-weight: 700; line-height: 1.5; }
+.bp-no { font-weight: 800; margin-right: 2px; }
+.bp-score { display: block; font-size: 12.5px; font-weight: 600; color: var(--sc, var(--primary)); margin-top: 1px; }
+.bp-topics { list-style: disc; padding-left: 22px; margin: 6px 0 0; font-size: 13.5px; line-height: 1.65; color: var(--text); }
+.bp-topics b { color: var(--sc, var(--primary)); font-weight: 800; }
+.bp-note { background: #fff8ec; border: 1px solid #f3e3c2; border-radius: 12px; padding: 10px 14px; font-size: 13px; line-height: 1.6; margin: 12px 0; color: #7a5b00; }
+.bp-start { width: 100%; margin-top: 6px; font-size: 17px; padding: 14px; }
+[data-theme="dark"] .bp-note { background: #2a2417; color: #e8d6a8; border-color: #4a3f22; }
+[data-theme="dark"] .bp-subject { border-color: var(--line); }
+[data-theme="dark"] .bp-score { opacity: .85; }
+
 @media (max-width: 380px) {
   .question-text { font-size: 17px; }
   .home-hero h1 { font-size: 22px; }
