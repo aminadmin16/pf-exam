@@ -66,6 +66,7 @@
   let currentFeedback = "instant";
   let currentSource = "all";   // all = รวมข้อเก็ง 2569, real = เฉพาะข้อสอบจริง
   let currentSubjectCount = 30; // จำนวนข้อเมื่อฝึกแยกรายวิชา (20/30/40/50)
+  let currentYearScope = "full"; // ข้อสอบจริงแยกปี: full | 20/30/40/50 | s_analytical/s_ethics/s_english
   let timerInterval = null;
   let reviewFilter = "all";
   let lastResult = null;
@@ -214,19 +215,37 @@
         : mode === "predicted" ? "ข้อสอบเก็ง 2569 (คาดการณ์)" : "ข้อสอบเสมือนจริง (ครบทุกวิชา)";
     initSession();
   }
-  function startYear(year) {
-    // ทำข้อสอบจริงของปีนั้นทั้ง ภาค ก (วิเคราะห์→จริยธรรม→อังกฤษ) แล้วสรุป+วิเคราะห์แยกของปีนั้น
-    state.kind = "kp"; state.mode = "year"; state.year = year; state.subjectKey = null; state.count = null; state.bankId = null; state.positionId = null; state.weakSource = null; state.level = currentLevel; state.feedback = currentFeedback;
-    const bp = window.EXAM_BLUEPRINT || { analytical: 50, ethics: 25, english: 25 };
-    let set = [];
-    window.SUBJECT_ORDER.forEach((k) => {
-      const pool = shuffle(window.QUESTIONS.filter((q) => q.subject === k && !q.predicted && q.year === year));
-      const picked = pool.slice(0, Math.min(bp[k] || pool.length, pool.length));
-      set = set.concat(k === "analytical" ? orderByAnalyticalCat(picked) : k === "english" ? orderByEnglishCat(picked) : picked);
-    });
-    if (!set.length) { toast("ยังไม่มีข้อสอบจริงของปีนี้"); return; }
-    state.questions = set.map(prepare);
-    state.title = "ข้อสอบจริง ปี " + year + " (ภาค ก)";
+  function startYear(year, scope) {
+    // ข้อสอบจริงแยกปี — เลือกได้: เต็มทั้งปี / สุ่ม N ข้อ / เจาะวิชาเดียว
+    scope = scope || currentYearScope;
+    const yp = (sub) => window.QUESTIONS.filter((q) => !q.predicted && q.year === year && (!sub || q.subject === sub));
+    state.year = year; state.yearScope = scope; state.bankId = null; state.positionId = null; state.weakSource = null; state.level = currentLevel; state.feedback = currentFeedback;
+    if (scope.indexOf("s_") === 0) {                 // เจาะวิชาเดียวของปีนั้น → สรุปแบบรายวิชา
+      const sub = scope.slice(2);
+      state.kind = "kp"; state.mode = "year-subject"; state.subjectKey = sub; state.count = null;
+      let pool = shuffle(yp(sub));
+      pool = sub === "analytical" ? orderByAnalyticalCat(pool) : sub === "english" ? orderByEnglishCat(pool) : pool;
+      if (!pool.length) { toast("ยังไม่มีข้อสอบวิชานี้ของปี " + year); return; }
+      state.questions = pool.map(prepare);
+      state.title = "ข้อสอบจริง ปี " + year + " — " + window.SUBJECTS[sub].name;
+    } else if (/^\d+$/.test(scope)) {                // สุ่ม N ข้อ คละวิชาของปีนั้น → สรุปตามที่สุ่มมา
+      state.kind = "kp"; state.mode = "year-sample"; state.subjectKey = null; state.count = parseInt(scope, 10);
+      const pool = shuffle(yp(null)).slice(0, parseInt(scope, 10));
+      if (!pool.length) { toast("ยังไม่มีข้อสอบจริงของปี " + year); return; }
+      state.questions = pool.map(prepare);
+      state.title = "ข้อสอบจริง ปี " + year + " — สุ่ม " + state.questions.length + " ข้อ";
+    } else {                                         // เต็มทั้งปี (เสมือนจริง ภาค ก) → สรุป 3 วิชา
+      state.kind = "kp"; state.mode = "year"; state.subjectKey = null; state.count = null;
+      const bp = window.EXAM_BLUEPRINT || { analytical: 50, ethics: 25, english: 25 };
+      let set = [];
+      window.SUBJECT_ORDER.forEach((k) => {
+        const all = yp(k), picked = shuffle(all).slice(0, Math.min(bp[k] || all.length, all.length));
+        set = set.concat(k === "analytical" ? orderByAnalyticalCat(picked) : k === "english" ? orderByEnglishCat(picked) : picked);
+      });
+      if (!set.length) { toast("ยังไม่มีข้อสอบจริงของปี " + year); return; }
+      state.questions = set.map(prepare);
+      state.title = "ข้อสอบจริง ปี " + year + " (เต็มทั้งปี)";
+    }
     initSession();
   }
   function startSpecial(bankId) {
@@ -447,7 +466,13 @@
       const total = state.questions.length, pct = total ? Math.round(c / total * 100) : 0;
       return { kind: "position", positionId: state.positionId, correct: c, total: total, pct: pct, pass: pct >= SPECIAL_PASS, part: part, topics: ana };
     }
-    if (state.mode === "subject" && state.subjectKey) {
+    if (state.mode === "quick" || state.mode === "year-sample") {
+      // ฝึกเร็ว / สุ่มตามปี → สรุปตามข้อ/หมวดที่สุ่มมาเท่านั้น (ไม่ใช่ตาราง 3 วิชา)
+      let c = 0; state.questions.forEach((q, i) => { if (state.answers[i] === q.answer) c++; });
+      const total = state.questions.length, pct = total ? Math.round(c / total * 100) : 0;
+      return { kind: "sample", correct: c, total: total, pct: pct, pass: pct >= 60, topics: ana };
+    }
+    if ((state.mode === "subject" || state.mode === "year-subject") && state.subjectKey) {
       // ฝึกแยกรายวิชา → สรุปคะแนนเฉพาะวิชานั้นต่างหาก (ไม่ใช่ตาราง ก.พ. 3 วิชา)
       const subj = window.SUBJECTS[state.subjectKey];
       let c = 0; state.questions.forEach((q, i) => { if (state.answers[i] === q.answer) c++; });
@@ -476,8 +501,10 @@
   function finishExam() {
     state.finished = true; stopTimer();
     const res = computeResult(); renderSummary(res); saveAttempt(res);
-    const o = $("loading-overlay"); if (o) o.classList.add("show");
-    setTimeout(() => { if (o) o.classList.remove("show"); showScreen("screen-summary"); animateSummary(); }, 900);
+    const sum = $("screen-summary");
+    sum.classList.add("loading");          // เข้าหน้าสรุปเลย แล้วโชว์เป็นเงา + สปินเนอร์บนหน้าเดียวกัน
+    showScreen("screen-summary");
+    setTimeout(() => { sum.classList.remove("loading"); animateSummary(); }, 1200);  // หมดเวลา → เฉลย + อนิเมชั่นวิ่ง
   }
 
   function renderSummary(res) {
@@ -486,8 +513,13 @@
     $("summary-sub").textContent = (isKp || res.kind === "subject") ? state.title + " · " + levelLabel(state.level) : state.title;
     const pass = isKp ? res.overallPass : res.pass;
     const banner = $("overall-banner"); banner.className = "overall-banner " + (pass ? "pass" : "fail");
-    $("overall-big").textContent = pass ? "🎉 ผ่านเกณฑ์" : "ยังไม่ผ่านเกณฑ์";
-    $("overall-small").textContent = pass ? "ยอดเยี่ยมมาก! ทำได้ตามเกณฑ์" : "ทบทวนเฉลยแล้วลองใหม่อีกครั้งนะ";
+    if (res.kind === "sample") {
+      $("overall-big").textContent = "ทำได้ " + res.pct + "%";
+      $("overall-small").textContent = res.pct >= 80 ? "เยี่ยมมาก! 🎉 แม่นขึ้นเรื่อย ๆ" : res.pct >= 60 ? "ทำได้ดี ลองอีกชุดได้เลย" : "ทบทวนเฉลยแล้วลองใหม่นะ เดี๋ยวก็ขึ้น 💪";
+    } else {
+      $("overall-big").textContent = pass ? "🎉 ผ่านเกณฑ์" : "ยังไม่ผ่านเกณฑ์";
+      $("overall-small").textContent = pass ? "ยอดเยี่ยมมาก! ทำได้ตามเกณฑ์" : "ทบทวนเฉลยแล้วลองใหม่อีกครั้งนะ";
+    }
 
     $("kp-result").style.display = isKp ? "" : "none";
     $("special-result").style.display = isKp ? "none" : "";
@@ -506,16 +538,20 @@
       let name, passLabel = "เกณฑ์ " + SPECIAL_PASS + "%";
       if (res.kind === "position") { const p = POSITIONS.find((x) => x.id === res.positionId); name = p ? p.icon + " " + p.name : state.title; }
       else if (res.kind === "subject") { name = "📚 " + res.subjectName; passLabel = "เกณฑ์ผ่าน " + res.passPct + "% (" + levelLabel(state.level) + ")"; }
+      else if (res.kind === "sample") { name = "📝 " + state.title; }
       else { const m = window.SPECIAL_BANK_META[res.bankId]; name = m ? m.icon + " " + m.name : state.title; }
       $("ss-name").textContent = name;
-      $("ss-got").textContent = res.correct; $("ss-total").textContent = res.total; $("ss-pct").textContent = res.pct + "%";
-      const sp = $("ss-pass"); sp.textContent = (res.pass ? "ผ่าน" : "ไม่ผ่าน") + " (" + passLabel + ")"; sp.className = "ss-pass " + (res.pass ? "pass" : "fail");
+      $("ss-got").textContent = res.correct; $("ss-total").textContent = res.total; $("ss-pct").textContent = "0%";
+      const sp = $("ss-pass");
+      if (res.kind === "sample") sp.textContent = "ตอบถูก " + res.correct + " จาก " + res.total + " ข้อ";
+      else sp.textContent = (res.pass ? "ผ่าน" : "ไม่ผ่าน") + " (" + passLabel + ")";
+      sp.className = "ss-pass " + (res.pass ? "pass" : "fail");
       if (res.kind === "position") {
         const labels = { "ข": "ภาค ข เฉพาะตำแหน่ง", "ค": "ภาค ค ความเหมาะสม" };
         $("pb-rows").innerHTML = ["ข", "ค"].map((p) => '<div class="pb-row"><span>' + labels[p] + '</span><b>' + res.part[p].c + "/" + res.part[p].t + "</b></div>").join("");
       }
     }
-    $("meta-correct").textContent = res.correct + "/" + res.total; $("meta-percent").textContent = res.pct + "%"; $("meta-time").textContent = fmtTime(state.elapsedSec);
+    $("meta-correct").textContent = res.correct + "/" + res.total; $("meta-percent").textContent = "0%"; $("meta-time").textContent = fmtTime(state.elapsedSec);
 
     const isWeak = state.mode === "weak" && state.weakSource && state.weakSource.baseline;
     $("improvement").style.display = isWeak ? "" : "none";
@@ -754,7 +790,7 @@
     if (state.mode === "weak" && state.weakSource) startWeakFrom(state.weakSource);
     else if (state.kind === "position") startPosition(state.positionId);
     else if (state.kind === "special") startSpecial(state.bankId);
-    else if (state.mode === "year") startYear(state.year);
+    else if (state.mode.indexOf("year") === 0) startYear(state.year, state.yearScope);
     else startCore(state.mode, state.subjectKey, state.count);
   }
 
@@ -896,6 +932,7 @@
     document.querySelectorAll("[data-count]").forEach((el) => el.addEventListener("click", () => { currentSubjectCount = parseInt(el.getAttribute("data-count"), 10); document.querySelectorAll("[data-count]").forEach((b) => b.classList.toggle("active", b === el)); }));
     document.querySelectorAll("[data-subject]").forEach((el) => el.addEventListener("click", () => startCore("subject", el.getAttribute("data-subject"), currentSubjectCount)));
     $("toggle-years").addEventListener("click", () => $("year-pick").classList.toggle("show"));
+    document.querySelectorAll("[data-yscope]").forEach((el) => el.addEventListener("click", () => { currentYearScope = el.getAttribute("data-yscope"); document.querySelectorAll("[data-yscope]").forEach((b) => b.classList.toggle("active", b === el)); }));
     document.querySelectorAll("[data-year]").forEach((el) => el.addEventListener("click", () => startYear(parseInt(el.getAttribute("data-year"), 10))));
 
     const pb = $("partB-pick"), pc = $("partC-pick");

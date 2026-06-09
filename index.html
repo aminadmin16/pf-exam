@@ -101,6 +101,19 @@
           <div class="arrow">›</div>
         </button>
         <div class="year-pick" id="year-pick">
+          <div class="count-pick">
+            <span class="cp-label">เลือกรูปแบบก่อน แล้วค่อยกดปี</span>
+            <div class="scope-pick">
+              <button class="active" data-yscope="full">เต็มทั้งปี</button>
+              <button data-yscope="20">20 ข้อ</button>
+              <button data-yscope="30">30 ข้อ</button>
+              <button data-yscope="40">40 ข้อ</button>
+              <button data-yscope="50">50 ข้อ</button>
+              <button data-yscope="s_analytical">① คิดวิเคราะห์</button>
+              <button data-yscope="s_ethics">② ข้าราชการที่ดี</button>
+              <button data-yscope="s_english">③ ภาษาอังกฤษ</button>
+            </div>
+          </div>
           <button class="btn btn-outline" data-year="2568">📅 ข้อสอบจริง ปี 2568</button>
           <button class="btn btn-outline" data-year="2567">📅 ข้อสอบจริง ปี 2567</button>
           <button class="btn btn-outline" data-year="2566">📅 ข้อสอบจริง ปี 2566</button>
@@ -188,6 +201,7 @@
 
     <!-- ============ สรุปผล ============ -->
     <section id="screen-summary" class="screen">
+      <div class="summary-loader" id="summary-loader"><div class="spinner"></div><div class="ld-text">กำลังวิเคราะห์ผลและจุดที่ควรพัฒนา…</div></div>
       <div class="result-head">
         <h2>สรุปผลการสอบ</h2>
         <div class="sub" id="summary-sub">—</div>

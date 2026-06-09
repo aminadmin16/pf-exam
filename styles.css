@@ -168,6 +168,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* โหมดทำข้อสอบแยกตามปี */
 .year-pick { display: none; flex-direction: column; gap: 10px; margin-top: 4px; }
 .year-pick.show { display: flex; }
+.scope-pick { display: flex; flex-wrap: wrap; gap: 7px; }
+.scope-pick button { padding: 8px 13px; border-radius: 999px; font-size: 13px; font-weight: 700; background: var(--surface-2); color: var(--muted); border: 1.5px solid transparent; transition: transform .12s, background .15s, color .15s; }
+.scope-pick button:active { transform: scale(.94); }
+.scope-pick button.active { background: var(--green); color: #fff; box-shadow: 0 3px 8px rgba(30,175,93,.3); }
+
+/* หน้าสรุป: ระหว่างรอ 1200ms โชว์เป็นเงา (เบลอ) + สปินเนอร์บนหน้าเดียวกัน แล้วค่อยเฉลย+อนิเมชั่น */
+#screen-summary { position: relative; }
+#screen-summary .result-head, #screen-summary .result-body { transition: opacity .4s ease, filter .4s ease; }
+#screen-summary.loading .result-head, #screen-summary.loading .result-body { opacity: .25; filter: blur(3px); pointer-events: none; }
+.summary-loader { display: none; position: fixed; inset: 0; z-index: 60; flex-direction: column; align-items: center; justify-content: center; gap: 14px; pointer-events: none; }
+#screen-summary.loading .summary-loader { display: flex; }
 
 /* โอเวอร์เลย์โหลด (ไอคอนหมุน) ก่อนเข้าหน้าสรุป */
 .loading-overlay { position: fixed; inset: 0; background: var(--bg); display: none; flex-direction: column; align-items: center; justify-content: center; gap: 16px; z-index: 200; }
