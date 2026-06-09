@@ -467,7 +467,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .nav-btn.active { color: var(--green-dark); }
 .nav-btn.active .ni { filter: none; opacity: 1; }
 
-.home-body, .positions-body, .history-body, .posdetail-body { padding-bottom: 92px; }
+.home-body, .positions-body, .history-body, .posdetail-body { padding-bottom: 140px; }
 
 .plain-head { background: var(--card); padding: 20px 16px 16px; border-bottom: 1px solid var(--line); }
 .plain-head h2 { font-size: 20px; font-weight: 800; }
@@ -475,7 +475,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .plain-head.with-action { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; padding-right: 62px; }
 .plain-head .btn-danger { width: auto; padding: 8px 14px; font-size: 13px; border-radius: 999px; white-space: nowrap; }
 
-.positions-body { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.positions-body { padding: 16px; padding-bottom: 140px; display: flex; flex-direction: column; gap: 12px; }
 .pos-card { display: flex; align-items: center; gap: 14px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow-soft); text-align: left; transition: .15s; }
 .pos-card:hover { border-color: var(--green); transform: translateY(-2px); box-shadow: var(--shadow); }
 .pos-card .pos-ic { width: 48px; height: 48px; border-radius: 14px; background: var(--green-light); display: grid; place-items: center; font-size: 24px; flex: none; }
@@ -491,7 +491,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .dn-dev .dn-fb { color: var(--green-dark); font-weight: 800; text-decoration: underline; }
 .dn-dev .dn-dev-sub { font-size: 12.5px; font-weight: 500; color: var(--muted); margin-top: 5px; }
 
-.posdetail-body { padding: 16px; }
+.posdetail-body { padding: 16px; padding-bottom: 140px; }
 .pd-intro { font-size: 14px; margin-bottom: 14px; }
 .pd-block { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; margin-bottom: 12px; box-shadow: var(--shadow-soft); }
 .pd-h { font-weight: 800; font-size: 14.5px; display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
@@ -610,7 +610,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ============================================================
    อ่านก่อนสอบ (สรุป + ทริค)
    ============================================================ */
-.study-body { padding: 16px; padding-bottom: 92px; display: flex; flex-direction: column; gap: 12px; }
+.study-body { padding: 16px; padding-bottom: 140px; display: flex; flex-direction: column; gap: 12px; }
 .study-card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-soft); overflow: hidden; }
 .study-head { width: 100%; display: flex; align-items: center; gap: 10px; padding: 15px 16px; text-align: left; }
 .study-head .sh-ic { font-size: 22px; flex: none; }
