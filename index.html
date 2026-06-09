@@ -30,6 +30,15 @@
       </div>
     </div>
 
+    <!-- แจ้งเตือนลอย: เว็บช้า → โหลดแอป (โผล่ตอนเข้าใหม่ ๆ · หายเองใน 1 นาที · กดปิดได้ · กดแล้วไปหน้าวิธีติดตั้ง) -->
+    <div class="dl-banner" id="dl-banner" hidden>
+      <a class="dl-banner-main" href="landing/index.html">
+        <span class="dl-banner-ic">📲</span>
+        <span class="dl-banner-txt">เว็บโหลดช้าไหมครับ? <b>โหลดแอปไปติดตั้งในเครื่อง</b> เปิดเร็ว ลื่นกว่า — แตะที่นี่เพื่อดูวิธีโหลด</span>
+      </a>
+      <button class="dl-banner-x" id="dl-banner-x" aria-label="ปิด">✕</button>
+    </div>
+
     <!-- ============ หน้าแรก = ทำข้อสอบ ============ -->
     <section id="screen-home" class="screen active">
       <div class="home-hero">
@@ -128,6 +137,11 @@
         <div class="part-sub">ข้อสอบสถานการณ์ (SJT) และเตรียมสอบสัมภาษณ์</div>
         <div class="bank-list" id="partC-pick"></div>
 
+        <a class="menu-card dl-card" id="home-download" href="landing/index.html">
+          <div class="ico">📲</div>
+          <div class="mc-text"><b>โหลดแอปลงเครื่อง (Android)</b><span>เว็บช้าใช่ไหม? โหลดแอปไปติดตั้ง เปิดเร็ว ลื่นกว่า ใช้ออฟไลน์ได้</span></div>
+          <div class="arrow">›</div>
+        </a>
         <button class="donate-card" data-action="donate" id="home-donate">
           <div class="ico">💝</div>
           <div class="mc-text"><b>สนับสนุนผู้พัฒนา</b><span>ถ้าแอปนี้มีประโยชน์ เลี้ยงกาแฟกันได้นะ ☕</span></div>
