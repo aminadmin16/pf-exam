@@ -1,0 +1,21 @@
+{
+  "name": "kp-exam-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ติวสอบราชการ ก.พ. ภาค ก/ข/ค",
+  "scripts": {
+    "build:web": "node _batches/build-dist.js",
+    "zip:web": "node _batches/build-dist.js && powershell -NoProfile -Command \"Compress-Archive -Path dist/* -DestinationPath kp-exam-web.zip -Force\"",
+    "sync": "node _batches/build-dist.js && cap copy android",
+    "cap:open": "cap open android",
+    "apk:debug": "node _batches/build-dist.js && cap copy android && cd android && gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.4.0",
+    "@capacitor/cli": "^8.4.0",
+    "@capacitor/core": "^8.4.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

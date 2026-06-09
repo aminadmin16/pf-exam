@@ -1,0 +1,17 @@
+{
+  "name": "PF แนวข้อสอบ กพ ภาค ก/ข/ค",
+  "short_name": "PF แนวข้อสอบ กพ",
+  "description": "แนวข้อสอบ ก.พ. ภาค ก/ข/ค พร้อมเฉลย วิเคราะห์จุดอ่อน และจำลองสอบเสมือนจริง",
+  "lang": "th",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#1eaf5d",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

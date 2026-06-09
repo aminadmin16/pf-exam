@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>PF แนวข้อสอบ กพ — ภาค ก/ข/ค พร้อมเฉลย</title>
+  <meta name="description" content="แอปฝึกข้อสอบราชการ ภาค ก ข ค พร้อมเฉลย วิเคราะห์จุดอ่อน และสอบตามตำแหน่ง" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1eaf5d" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="PF แนวข้อสอบ กพ" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+</head>
+<body>
+  <div class="app">
+
+    <!-- ปุ่มเปลี่ยนธีม (มุมขวาบน) -->
+    <div class="theme-fab" id="theme-fab">
+      <button class="theme-btn" id="theme-toggle" aria-label="เปลี่ยนธีม">🎨</button>
+      <div class="theme-menu" id="theme-menu">
+        <button data-theme-set="light">☀️ โหมดสว่าง</button>
+        <button data-theme-set="dark">🌙 โหมดมืด</button>
+        <button data-theme-set="reading">📖 โหมดอ่าน (โทนอุ่น)</button>
+      </div>
+    </div>
+
+    <!-- ============ หน้าแรก = ทำข้อสอบ ============ -->
+    <section id="screen-home" class="screen active">
+      <div class="home-hero">
+        <span class="badge">ฟรี • พร้อมเฉลยละเอียด</span>
+        <h1>PF แนวข้อสอบ กพ</h1>
+        <p>ครบทั้ง ภาค ก · ภาค ข · ภาค ค · สอบตามตำแหน่ง<br>พร้อมเฉลย วิเคราะห์จุดอ่อน และข้อเก็งปี 2569</p>
+      </div>
+
+      <div class="home-body">
+        <div class="level-select">
+          <span class="ls-label">เลือกระดับวุฒิ (เพื่อใช้เกณฑ์ผ่านที่ถูกต้อง)</span>
+          <div class="seg">
+            <button class="seg-btn active" data-level="undergrad">ปวช./ปวส./ป.ตรี</button>
+            <button class="seg-btn" data-level="master">ป.โท</button>
+          </div>
+        </div>
+        <div class="level-select">
+          <span class="ls-label">รูปแบบการเฉลย</span>
+          <div class="seg">
+            <button class="seg-btn active" data-feedback="instant">เฉลยทันทีรายข้อ</button>
+            <button class="seg-btn" data-feedback="end">เฉลยตอนจบ (เสมือนสอบจริง)</button>
+          </div>
+        </div>
+        <div class="level-select">
+          <span class="ls-label">ขอบเขตข้อสอบ (เลือกก่อนเริ่ม)</span>
+          <div class="seg">
+            <button class="seg-btn active" data-source="all">🔮 รวมข้อเก็ง 2569</button>
+            <button class="seg-btn" data-source="real">📋 เฉพาะข้อสอบจริง</button>
+          </div>
+        </div>
+        <div class="part-head"><span class="pchip pa">ภาค ก</span> ความรู้ความสามารถทั่วไป</div>
+        <button class="menu-card" data-action="start-full">
+          <div class="ico">🎯</div>
+          <div class="mc-text"><b>ข้อสอบเสมือนจริง (100 ข้อ)</b><span>วิเคราะห์ 50 + กฎหมาย 25 + อังกฤษ 25</span></div>
+          <div class="arrow">›</div>
+        </button>
+        <button class="menu-card highlight" data-action="predicted">
+          <div class="ico">🔮</div>
+          <div class="mc-text"><b>ข้อสอบเก็ง 2569 (คาดการณ์)</b><span>ต่อยอดแนวข้อสอบเดิม เก็งที่จะออกปีหน้า</span></div>
+          <div class="arrow">›</div>
+        </button>
+        <button class="menu-card" id="toggle-subjects">
+          <div class="ico">📚</div>
+          <div class="mc-text"><b>ฝึกแยกรายวิชา</b><span>เลือกฝึกเจาะลึกทีละวิชา</span></div>
+          <div class="arrow">›</div>
+        </button>
+        <div class="subject-pick" id="subject-pick">
+          <div class="count-pick">
+            <span class="cp-label">เลือกจำนวนข้อที่จะฝึก</span>
+            <div class="seg">
+              <button class="seg-btn" data-count="20">20 ข้อ</button>
+              <button class="seg-btn active" data-count="30">30 ข้อ</button>
+              <button class="seg-btn" data-count="40">40 ข้อ</button>
+              <button class="seg-btn" data-count="50">50 ข้อ</button>
+            </div>
+          </div>
+          <button class="btn btn-outline" data-subject="analytical">① ความสามารถในการคิดวิเคราะห์</button>
+          <button class="btn btn-outline" data-subject="ethics">② ความรู้และลักษณะการเป็นข้าราชการที่ดี</button>
+          <button class="btn btn-outline" data-subject="english">③ ภาษาอังกฤษ</button>
+        </div>
+        <button class="menu-card" data-action="quick">
+          <div class="ico">⚡</div>
+          <div class="mc-text"><b>ฝึกเร็ว 10 ข้อ</b><span>สุ่มคละวิชา เหมาะกับฝึกสั้น ๆ</span></div>
+          <div class="arrow">›</div>
+        </button>
+        <button class="menu-card" id="toggle-years">
+          <div class="ico">📅</div>
+          <div class="mc-text"><b>ทำข้อสอบจริง แยกตามปี</b><span>เลือกปี 2565–2568 ลองทำเหมือนสอบปีนั้น แล้วสรุป+วิเคราะห์แยกให้</span></div>
+          <div class="arrow">›</div>
+        </button>
+        <div class="year-pick" id="year-pick">
+          <button class="btn btn-outline" data-year="2568">📅 ข้อสอบจริง ปี 2568</button>
+          <button class="btn btn-outline" data-year="2567">📅 ข้อสอบจริง ปี 2567</button>
+          <button class="btn btn-outline" data-year="2566">📅 ข้อสอบจริง ปี 2566</button>
+          <button class="btn btn-outline" data-year="2565">📅 ข้อสอบจริง ปี 2565</button>
+        </div>
+
+        <div class="part-head"><span class="pchip pb">ภาค ข</span> ความรู้เฉพาะตำแหน่ง</div>
+        <div class="part-sub">เลือกกฎหมาย/หัวข้อให้ตรงกับตำแหน่งที่จะสอบ (ฝึกได้หลายชุด)</div>
+        <div class="bank-list" id="partB-pick"></div>
+
+        <div class="part-head"><span class="pchip pc">ภาค ค</span> ความเหมาะสมกับตำแหน่ง</div>
+        <div class="part-sub">ข้อสอบสถานการณ์ (SJT) และเตรียมสอบสัมภาษณ์</div>
+        <div class="bank-list" id="partC-pick"></div>
+
+        <button class="donate-card" data-action="donate" id="home-donate">
+          <div class="ico">💝</div>
+          <div class="mc-text"><b>สนับสนุนผู้พัฒนา</b><span>ถ้าแอปนี้มีประโยชน์ เลี้ยงกาแฟกันได้นะ ☕</span></div>
+          <div class="arrow">›</div>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ สอบตามตำแหน่ง ============ -->
+    <section id="screen-positions" class="screen">
+      <div class="plain-head">
+        <h2>🎯 สอบตามตำแหน่ง</h2>
+        <p>เลือกตำแหน่งตามสายงาน เพื่อดูว่าต้องสอบ “ภาค ข + ภาค ค” อะไรบ้าง และเริ่มฝึกได้เลย</p>
+      </div>
+      <div class="positions-body" id="positions-body"></div>
+    </section>
+
+    <!-- ============ รายละเอียดตำแหน่ง ============ -->
+    <section id="screen-position-detail" class="screen">
+      <div class="subscreen-head">
+        <button class="icon-btn" id="posdetail-back">←</button>
+        <h2 id="posdetail-title">ตำแหน่ง</h2>
+      </div>
+      <div class="posdetail-body" id="position-detail"></div>
+    </section>
+
+    <!-- ============ ทำข้อสอบ ============ -->
+    <section id="screen-quiz" class="screen">
+      <header class="topbar">
+        <button class="icon-btn" id="btn-exit" title="ออก">←</button>
+        <div class="topbar-title">PF แนวข้อสอบ กพ<span id="topbar-sub">ฟรี พร้อมเฉลย</span></div>
+        <div class="topbar-nav">
+          <button class="round-btn" id="btn-prev" title="ข้อก่อนหน้า">❮</button>
+          <button class="round-btn" id="btn-next-top" title="ข้อถัดไป">❯</button>
+        </div>
+      </header>
+      <div class="progress-row">
+        <span class="qcount">ข้อที่ <b id="q-index">1</b> / <span id="q-total">100</span></span>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+        <span class="timer-chip" id="timer">⏱ 00:00</span>
+      </div>
+
+      <div class="quiz-body">
+        <div class="chip-row">
+          <span class="subject-chip" id="subject-chip"><span class="dot"></span><span id="subject-chip-text">วิชา</span></span>
+          <span class="year-chip" id="year-chip">ปี 2566</span>
+        </div>
+        <div class="freq-row" id="freq-row"></div>
+        <div class="instruction">จงเลือกคำตอบที่ถูกต้องที่สุดเพียงข้อเดียว</div>
+        <div class="passage" id="passage" style="display:none"></div>
+        <div class="qwrap">
+          <div class="question-text" id="question-text"></div>
+          <button class="hint-btn" id="hint-btn" type="button" aria-label="คำใบ้ของข้อนี้">💡</button>
+          <div class="hint-pop" id="hint-pop"></div>
+        </div>
+        <div class="choices" id="choices"></div>
+        <div class="action-row">
+          <button class="btn btn-ghost" id="btn-prev2">❮ ข้อก่อนหน้า</button>
+          <button class="btn btn-primary" id="btn-next">ข้อต่อไป ›</button>
+        </div>
+        <div class="action-row">
+          <button class="btn btn-explain" id="btn-explain">อ่านเฉลยละเอียด ⌃</button>
+          <button class="btn btn-ghost" id="btn-check" style="display:none">📋 ตรวจคำตอบ</button>
+        </div>
+        <div class="explanation" id="explanation">
+          <div class="exp-head">💡 เฉลยละเอียด</div>
+          <div class="exp-body" id="explanation-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ สรุปผล ============ -->
+    <section id="screen-summary" class="screen">
+      <div class="result-head">
+        <h2>สรุปผลการสอบ</h2>
+        <div class="sub" id="summary-sub">—</div>
+      </div>
+      <div class="result-body">
+        <div class="overall-banner" id="overall-banner">
+          <div class="big" id="overall-big">—</div>
+          <div class="small" id="overall-small">—</div>
+        </div>
+
+        <div id="kp-result">
+          <table class="result-table">
+            <thead><tr><th class="col-subject">วิชาที่สอบ</th><th class="col-w">คะแนน<br>เต็ม</th><th class="col-w">คะแนน<br>ที่ได้</th></tr></thead>
+            <tbody id="result-tbody"></tbody>
+          </table>
+          <div class="passmark-note">* ผลสอบจะ “ผ่าน” ได้ต้องผ่านเกณฑ์ขั้นต่ำของทุกวิชาพร้อมกัน</div>
+        </div>
+
+        <div id="special-result" style="display:none">
+          <div class="special-score-card">
+            <div class="ss-name" id="ss-name"></div>
+            <div class="ss-score"><span id="ss-got">0</span><span class="ss-slash">/</span><span id="ss-total">0</span></div>
+            <div class="ss-pct" id="ss-pct">0%</div>
+            <div class="ss-pass" id="ss-pass"></div>
+          </div>
+        </div>
+
+        <div id="improvement" style="display:none">
+          <div class="imp-title">📈 พัฒนาการของคุณ (เทียบกับครั้งก่อน)</div>
+          <div id="imp-rows"></div>
+          <div class="imp-overall" id="imp-overall"></div>
+        </div>
+
+        <div id="part-breakdown" style="display:none">
+          <div class="pb-title">สัดส่วนคะแนนตามภาค</div>
+          <div id="pb-rows"></div>
+        </div>
+
+        <div class="result-meta">
+          <div class="meta-box"><div class="v" id="meta-correct">0/0</div><div class="l">ตอบถูก</div></div>
+          <div class="meta-box"><div class="v" id="meta-percent">0%</div><div class="l">คะแนนรวม</div></div>
+          <div class="meta-box"><div class="v" id="meta-time">00:00</div><div class="l">เวลาที่ใช้</div></div>
+        </div>
+
+        <div class="analysis" id="analysis">
+          <h3>🔎 จุดแข็ง & เรื่องที่ยังควรเสริมของคุณ</h3>
+          <div class="ana-grid">
+            <div class="ana-box"><div class="ana-h good">💪 จุดแข็ง</div><div id="ana-strong"></div></div>
+            <div class="ana-box"><div class="ana-h bad">📈 ควรเสริมให้ดีขึ้น</div><div id="ana-weak"></div></div>
+          </div>
+          <div class="ana-reco" id="ana-reco"></div>
+          <button class="btn btn-primary" id="btn-weak" style="display:none">📝 ทดสอบเฉพาะเรื่องที่อ่อน</button>
+        </div>
+
+        <div class="result-actions">
+          <button class="btn btn-outline" id="btn-review">📋 ดูเฉลยทีละข้อ</button>
+          <button class="btn btn-primary" id="btn-retry">🔄 ทำใหม่อีกครั้ง</button>
+          <button class="btn btn-ghost" id="btn-home">🏠 กลับหน้าแรก</button>
+          <div class="summary-dev">
+            💛 ถ้าแอปนี้มีประโยชน์ ฝากสนับสนุนผู้พัฒนาได้นะครับ
+            <span>ใครจำข้อสอบหลังสอบได้ ฝากส่งกลับมาคนละข้อสองข้อ เพื่อเป็นวิทยาทานให้รุ่นต่อไปได้อ่านกัน หรือกดติดตามไว้เป็นกำลังใจก็ได้ครับ — ขอบคุณมากครับ 🙏</span>
+          </div>
+          <button class="btn btn-donate" data-action="donate">💝 ถูกใจแอปนี้? สนับสนุนผู้พัฒนา</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ทบทวนเฉลย ============ -->
+    <section id="screen-review" class="screen">
+      <div class="subscreen-head">
+        <button class="icon-btn" id="review-back">←</button>
+        <h2>เฉลยละเอียดทุกข้อ</h2>
+      </div>
+      <div class="filter-row" id="review-filter">
+        <button class="chip-btn active" data-filter="all">ทั้งหมด</button>
+        <button class="chip-btn" data-filter="wrong">เฉพาะข้อที่ผิด</button>
+        <button class="chip-btn" data-filter="correct">เฉพาะข้อที่ถูก</button>
+      </div>
+      <div class="review-body" id="review-body"></div>
+    </section>
+
+    <!-- ============ ประวัติ ============ -->
+    <section id="screen-history" class="screen">
+      <div class="plain-head with-action">
+        <div><h2>🕘 ประวัติการทำข้อสอบ</h2><p>สรุปผลย้อนหลังทุกครั้ง แยกตามชุดที่ทำ</p></div>
+        <button class="btn-danger" id="history-clear">ล้างประวัติ</button>
+      </div>
+      <div class="history-body" id="history-body"></div>
+    </section>
+
+    <!-- ============ อ่านก่อนสอบ (สรุป+ทริค) ============ -->
+    <section id="screen-study" class="screen">
+      <div class="plain-head">
+        <h2>📖 อ่านก่อนสอบ — สรุป & ทริค</h2>
+        <p>สรุปสั้น กระชับ ไฮไลต์จุดที่ต้องจำ · แตะหัวข้อเพื่อเปิดอ่าน</p>
+      </div>
+      <div class="lib-stats" id="lib-stats">
+        <div class="lib-main"><span class="lib-num" id="lib-total">0</span><span class="lib-unit">ข้อ</span></div>
+        <div class="lib-cap">📚 คลังข้อสอบทั้งหมดในระบบ พร้อมเฉลยทุกข้อ</div>
+        <div class="lib-break" id="lib-break"></div>
+      </div>
+      <div class="study-body" id="study-body"></div>
+    </section>
+
+    <!-- ============ แถบเมนูล่าง ============ -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="nav-btn active" data-nav="home"><span class="ni">📝</span><span>ข้อสอบ</span></button>
+      <button class="nav-btn" data-nav="study"><span class="ni">📖</span><span>อ่านก่อน</span></button>
+      <button class="nav-btn" data-nav="positions"><span class="ni">🎯</span><span>ตามตำแหน่ง</span></button>
+      <button class="nav-btn" data-nav="history"><span class="ni">🕘</span><span>ประวัติ</span></button>
+    </nav>
+
+    <!-- ป๊อปอัปบริจาค -->
+    <div class="modal-overlay" id="donate-modal" aria-hidden="true">
+      <div class="modal">
+        <button class="modal-close" id="donate-close" aria-label="ปิด">✕</button>
+        <div class="dn-heart">💝</div>
+        <h3 id="dn-title">สนับสนุนผู้พัฒนา</h3>
+        <p class="dn-msg" id="dn-msg"></p>
+        <div class="dn-amounts" id="dn-amounts"></div>
+        <div class="dn-qr" id="dn-qr"></div>
+        <div class="dn-acc" id="dn-acc"></div>
+        <p class="dn-note">📱 สแกน QR ด้วยแอปธนาคาร/พร้อมเพย์ แล้วใส่จำนวนที่ต้องการ — ขอบคุณมากครับ 🙏</p>
+        <div class="dn-dev" id="dn-dev"></div>
+      </div>
+    </div>
+
+    <!-- ป๊อปอัปตรวจคำตอบก่อนส่ง -->
+    <div class="modal-overlay" id="check-modal" aria-hidden="true">
+      <div class="modal">
+        <button class="modal-close" id="check-close" aria-label="ปิด">✕</button>
+        <h3>📋 ตรวจคำตอบก่อนส่ง</h3>
+        <div class="check-summary" id="check-summary"></div>
+        <div class="check-grid" id="check-grid"></div>
+        <p class="check-hint">แตะหมายเลขข้อเพื่อกระโดดไปทำ · <span class="ck-dot done"></span> ทำแล้ว · <span class="ck-dot todo"></span> ยังไม่ได้ทำ</p>
+        <div class="check-actions" id="check-actions"></div>
+      </div>
+    </div>
+
+    <!-- ป๊อปอัปยืนยัน (แทนกล่องเด้งของระบบ) -->
+    <div class="modal-overlay" id="confirm-modal" aria-hidden="true">
+      <div class="confirm-box">
+        <div class="cf-ic" id="cf-ic">❓</div>
+        <div class="cf-msg" id="cf-msg"></div>
+        <div class="cf-actions">
+          <button class="btn btn-ghost" id="cf-cancel">ยกเลิก</button>
+          <button class="btn btn-primary" id="cf-ok">ยืนยัน</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading-overlay" id="loading-overlay"><div class="spinner"></div><div class="ld-text">กำลังวิเคราะห์ผลและจุดที่ควรพัฒนา…</div></div>
+
+    <div class="toast" id="toast"></div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="donate-config.js"></script>
+  <script src="study-notes.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
+    }
+  </script>
+</body>
+</html>

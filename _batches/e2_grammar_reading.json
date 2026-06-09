@@ -1,0 +1,350 @@
+[
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2565,
+    "question": "By the time the manager arrived, the team ______ the report for two hours.",
+    "choices": [
+      "had been preparing",
+      "has been preparing",
+      "was preparing",
+      "will have prepared"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ had been preparing\n\nประโยคนี้ใช้ Past Perfect Continuous เพราะเหตุการณ์การเตรียมรายงานดำเนินต่อเนื่องก่อนเวลาอ้างอิงในอดีต (before the manager arrived) โดยใช้โครงสร้าง had been + V-ing"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2565,
+    "question": "The new policy ______ by the Cabinet next Monday.",
+    "choices": [
+      "will be announced",
+      "is announcing",
+      "has announced",
+      "would announce"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ will be announced\n\nประโยค Passive Voice ที่กล่าวถึงอนาคต (next Monday) จึงใช้ will be + past participle (announced) ซึ่งเป็นรูป Future Simple Passive"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2565,
+    "question": "If the applicant ______ all the required documents, the committee would have approved her application.",
+    "choices": [
+      "had submitted",
+      "submitted",
+      "has submitted",
+      "would submit"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ had submitted\n\nเป็น Conditional Type 3 (สมมติเหตุการณ์ในอดีตที่ไม่เป็นความจริง) โครงสร้างคือ If + had + V3, would have + V3"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2565,
+    "question": "She is not only a skilled administrator ______ also an accomplished linguist.",
+    "choices": [
+      "but",
+      "and",
+      "yet",
+      "nor"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ but\n\nสำนวน \"not only ... but also\" เป็น correlative conjunction ที่ใช้เชื่อมสองสิ่งที่มีความสำคัญเท่ากัน คำที่ถูกต้องคือ but"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2566,
+    "question": "The number of civil servants who ______ for the promotion test has increased significantly.",
+    "choices": [
+      "have registered",
+      "has registered",
+      "are registering",
+      "were registering"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ have registered\n\nประธานของ relative clause คือ \"who\" ซึ่งอ้างถึง \"civil servants\" (พหูพจน์) จึงใช้ have (ไม่ใช่ has) และบริบทบ่งชี้ผลที่เกิดในปัจจุบัน จึงใช้ Present Perfect"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2566,
+    "question": "The report was submitted ______ deadline despite several technical difficulties.",
+    "choices": [
+      "before the",
+      "before a",
+      "before",
+      "by a"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ before the\n\n\"Deadline\" ในบริบทนี้มีความเฉพาะเจาะจง (กำหนดเส้นตายที่กำหนดไว้) จึงต้องใช้ definite article \"the\" หน้า deadline และ preposition \"before\" เพื่อบอกว่าส่งก่อนกำหนด"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2566,
+    "question": "Each of the five departments ______ responsible for submitting its own quarterly budget.",
+    "choices": [
+      "is",
+      "are",
+      "were",
+      "have been"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ is\n\n\"Each of + noun phrase\" ถือว่าเป็นประธานเอกพจน์เสมอ จึงใช้ is (singular verb) และ its (singular pronoun)"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2566,
+    "question": "The government's new tax incentive scheme is far ______ than the previous one.",
+    "choices": [
+      "more comprehensive",
+      "most comprehensive",
+      "comprehensive",
+      "comprehensiver"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ more comprehensive\n\nคำคุณศัพท์ที่มีพยางค์มากกว่าสองพยางค์ (comprehensive) ใช้ more ในการเปรียบเทียบขั้น comparative ไม่เติม -er; และ \"far\" ใช้เป็น intensifier ของ comparative"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2567,
+    "question": "The committee members, ______ had reviewed the proposal carefully, recommended its approval.",
+    "choices": [
+      "who",
+      "which",
+      "whom",
+      "whose"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ who\n\n\"who\" ใช้แทนบุคคล (committee members) ในฐานะประธาน (subject) ของอนุประโยค relative clause ส่วน \"whom\" ใช้เมื่อเป็น object และ \"which\" ใช้กับสิ่งของ"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2567,
+    "question": "If the budget ______ approved earlier, the construction would have started last month.",
+    "choices": [
+      "had been",
+      "was",
+      "were",
+      "has been"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ had been\n\nเป็น Conditional Type 3 ในรูป Passive (If + had been + V3) แสดงเหตุการณ์สมมติในอดีตที่ไม่เป็นความจริง ส่วน main clause ใช้ would have + V3"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2567,
+    "question": "The annual review, ______ is conducted every December, helps identify areas for improvement.",
+    "choices": [
+      "which",
+      "who",
+      "that",
+      "what"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ which\n\n\"which\" ใช้ใน non-defining relative clause (คั่นด้วยลูกน้ำ) เพื่ออ้างถึงสิ่งของหรือแนวคิด (annual review) ส่วน \"that\" ใช้ใน defining relative clause เท่านั้น"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2568,
+    "question": "She has been working in the public health sector ______ more than fifteen years.",
+    "choices": [
+      "for",
+      "since",
+      "during",
+      "within"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ for\n\nใช้ \"for\" กับช่วงระยะเวลา (a period of time) เช่น for three days, for more than fifteen years ส่วน \"since\" ใช้กับจุดเริ่มต้นของเวลา (a point in time)"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2565,
+    "passage": "Thailand's civil service system has undergone significant reforms over the past two decades. The Office of the Civil Service Commission (OCSC) introduced a merit-based recruitment framework in 2018, replacing the seniority-based system that had been in place since the 1970s. Under the new framework, candidates are evaluated on competency, professional knowledge, and leadership potential. The reforms were designed to attract highly qualified individuals and improve overall government efficiency. Early data suggest that departments adopting the new framework show higher productivity scores than those that have not.",
+    "question": "What is the main purpose of this passage?",
+    "choices": [
+      "To describe recent reforms in Thailand's civil service recruitment system",
+      "To criticize the seniority-based promotion system in Thailand",
+      "To compare Thailand's civil service with those of other countries",
+      "To explain the history of the Office of the Civil Service Commission"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ To describe recent reforms in Thailand's civil service recruitment system\n\nบทอ่านนี้มีใจความสำคัญเกี่ยวกับการปฏิรูประบบราชการไทยในช่วงสองทศวรรษที่ผ่านมา โดยเฉพาะการเปลี่ยนมาใช้ระบบสมรรถนะแทนอาวุโส ดังนั้นตัวเลือก A จึงสรุปสาระสำคัญได้ตรงที่สุด"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2565,
+    "passage": "Thailand's civil service system has undergone significant reforms over the past two decades. The Office of the Civil Service Commission (OCSC) introduced a merit-based recruitment framework in 2018, replacing the seniority-based system that had been in place since the 1970s. Under the new framework, candidates are evaluated on competency, professional knowledge, and leadership potential. The reforms were designed to attract highly qualified individuals and improve overall government efficiency. Early data suggest that departments adopting the new framework show higher productivity scores than those that have not.",
+    "question": "According to the passage, which factor is NOT mentioned as part of the candidate evaluation under the new framework?",
+    "choices": [
+      "Years of experience",
+      "Competency",
+      "Professional knowledge",
+      "Leadership potential"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Years of experience\n\nบทอ่านระบุว่าผู้สมัครได้รับการประเมินด้าน competency, professional knowledge และ leadership potential เท่านั้น ไม่ได้กล่าวถึง years of experience (อายุงาน) ซึ่งเป็นลักษณะของระบบอาวุโสเดิมที่ถูกยกเลิกไปแล้ว"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2565,
+    "passage": "Thailand's civil service system has undergone significant reforms over the past two decades. The Office of the Civil Service Commission (OCSC) introduced a merit-based recruitment framework in 2018, replacing the seniority-based system that had been in place since the 1970s. Under the new framework, candidates are evaluated on competency, professional knowledge, and leadership potential. The reforms were designed to attract highly qualified individuals and improve overall government efficiency. Early data suggest that departments adopting the new framework show higher productivity scores than those that have not.",
+    "question": "Which of the following can be inferred from the passage?",
+    "choices": [
+      "Not all departments in Thailand have adopted the new merit-based framework yet.",
+      "The seniority-based system was completely abolished in all departments by 2018.",
+      "The OCSC was established in 2018 to manage the new recruitment process.",
+      "Higher productivity scores are guaranteed for any department using the new framework."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Not all departments in Thailand have adopted the new merit-based framework yet.\n\nบทอ่านกล่าวว่า \"departments adopting the new framework\" (พหูพจน์แบบเลือก) มีคะแนนสูงกว่า \"those that have not\" แสดงว่ายังมีบางหน่วยงานที่ยังไม่ได้นำระบบใหม่มาใช้ จึงสรุปได้ว่าการนำไปใช้ยังไม่ครอบคลุมทุกหน่วยงาน"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2566,
+    "passage": "Digital literacy has become a core requirement for government employees across Southeast Asia. In Thailand, the Ministry of Digital Economy and Society launched the \"Digital Government\" initiative in 2022, mandating that all civil servants complete at least 40 hours of digital skills training annually. The training covers data management, cybersecurity awareness, and the use of e-government platforms. Officials who fail to meet the training quota may face performance review consequences. Proponents of the initiative argue that equipping public servants with digital skills is essential for delivering efficient, transparent, and citizen-centered services.",
+    "question": "What is the primary goal of the \"Digital Government\" initiative as described in the passage?",
+    "choices": [
+      "To equip civil servants with digital skills for better public service delivery",
+      "To replace human workers with automated government systems",
+      "To develop new e-government platforms for international trade",
+      "To reduce the number of civil servants through technological efficiency"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ To equip civil servants with digital skills for better public service delivery\n\nบทอ่านระบุชัดเจนว่าการริเริ่มนี้มีจุดมุ่งหมายเพื่อ \"delivering efficient, transparent, and citizen-centered services\" โดยการพัฒนาทักษะดิจิทัลให้แก่ข้าราชการ"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2566,
+    "passage": "Digital literacy has become a core requirement for government employees across Southeast Asia. In Thailand, the Ministry of Digital Economy and Society launched the \"Digital Government\" initiative in 2022, mandating that all civil servants complete at least 40 hours of digital skills training annually. The training covers data management, cybersecurity awareness, and the use of e-government platforms. Officials who fail to meet the training quota may face performance review consequences. Proponents of the initiative argue that equipping public servants with digital skills is essential for delivering efficient, transparent, and citizen-centered services.",
+    "question": "What consequence may a civil servant face for not completing the required training hours?",
+    "choices": [
+      "Consequences in their performance review",
+      "Immediate dismissal from government service",
+      "A financial penalty deducted from their salary",
+      "Mandatory reassignment to a lower-ranking position"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Consequences in their performance review\n\nบทอ่านระบุว่า \"Officials who fail to meet the training quota may face performance review consequences\" ตัวเลือก A ตรงกับข้อมูลในบทอ่านที่สุด ส่วนตัวเลือกอื่นไม่ได้กล่าวถึงในบทอ่าน"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2566,
+    "passage": "Digital literacy has become a core requirement for government employees across Southeast Asia. In Thailand, the Ministry of Digital Economy and Society launched the \"Digital Government\" initiative in 2022, mandating that all civil servants complete at least 40 hours of digital skills training annually. The training covers data management, cybersecurity awareness, and the use of e-government platforms. Officials who fail to meet the training quota may face performance review consequences. Proponents of the initiative argue that equipping public servants with digital skills is essential for delivering efficient, transparent, and citizen-centered services.",
+    "question": "The word \"mandating\" in the passage is closest in meaning to ______.",
+    "choices": [
+      "requiring",
+      "suggesting",
+      "permitting",
+      "preventing"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ requiring\n\n\"Mandating\" หมายความว่า \"บังคับ / กำหนดให้ต้องทำ\" ซึ่งใกล้เคียงที่สุดกับ \"requiring\" (กำหนดให้ต้องปฏิบัติ) ส่วนคำอื่นมีความหมายตรงข้ามหรือแตกต่างอย่างชัดเจน"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2567,
+    "passage": "The concept of sustainable urban development has gained considerable attention among city planners in the Asia-Pacific region. Bangkok's metropolitan authority released a ten-year master plan in 2023 aimed at reducing carbon emissions by 30 percent and expanding green spaces within the city limits. Key strategies include promoting public transportation use, incentivizing green building construction, and improving waste management systems. Critics, however, contend that without adequate funding and strong political will, such ambitious targets are unlikely to be met within the specified timeframe.",
+    "question": "According to the passage, what is one of the key strategies in Bangkok's master plan?",
+    "choices": [
+      "Promoting greater use of public transportation",
+      "Relocating industrial factories to the city outskirts",
+      "Reducing the overall size of the metropolitan area",
+      "Banning private vehicle ownership within city limits"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Promoting greater use of public transportation\n\nบทอ่านระบุชัดเจนว่า \"promoting public transportation use\" เป็นหนึ่งในกลยุทธ์หลักของแผนแม่บท ส่วนตัวเลือกอื่นไม่ได้กล่าวถึงในบทอ่าน"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2567,
+    "passage": "The concept of sustainable urban development has gained considerable attention among city planners in the Asia-Pacific region. Bangkok's metropolitan authority released a ten-year master plan in 2023 aimed at reducing carbon emissions by 30 percent and expanding green spaces within the city limits. Key strategies include promoting public transportation use, incentivizing green building construction, and improving waste management systems. Critics, however, contend that without adequate funding and strong political will, such ambitious targets are unlikely to be met within the specified timeframe.",
+    "question": "What concern do critics raise about the master plan?",
+    "choices": [
+      "It may fail due to insufficient funding and lack of political commitment.",
+      "The target of 30 percent emission reduction is too modest to make a difference.",
+      "Green spaces will be reduced rather than expanded under the plan.",
+      "Public transportation improvements will increase traffic congestion."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ It may fail due to insufficient funding and lack of political commitment.\n\nผู้วิจารณ์ในบทอ่านโต้แย้งว่า \"without adequate funding and strong political will\" เป้าหมายที่ตั้งไว้ไม่น่าจะสำเร็จ ตัวเลือก A สรุปความกังวลนี้ได้ถูกต้อง"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2567,
+    "passage": "The concept of sustainable urban development has gained considerable attention among city planners in the Asia-Pacific region. Bangkok's metropolitan authority released a ten-year master plan in 2023 aimed at reducing carbon emissions by 30 percent and expanding green spaces within the city limits. Key strategies include promoting public transportation use, incentivizing green building construction, and improving waste management systems. Critics, however, contend that without adequate funding and strong political will, such ambitious targets are unlikely to be met within the specified timeframe.",
+    "question": "The word \"contend\" as used in the final sentence is closest in meaning to ______.",
+    "choices": [
+      "argue",
+      "accept",
+      "doubt",
+      "celebrate"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ argue\n\n\"Contend\" ในบริบทนี้หมายความว่า \"โต้แย้ง / อ้างว่า\" ซึ่งใกล้เคียงที่สุดกับ \"argue\" ส่วน \"accept\" มีความหมายตรงข้าม และ \"doubt\" กับ \"celebrate\" มีความหมายแตกต่างออกไป"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2568,
+    "passage": "Public health communication plays a vital role in shaping community behavior during health crises. During the COVID-19 pandemic, governments worldwide faced the dual challenge of disseminating accurate information quickly and countering widespread misinformation on social media. Thailand's Department of Disease Control partnered with major digital platforms to flag and remove false health claims. Research published in 2023 found that communities with higher exposure to official public health messaging showed significantly lower rates of vaccine hesitancy. The findings underscore the importance of proactive, evidence-based government communication in protecting public health.",
+    "question": "What is the main idea of the passage?",
+    "choices": [
+      "Effective public health communication is crucial for guiding community behavior during crises.",
+      "Social media companies are primarily responsible for managing health misinformation.",
+      "Thailand's vaccine rollout was more successful than those of other countries.",
+      "Digital platforms caused more harm than good during the COVID-19 pandemic."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Effective public health communication is crucial for guiding community behavior during crises.\n\nบทอ่านทั้งหมดเน้นความสำคัญของการสื่อสารด้านสาธารณสุขในช่วงวิกฤต ตั้งแต่ความท้าทายของการเผยแพร่ข้อมูลจริงไปจนถึงผลวิจัยที่แสดงว่าการสื่อสารอย่างเป็นทางการลดความลังเลใจในการฉีดวัคซีนได้"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2568,
+    "passage": "Public health communication plays a vital role in shaping community behavior during health crises. During the COVID-19 pandemic, governments worldwide faced the dual challenge of disseminating accurate information quickly and countering widespread misinformation on social media. Thailand's Department of Disease Control partnered with major digital platforms to flag and remove false health claims. Research published in 2023 found that communities with higher exposure to official public health messaging showed significantly lower rates of vaccine hesitancy. The findings underscore the importance of proactive, evidence-based government communication in protecting public health.",
+    "question": "According to the passage, how did Thailand's Department of Disease Control address misinformation?",
+    "choices": [
+      "By partnering with digital platforms to identify and remove false health claims",
+      "By prosecuting individuals who spread health misinformation online",
+      "By creating its own social media platform for official announcements",
+      "By banning all unverified health content from being shared online"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ By partnering with digital platforms to identify and remove false health claims\n\nบทอ่านระบุชัดเจนว่ากรมควบคุมโรค \"partnered with major digital platforms to flag and remove false health claims\" ตรงกับตัวเลือก A พอดี"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2568,
+    "passage": "Public health communication plays a vital role in shaping community behavior during health crises. During the COVID-19 pandemic, governments worldwide faced the dual challenge of disseminating accurate information quickly and countering widespread misinformation on social media. Thailand's Department of Disease Control partnered with major digital platforms to flag and remove false health claims. Research published in 2023 found that communities with higher exposure to official public health messaging showed significantly lower rates of vaccine hesitancy. The findings underscore the importance of proactive, evidence-based government communication in protecting public health.",
+    "question": "Which of the following can be inferred from the research finding mentioned in the passage?",
+    "choices": [
+      "Official health messaging can help reduce public resistance to vaccination.",
+      "All communities that received official messaging achieved full vaccination coverage.",
+      "Social media was the least effective channel for public health communication.",
+      "Vaccine hesitancy was only a problem in countries that lacked government messaging."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Official health messaging can help reduce public resistance to vaccination.\n\nงานวิจัยพบว่าชุมชนที่ได้รับข้อมูลจากทางการมาก \"showed significantly lower rates of vaccine hesitancy\" ดังนั้นจึงสรุปได้ว่าการสื่อสารอย่างเป็นทางการช่วยลดการต่อต้านการฉีดวัคซีนได้ ตัวเลือกอื่นกล่าวเกินจริงหรือไม่มีหลักฐานรองรับในบทอ่าน"
+  }
+]

@@ -1,0 +1,214 @@
+[
+  {
+    "subject": "ethics",
+    "topic": "ธรรมาภิบาลดิจิทัลในงานราชการ",
+    "year": 2569,
+    "predicted": true,
+    "question": "หน่วยงานแห่งหนึ่งเปิดให้ประชาชนติดตามสถานะคำร้องผ่านแอปพลิเคชัน นายภูมิซึ่งดูแลระบบพบว่าทีมพัฒนาออกแบบให้แอปขอสิทธิเข้าถึงรายชื่อผู้ติดต่อและตำแหน่งที่ตั้งของผู้ใช้ตลอดเวลา ทั้งที่บริการเพียงแค่แสดงสถานะเอกสาร การดำเนินการที่สอดคล้องกับหลักธรรมาภิบาลดิจิทัลมากที่สุดคือข้อใด",
+    "choices": [
+      "ทบทวนให้แอปขอสิทธิเข้าถึงเฉพาะที่จำเป็นต่อบริการจริง และอธิบายเหตุผลการขอสิทธิแต่ละรายการแก่ผู้ใช้อย่างโปร่งใส",
+      "คงสิทธิการเข้าถึงไว้ทั้งหมด เพราะยิ่งระบบเข้าถึงข้อมูลได้มากยิ่งพัฒนาบริการในอนาคตได้ดีขึ้น",
+      "ปิดการขอสิทธิทั้งหมดเงียบ ๆ โดยไม่บันทึกเหตุผลหรือแจ้งผู้เกี่ยวข้อง เพื่อเลี่ยงความรับผิด",
+      "ขายข้อมูลตำแหน่งที่ตั้งของผู้ใช้ให้พันธมิตรเอกชนเพื่อนำรายได้มาบำรุงรักษาระบบ"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ ทบทวนให้แอปขอสิทธิเข้าถึงเฉพาะที่จำเป็นต่อบริการจริง และอธิบายเหตุผลการขอสิทธิแต่ละรายการแก่ผู้ใช้อย่างโปร่งใส\n\nธรรมาภิบาลดิจิทัลและ PDPA ยึดหลักเก็บ/เข้าถึงข้อมูลเท่าที่จำเป็น (data minimization) ความโปร่งใส และการแจ้งวัตถุประสงค์ เมื่อสิทธิที่ขอเกินกว่าที่บริการต้องใช้จริง ต้องปรับให้เหลือเท่าที่จำเป็นและอธิบายเหตุผลให้ผู้ใช้เข้าใจ การคงสิทธิเกินจำเป็น การปิดแบบไม่บันทึก/ไม่แจ้ง หรือการนำข้อมูลตำแหน่งไปขายต่อ ล้วนขัดหลักความจำเป็น ความโปร่งใส และฐานทางกฎหมาย"
+  },
+  {
+    "subject": "ethics",
+    "topic": "PDPA ในงานราชการ",
+    "year": 2569,
+    "predicted": true,
+    "question": "นางสาวอรเป็นเจ้าหน้าที่ฝ่ายบุคคล ได้รับอีเมลจากผู้อ้างตัวเป็นผู้บังคับบัญชาระดับสูงต่างหน่วยงาน ขอให้ส่งไฟล์ทะเบียนประวัติพนักงานทั้งกรม (ชื่อ เลขบัตรประชาชน เงินเดือน) ไปยังอีเมลส่วนตัวภายในวันนี้ โดยอ้างว่าจะใช้ทำรายงานด่วน แนวปฏิบัติที่ถูกต้องที่สุดตาม PDPA และความมั่นคงปลอดภัยข้อมูลคือข้อใด",
+    "choices": [
+      "ยังไม่ส่ง ตรวจสอบตัวตนผู้ขอและฐานทางกฎหมายในการเปิดเผยผ่านช่องทางทางการ และพิจารณาส่งเฉพาะข้อมูลเท่าที่จำเป็นผ่านช่องทางที่ปลอดภัย",
+      "ส่งไฟล์ทั้งหมดทันที เพราะเป็นคำขอจากผู้บังคับบัญชาระดับสูงที่ต้องเชื่อฟังโดยไม่มีข้อยกเว้น",
+      "ส่งให้ครบทุกฟิลด์แต่ตั้งรหัสผ่านไฟล์ แล้วส่งรหัสผ่านตามไปในอีเมลฉบับเดียวกัน เพื่อความรวดเร็ว",
+      "ปฏิเสธทุกการเปิดเผยข้อมูลพนักงานในทุกกรณีตลอดไป เพราะ PDPA ห้ามเปิดเผยข้อมูลส่วนบุคคลโดยเด็ดขาด"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ ยังไม่ส่ง ตรวจสอบตัวตนผู้ขอและฐานทางกฎหมายในการเปิดเผยผ่านช่องทางทางการ และพิจารณาส่งเฉพาะข้อมูลเท่าที่จำเป็นผ่านช่องทางที่ปลอดภัย\n\nคำขอลักษณะนี้เข้าข่ายการหลอกลวงให้เปิดเผยข้อมูล (social engineering) เลขบัตรประชาชนและเงินเดือนเป็นข้อมูลส่วนบุคคลที่ต้องคุ้มครอง การเปิดเผยต้องมีฐานทางกฎหมาย ทำเท่าที่จำเป็น และผ่านช่องทางที่ปลอดภัย จึงต้องยืนยันตัวตนและความชอบด้วยกฎหมายก่อน การส่งทันทีตามคำสั่งที่ยังไม่ตรวจสอบ หรือส่งรหัสผ่านไปพร้อมไฟล์ ล้วนเสี่ยงรั่วไหล ส่วน PDPA ก็มิได้ห้ามเปิดเผยโดยเด็ดขาด เพียงต้องมีฐานทางกฎหมายและทำเท่าที่จำเป็น"
+  },
+  {
+    "subject": "ethics",
+    "topic": "PDPA ในงานราชการ",
+    "year": 2569,
+    "predicted": true,
+    "question": "พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 มีผลบังคับใช้เต็มฉบับ (ในหมวดที่เกี่ยวกับการคุ้มครองข้อมูลและบทกำหนดโทษ) ตั้งแต่วันใด",
+    "choices": [
+      "1 มิถุนายน 2565",
+      "27 พฤษภาคม 2562",
+      "1 มิถุนายน 2563",
+      "1 มกราคม 2566"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ 1 มิถุนายน 2565\n\nพ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 ประกาศในราชกิจจานุเบกษาเมื่อ พ.ศ. 2562 แต่ส่วนสำคัญหลายหมวดถูกเลื่อนการบังคับใช้ และมามีผลบังคับใช้เต็มฉบับเมื่อ \"วันที่ 1 มิถุนายน 2565\" ดังนั้นตั้งแต่วันดังกล่าวหน่วยงานทั้งภาครัฐและเอกชนต้องปฏิบัติตามหลักการคุ้มครองข้อมูลและอาจมีความรับผิดตามบทกำหนดโทษ"
+  },
+  {
+    "subject": "ethics",
+    "topic": "ผลประโยชน์ทับซ้อน",
+    "year": 2569,
+    "predicted": true,
+    "question": "นายกิตติเป็นกรรมการคัดเลือกผู้พัฒนาระบบสารสนเทศของหน่วยงาน ระหว่างกระบวนการ เขาพบว่าบริษัทที่เข้าแข่งขันรายหนึ่งมีน้องชายของตนเป็นผู้ถือหุ้นใหญ่ ข้อใดคือการจัดการผลประโยชน์ทับซ้อนที่ถูกต้องที่สุด",
+    "choices": [
+      "เปิดเผยความสัมพันธ์ต่อคณะกรรมการเป็นลายลักษณ์อักษร และถอนตัวจากการพิจารณาในส่วนที่เกี่ยวข้องกับบริษัทนั้น",
+      "ปิดเรื่องความสัมพันธ์ไว้ก่อน แล้วตั้งใจให้คะแนนบริษัทของน้องชายต่ำกว่าความจริงเพื่อแสดงความเป็นกลาง",
+      "ร่วมพิจารณาตามปกติได้ เพราะผู้ถือหุ้นคือน้องชาย ไม่ใช่ตัวนายกิตติเอง จึงไม่ถือว่ามีส่วนได้เสีย",
+      "แจ้งให้น้องชายถอนบริษัทออกจากการแข่งขัน แล้วตนพิจารณารายอื่นต่อโดยไม่ต้องเปิดเผยสิ่งใด"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ เปิดเผยความสัมพันธ์ต่อคณะกรรมการเป็นลายลักษณ์อักษร และถอนตัวจากการพิจารณาในส่วนที่เกี่ยวข้องกับบริษัทนั้น\n\nหลักจัดการการขัดกันแห่งผลประโยชน์คือ \"เปิดเผยและถอนตัว\" เมื่อมีส่วนได้เสีย ความสัมพันธ์ทางเครือญาติที่อาจได้ประโยชน์ถือเป็นส่วนได้เสียทางอ้อมที่ต้องเปิดเผย การปิดเรื่องแล้วจงใจให้คะแนนต่ำก็ยังเป็นการใช้ดุลพินิจโดยมีอคติ การอ้างว่าผู้ถือหุ้นเป็นน้องชายมิใช่ตนจึงไม่เกี่ยวเป็นความเข้าใจผิด และการสั่งให้น้องชายถอนตัวโดยไม่เปิดเผยก็ยังขาดความโปร่งใสและตรวจสอบไม่ได้"
+  },
+  {
+    "subject": "ethics",
+    "topic": "มาตรฐานทางจริยธรรม 7 ประการ",
+    "year": 2569,
+    "predicted": true,
+    "question": "ตามพระราชบัญญัติมาตรฐานทางจริยธรรม พ.ศ. 2562 ข้อใด \"ไม่ใช่\" หนึ่งในมาตรฐานทางจริยธรรม 7 ประการ",
+    "choices": [
+      "แสวงหาผลตอบแทนส่วนตนจากตำแหน่งหน้าที่ให้มากที่สุดเท่าที่จะทำได้",
+      "ยึดมั่นในสถาบันหลักของประเทศ อันได้แก่ ชาติ ศาสนา พระมหากษัตริย์ และการปกครองระบอบประชาธิปไตยอันมีพระมหากษัตริย์ทรงเป็นประมุข",
+      "ซื่อสัตย์สุจริต มีจิตสำนึกที่ดี และรับผิดชอบต่อหน้าที่",
+      "กล้าตัดสินใจและกระทำในสิ่งที่ถูกต้องชอบธรรม"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ แสวงหาผลตอบแทนส่วนตนจากตำแหน่งหน้าที่ให้มากที่สุดเท่าที่จะทำได้\n\nมาตรฐานทางจริยธรรม 7 ประการตาม พ.ร.บ.มาตรฐานทางจริยธรรม พ.ศ. 2562 ได้แก่ (1) ยึดมั่นในสถาบันหลักของประเทศ (2) ซื่อสัตย์สุจริต มีจิตสำนึกที่ดี และรับผิดชอบต่อหน้าที่ (3) กล้าตัดสินใจและกระทำในสิ่งที่ถูกต้องชอบธรรม (4) คิดถึงประโยชน์ส่วนรวมมากกว่าประโยชน์ส่วนตัว และมีจิตสาธารณะ (5) มุ่งผลสัมฤทธิ์ของงาน (6) ปฏิบัติหน้าที่อย่างเป็นธรรมและไม่เลือกปฏิบัติ (7) ดำรงตนเป็นแบบอย่างที่ดีและรักษาภาพลักษณ์ของทางราชการ การ \"แสวงหาผลตอบแทนส่วนตน\" จึงเป็นสิ่งที่ขัดกับมาตรฐาน ไม่ใช่หนึ่งในนั้น"
+  },
+  {
+    "subject": "ethics",
+    "topic": "มาตรฐานทางจริยธรรม 7 ประการ",
+    "year": 2569,
+    "predicted": true,
+    "question": "หัวหน้าฝ่ายมอบหมายงานให้ลูกน้องสองคน คนหนึ่งเป็นเพื่อนสนิทแต่ทำงานช้า อีกคนไม่สนิทแต่มีผลงานดีกว่า เมื่อถึงรอบประเมินเลื่อนขั้น หัวหน้าควรยึดหลักใดจึงสอดคล้องกับมาตรฐานทางจริยธรรมมากที่สุด",
+    "choices": [
+      "ประเมินตามผลงานและสมรรถนะจริงอย่างเป็นธรรม โดยไม่เลือกปฏิบัติเพราะความสัมพันธ์ส่วนตัว",
+      "ให้คะแนนเพื่อนสนิทสูงกว่า เพราะความจงรักภักดีต่อหัวหน้าเป็นคุณสมบัติที่ควรตอบแทน",
+      "ให้คะแนนเท่ากันทั้งสองคนเสมอ เพื่อหลีกเลี่ยงความขัดแย้งในทีม",
+      "ให้คนที่ไม่สนิทคะแนนต่ำไว้ก่อน เพื่อรักษาบรรยากาศความเป็นพวกพ้องในกลุ่มเดิม"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ ประเมินตามผลงานและสมรรถนะจริงอย่างเป็นธรรม โดยไม่เลือกปฏิบัติเพราะความสัมพันธ์ส่วนตัว\n\nมาตรฐานทางจริยธรรมข้อ \"ปฏิบัติหน้าที่อย่างเป็นธรรมและไม่เลือกปฏิบัติ\" และ \"มุ่งผลสัมฤทธิ์ของงาน\" กำหนดให้ใช้ผลงานและสมรรถนะจริงเป็นเกณฑ์ การให้คะแนนตามความสนิทหรือความจงรักภักดีส่วนตัว การให้คะแนนเท่ากันทั้งที่ผลงานต่างกัน หรือการกดคะแนนคนนอกกลุ่ม ล้วนเป็นการเลือกปฏิบัติและขัดหลักความเป็นธรรม"
+  },
+  {
+    "subject": "ethics",
+    "topic": "ธรรมาภิบาลดิจิทัลในงานราชการ",
+    "year": 2569,
+    "predicted": true,
+    "question": "หน่วยงานเปิดเผยชุดข้อมูลเปิด (open data) เกี่ยวกับสถิติการให้บริการประชาชนบนเว็บไซต์เพื่อความโปร่งใส ก่อนเผยแพร่ ข้อใดคือสิ่งที่เจ้าหน้าที่ต้องทำเป็นสำคัญตามหลักธรรมาภิบาลดิจิทัลควบคู่กับ PDPA",
+    "choices": [
+      "ทำให้ข้อมูลส่วนบุคคลไม่สามารถระบุตัวบุคคลได้ (เช่น สรุปเป็นภาพรวมหรือทำให้ไม่ระบุตัวตน) ก่อนเผยแพร่",
+      "เผยแพร่ข้อมูลดิบรายบุคคลทั้งหมดเพื่อให้ประชาชนตรวจสอบได้ละเอียดที่สุด",
+      "ใส่เลขบัตรประชาชนของผู้รับบริการลงไปด้วย เพื่อยืนยันว่าสถิติเป็นของจริง",
+      "งดเผยแพร่ข้อมูลใด ๆ ทั้งสิ้น เพราะการเปิดเผยข้อมูลขัดต่อหลักความโปร่งใส"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ ทำให้ข้อมูลส่วนบุคคลไม่สามารถระบุตัวบุคคลได้ (เช่น สรุปเป็นภาพรวมหรือทำให้ไม่ระบุตัวตน) ก่อนเผยแพร่\n\nการเปิดเผยข้อมูลเพื่อความโปร่งใสต้องสมดุลกับการคุ้มครองข้อมูลส่วนบุคคล หลักปฏิบัติคือทำให้ข้อมูลไม่ระบุตัวบุคคล (anonymization) หรือสรุปเป็นภาพรวมก่อนเผยแพร่ การปล่อยข้อมูลดิบรายบุคคลหรือใส่เลขบัตรประชาชนเป็นการละเมิดสิทธิเจ้าของข้อมูล ส่วนการงดเผยแพร่ทั้งหมดก็ขัดกับหลักความโปร่งใสและข้อมูลเปิด ทางที่ถูกคือเปิดเผยได้แต่ต้องคุ้มครองตัวบุคคล"
+  },
+  {
+    "subject": "ethics",
+    "topic": "ผลประโยชน์ทับซ้อน",
+    "year": 2569,
+    "predicted": true,
+    "question": "หลังเสร็จสิ้นการจัดประชุมใหญ่ บริษัทคู่สัญญาที่ได้งานจัดงานครั้งนี้ส่งโทรศัพท์มือถือรุ่นใหม่ราคาแพงมาให้นายธนาซึ่งเป็นเจ้าหน้าที่ผู้ดูแลสัญญา พร้อมการ์ดเขียนว่า \"ขอบคุณที่ดูแลงานอย่างดี\" นายธนาควรปฏิบัติอย่างไรจึงเหมาะสมที่สุด",
+    "choices": [
+      "ไม่รับของขวัญที่มีมูลค่าเกินสมควรจากผู้มีส่วนได้เสีย ส่งคืนพร้อมชี้แจง และรายงานให้ผู้บังคับบัญชาทราบ",
+      "รับไว้ได้ เพราะเป็นการให้หลังงานเสร็จแล้ว จึงไม่มีผลต่อการตัดสินใจในสัญญาที่ผ่านไปแล้ว",
+      "รับไว้แต่ตอบแทนด้วยการมอบของขวัญมูลค่าใกล้เคียงกลับไป เพื่อให้ถือว่าเป็นการแลกเปลี่ยนที่เท่าเทียม",
+      "รับไว้แล้วนำเข้าเป็นทรัพย์สินส่วนตัว โดยไม่ต้องแจ้งผู้ใดเพราะเป็นเรื่องระหว่างบุคคล"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ ไม่รับของขวัญที่มีมูลค่าเกินสมควรจากผู้มีส่วนได้เสีย ส่งคืนพร้อมชี้แจง และรายงานให้ผู้บังคับบัญชาทราบ\n\nการรับของขวัญหรือประโยชน์มูลค่าสูงจากผู้มีส่วนได้เสียในงานที่ตนรับผิดชอบ เข้าข่ายการขัดกันแห่งผลประโยชน์และอาจถือเป็นการรับสินบน แม้ให้ภายหลังก็อาจสร้างความสัมพันธ์ที่กระทบความเป็นกลางในงานครั้งต่อไปและทำให้ประชาชนเคลือบแคลง แนวปฏิบัติคือไม่รับ ส่งคืน และรายงานให้ผู้บังคับบัญชาทราบ การรับแล้วตอบแทนกลับหรือเก็บเงียบ ๆ ไม่ทำให้พ้นจากปัญหาทางจริยธรรม"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2569,
+    "predicted": true,
+    "passage": "When the provincial office unveiled its new \"paperless\" licensing system, the press release brimmed with confidence: applications that once took weeks, it claimed, would now be approved in a matter of days. The reality proved more uneven. In the first quarter, urban applicants did indeed enjoy faster turnaround, but rural offices, many still relying on intermittent internet connections, reported delays that occasionally exceeded those of the old paper process. Rather than concede that the rollout had been premature, the office attributed the setbacks to \"temporary adjustment difficulties\" and predicted that performance would even out once staff grew accustomed to the platform. Independent observers were less sanguine, pointing out that no amount of familiarity could compensate for infrastructure that simply was not there.",
+    "question": "What can be inferred about the author's view of the office's explanation for the delays?",
+    "choices": [
+      "The author is skeptical, implying the real cause is inadequate infrastructure rather than mere unfamiliarity",
+      "The author fully accepts that the delays are only temporary and will soon disappear",
+      "The author believes the paper-based system was superior in every respect",
+      "The author thinks rural applicants were simply unwilling to learn the new system"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ The author is skeptical, implying the real cause is inadequate infrastructure rather than mere unfamiliarity\n\nผู้เขียนยกคำอธิบายของสำนักงานว่าเป็นเพียง \"temporary adjustment difficulties\" แล้วตามด้วยมุมมองของผู้สังเกตการณ์อิสระที่ว่า \"no amount of familiarity could compensate for infrastructure that simply was not there\" การวางประโยคเช่นนี้สื่อว่าผู้เขียนเคลือบแคลงคำอธิบายของสำนักงาน และเห็นว่าสาเหตุที่แท้จริงคือโครงสร้างพื้นฐาน (อินเทอร์เน็ต) ที่ไม่พร้อม มิใช่แค่ความไม่คุ้นเคยของเจ้าหน้าที่"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2569,
+    "predicted": true,
+    "passage": "When the provincial office unveiled its new \"paperless\" licensing system, the press release brimmed with confidence: applications that once took weeks, it claimed, would now be approved in a matter of days. The reality proved more uneven. In the first quarter, urban applicants did indeed enjoy faster turnaround, but rural offices, many still relying on intermittent internet connections, reported delays that occasionally exceeded those of the old paper process. Rather than concede that the rollout had been premature, the office attributed the setbacks to \"temporary adjustment difficulties\" and predicted that performance would even out once staff grew accustomed to the platform. Independent observers were less sanguine, pointing out that no amount of familiarity could compensate for infrastructure that simply was not there.",
+    "question": "The word \"sanguine\" in the final sentence is closest in meaning to ______.",
+    "choices": [
+      "optimistic",
+      "confused",
+      "indifferent",
+      "exhausted"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ optimistic\n\n\"sanguine\" แปลว่า มองโลกในแง่ดี เชื่อมั่นในผลลัพธ์ ประโยคใช้ว่า \"Independent observers were less sanguine\" คือผู้สังเกตการณ์ \"มองในแง่ดีน้อยกว่า\" (กังขามากกว่า) จึงตรงกับ optimistic มากที่สุด ส่วน confused (สับสน) indifferent (เฉยเมย) และ exhausted (เหนื่อยล้า) ไม่ใช่ความหมายของคำนี้ และความหมายแวดล้อมก็ชี้ว่าผู้สังเกตการณ์ไม่ค่อยเชื่อในคำสัญญา"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "______ earlier about the system outage, the support team could have prevented the data loss.",
+    "choices": [
+      "Had they been informed",
+      "If they informed",
+      "Were they informed",
+      "Had they informed"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Had they been informed\n\nประโยคนี้เป็น Conditional Type 3 แบบละ \"if\" โดยใช้การสลับ (inversion) คือ \"Had + subject + past participle\" และเนื้อความเป็น passive (ทีมงาน \"ถูกแจ้ง\") จึงต้องใช้ been + V3 ได้เป็น \"Had they been informed\" คู่กับ main clause \"could have prevented\" ส่วน \"Had they informed\" เป็น active (ผิดความหมาย เพราะทีมเป็นฝ่ายรับการแจ้ง) \"If they informed\" และ \"Were they informed\" ไม่เข้ากับโครงสร้างเงื่อนไขอดีตนี้"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "The minister, along with several senior advisers, ______ expected to attend the international summit next week.",
+    "choices": [
+      "is",
+      "are",
+      "have been",
+      "were"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ is\n\nวลีที่คั่นด้วย \"along with\", \"as well as\", \"together with\", \"in addition to\" ถือเป็นส่วนเสริม ไม่ทำให้ประธานกลายเป็นพหูพจน์ กริยายังต้องสอดคล้องกับประธานแท้ คือ \"The minister\" (เอกพจน์) จึงใช้ \"is\" ไม่ใช่ are/were/have been"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2569,
+    "predicted": true,
+    "question": "Choose the word closest in meaning to \"meticulous\". \"The accountant was meticulous in recording every expense.\"",
+    "choices": [
+      "extremely careful and precise",
+      "careless and hasty",
+      "generous and forgiving",
+      "reluctant and hesitant"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ extremely careful and precise\n\n\"meticulous\" แปลว่า ละเอียดรอบคอบ พิถีพิถัน ใส่ใจทุกรายละเอียด จึงใกล้เคียงที่สุดกับ \"extremely careful and precise\" ส่วน careless and hasty (สะเพร่า รีบร้อน) มีความหมายตรงข้าม ขณะที่ generous and forgiving (ใจกว้าง ให้อภัย) และ reluctant and hesitant (ลังเล ไม่เต็มใจ) ไม่ตรงกับความหมายของคำนี้"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2569,
+    "predicted": true,
+    "question": "What does the idiom \"to pass the buck\" mean in the sentence: \"Instead of solving the complaint, each department kept passing the buck\"?",
+    "choices": [
+      "To shift responsibility or blame onto someone else",
+      "To pay a sum of money to settle a dispute",
+      "To make a quick and final decision",
+      "To work overtime to finish a task"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ To shift responsibility or blame onto someone else\n\nสำนวน \"to pass the buck\" หมายถึง ปัดความรับผิดชอบหรือโยนความผิด/ภาระไปให้ผู้อื่นแทนที่จะจัดการเอง ในประโยคจึงหมายถึงแต่ละฝ่ายต่างโยนเรื่องร้องเรียนให้กันไปมาโดยไม่มีใครรับผิดชอบแก้ไข ส่วนตัวเลือกอื่น (จ่ายเงินยุติข้อพิพาท / ตัดสินใจเด็ดขาด / ทำงานล่วงเวลา) ไม่ใช่ความหมายของสำนวนนี้"
+  }
+]

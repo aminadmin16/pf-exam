@@ -1,0 +1,338 @@
+[
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2565,
+    "question": "A: \"Excuse me, could you tell me where the nearest post office is?\"\nB: \"________\"",
+    "choices": [
+      "Yes, I could tell you many things.",
+      "Sure, it's just two blocks down on your left.",
+      "No, I don't like post offices.",
+      "I have already been there before."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ Sure, it's just two blocks down on your left.\n\nเมื่อมีคนถามทางอย่างสุภาพ การตอบที่เหมาะสมที่สุดคือการให้ข้อมูลทิศทางที่ชัดเจน ตัวเลือกที่ 2 ตอบรับอย่างสุภาพและให้คำแนะนำทางที่เป็นประโยชน์"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2565,
+    "question": "A: \"I'm sorry I'm late. There was a terrible traffic jam.\"\nB: \"________\"",
+    "choices": [
+      "Don't worry about it. Please take a seat.",
+      "You should have left earlier yesterday.",
+      "Traffic is always bad in this area.",
+      "I was also stuck in traffic last week."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Don't worry about it. Please take a seat.\n\nเมื่อมีคนขอโทษที่มาสาย การตอบรับที่เหมาะสมในบริบทการทำงานหรือการพบปะคือการรับทราบคำขอโทษอย่างสุภาพและเชิญให้นั่ง ตัวเลือกอื่นๆ ไม่ตรงบริบทการสนทนา"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2565,
+    "question": "A: \"Would you mind if I opened the window? It's quite warm in here.\"\nB: \"________\"",
+    "choices": [
+      "Yes, please open it.",
+      "No, not at all. Go ahead.",
+      "I mind very much, thank you.",
+      "The window is already open."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ No, not at all. Go ahead.\n\nโครงสร้าง \"Would you mind if...?\" เมื่อตอบว่า \"No, not at all\" หมายความว่า 'ไม่ขัดข้อง' ซึ่งเป็นการให้ความยินยอม ตัวเลือกที่ 1 ผิดไวยากรณ์เพราะ \"Yes\" ในบริบทนี้หมายถึงคัดค้าน"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2566,
+    "question": "A: \"Have you finished the quarterly report yet?\"\nB: \"________\"",
+    "choices": [
+      "Yes, I submitted it to the manager this morning.",
+      "Reports are usually done on Fridays.",
+      "I am a very experienced report writer.",
+      "The quarterly meeting was postponed."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Yes, I submitted it to the manager this morning.\n\nคำถามถามถึงความคืบหน้าของการทำรายงาน การตอบที่เหมาะสมต้องตอบตรงคำถามว่าเสร็จแล้วหรือยัง ตัวเลือกที่ 1 ให้ข้อมูลที่ชัดเจนและตรงประเด็น"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2566,
+    "question": "A: \"I'd like to make a reservation for two people this Saturday evening.\"\nB: \"________\"",
+    "choices": [
+      "Saturday is a very busy day for us.",
+      "Certainly. What time would you prefer?",
+      "We don't accept reservations on weekends.",
+      "Two people is not enough for a table."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ Certainly. What time would you prefer?\n\nในบริบทการจองโต๊ะอาหาร พนักงานที่ดีควรยืนยันความสามารถในการรับจองและถามถึงเวลาที่ต้องการ ซึ่งตัวเลือกที่ 2 ทำได้อย่างสุภาพและเป็นมืออาชีพ"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2566,
+    "question": "A: \"You look exhausted. Are you feeling alright?\"\nB: \"________\"",
+    "choices": [
+      "I look fine today, thank you.",
+      "I've been working overtime all week and barely slept.",
+      "Exhausted is a word that means very tired.",
+      "You should not comment on my appearance."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ I've been working overtime all week and barely slept.\n\nเมื่อมีคนแสดงความห่วงใยเกี่ยวกับสุขภาพ การตอบที่เป็นธรรมชาติคือการอธิบายสาเหตุที่ดูเหนื่อย ตัวเลือกที่ 2 อธิบายได้ชัดเจนและเป็นธรรมชาติ"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2567,
+    "question": "A: \"Could I speak to Ms. Wanida, please?\"\nB: \"________\"",
+    "choices": [
+      "Ms. Wanida is a very important person.",
+      "I'm afraid she's in a meeting right now. Would you like to leave a message?",
+      "You can speak to anyone you want.",
+      "She is not here because she is busy."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ I'm afraid she's in a meeting right now. Would you like to leave a message?\n\nในบริบทการรับโทรศัพท์ที่มืออาชีพ เมื่อบุคคลที่ถูกถามไม่ว่าง ควรบอกสถานการณ์อย่างสุภาพและเสนอทางเลือก ตัวเลือกที่ 2 ทำได้ถูกต้องตามมารยาทสำนักงาน"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2567,
+    "question": "A: \"What do you think about the new office policy on remote work?\"\nB: \"________\"",
+    "choices": [
+      "Policies are important in every workplace.",
+      "I find it quite reasonable, though I wish we had more flexibility on Fridays.",
+      "I don't think about policies very often.",
+      "Remote work is a modern concept."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ I find it quite reasonable, though I wish we had more flexibility on Fridays.\n\nเมื่อถามความคิดเห็น การตอบที่ดีควรแสดงจุดยืนที่ชัดเจนและมีรายละเอียดสนับสนุน ตัวเลือกที่ 2 แสดงความเห็นที่มีเนื้อหาและสมเหตุสมผล"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2567,
+    "question": "A: \"I can't believe I failed the presentation. I prepared for weeks!\"\nB: \"________\"",
+    "choices": [
+      "You really should have prepared better.",
+      "Don't be so hard on yourself. Even experienced speakers have off days.",
+      "Presentations are very difficult for everyone.",
+      "Next time you should hire a professional."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ Don't be so hard on yourself. Even experienced speakers have off days.\n\nเมื่อเพื่อนหรือเพื่อนร่วมงานผิดหวัง การตอบที่เหมาะสมคือการปลอบใจและให้กำลังใจอย่างจริงใจ ตัวเลือกที่ 2 แสดงความเห็นอกเห็นใจโดยไม่ตำหนิ"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2568,
+    "question": "A: \"The client keeps changing the project requirements at the last minute.\"\nB: \"________\"",
+    "choices": [
+      "Clients always know what they want.",
+      "That must be incredibly frustrating. Have you tried scheduling a requirements-freeze meeting?",
+      "You should just ignore the new requirements.",
+      "Project requirements are always subject to change."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ That must be incredibly frustrating. Have you tried scheduling a requirements-freeze meeting?\n\nการตอบสนองที่เหมาะสมในบริบทการทำงานคือการแสดงความเข้าใจและเสนอแนวทางแก้ปัญหาที่เป็นรูปธรรม ตัวเลือกที่ 2 ทำได้ทั้งสองอย่าง"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2568,
+    "question": "A: \"Congratulations on your promotion! You really deserve it.\"\nB: \"________\"",
+    "choices": [
+      "Promotions are given based on performance.",
+      "Thank you so much. I couldn't have done it without the team's support.",
+      "Yes, I worked very hard for many years.",
+      "I know. I have always been a good employee."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ Thank you so much. I couldn't have done it without the team's support.\n\nการตอบรับคำแสดงความยินดีที่ดีคือการขอบคุณอย่างสุภาพและถ่อมตน ตัวเลือกที่ 2 แสดงความขอบคุณและยกย่องทีมงาน ซึ่งเป็นมารยาทที่ดี"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2568,
+    "question": "A: \"We're running behind schedule. The deadline is tomorrow morning.\"\nB: \"________\"",
+    "choices": [
+      "Deadlines are very stressful situations.",
+      "I understand. Let's prioritize the critical tasks and work through the evening if necessary.",
+      "Tomorrow morning is too soon for this project.",
+      "We should inform the deadline committee."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ I understand. Let's prioritize the critical tasks and work through the evening if necessary.\n\nในสถานการณ์เร่งด่วนที่กำลังล่าช้า การตอบที่เหมาะสมคือการแสดงความเข้าใจสถานการณ์และเสนอแผนปฏิบัติที่เป็นรูปธรรม ตัวเลือกที่ 2 แสดงความรับผิดชอบและความพร้อมในการแก้ปัญหา"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2565,
+    "question": "Choose the word closest in meaning to \"abundant\".",
+    "choices": [
+      "scarce",
+      "plentiful",
+      "ordinary",
+      "partial"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ plentiful\n\n\"Abundant\" แปลว่า มีมากมาย มีอุดมสมบูรณ์ ซึ่งมีความหมายเดียวกับ \"plentiful\" ส่วน \"scarce\" แปลว่าขาดแคลน ตรงข้ามกัน"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2565,
+    "question": "Choose the word OPPOSITE in meaning to \"mandatory\".",
+    "choices": [
+      "compulsory",
+      "required",
+      "optional",
+      "enforced"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ optional\n\n\"Mandatory\" แปลว่า บังคับ จำเป็นต้องทำ คำตรงข้ามคือ \"optional\" ที่แปลว่า ไม่บังคับ ตามความต้องการ ส่วน \"compulsory\" และ \"required\" มีความหมายเหมือนกัน"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2565,
+    "question": "Select the best word to fill in the blank.\n\"The government will ________ a new tax policy next month.\"",
+    "choices": [
+      "implement",
+      "imagine",
+      "interrupt",
+      "inspect"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ implement\n\n\"Implement\" แปลว่า ดำเนินการ นำมาใช้ปฏิบัติ เหมาะสมที่สุดในประโยคที่พูดถึงการนำนโยบายภาษีมาบังคับใช้ ตัวเลือกอื่นๆ ไม่เหมาะกับบริบท"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2566,
+    "question": "What does the idiom \"burn the midnight oil\" mean?",
+    "choices": [
+      "to start a fire at night",
+      "to waste energy carelessly",
+      "to work or study late into the night",
+      "to celebrate a successful project"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ to work or study late into the night\n\nสำนวน \"burn the midnight oil\" หมายความว่า ทำงานหรือเรียนหนักดึกดื่น มีที่มาจากสมัยโบราณที่ใช้น้ำมันจุดตะเกียงทำงานตอนกลางคืน"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2566,
+    "question": "Choose the word closest in meaning to \"meticulous\".",
+    "choices": [
+      "careless",
+      "hasty",
+      "thorough",
+      "vague"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ thorough\n\n\"Meticulous\" แปลว่า ละเอียดถี่ถ้วน พิถีพิถัน มีความหมายใกล้เคียงกับ \"thorough\" ที่แปลว่า ครอบคลุม ถ้วนถี่ ส่วน \"careless\" และ \"hasty\" มีความหมายตรงข้าม"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2566,
+    "question": "Select the best word to fill in the blank.\n\"His rude behavior at the meeting was completely ________ and shocked everyone present.\"",
+    "choices": [
+      "appropriate",
+      "unwarranted",
+      "expected",
+      "deliberate"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ unwarranted\n\n\"Unwarranted\" แปลว่า ไม่มีเหตุผล ไม่สมเหตุสมผล เข้ากับบริบทที่บรรยายพฤติกรรมหยาบคายที่ไม่ควรเกิดขึ้นและทำให้ทุกคนตกใจ"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2567,
+    "question": "What does the expression \"the ball is in your court\" mean?",
+    "choices": [
+      "it is time to play a sport",
+      "the decision or next action is now your responsibility",
+      "you have made a serious mistake",
+      "you must follow all the rules carefully"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ the decision or next action is now your responsibility\n\nสำนวน \"the ball is in your court\" มาจากกีฬาเทนนิส หมายความว่า ตอนนี้เป็นหน้าที่และความรับผิดชอบของคุณแล้วที่จะตัดสินใจหรือดำเนินการต่อ"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2567,
+    "question": "Choose the word OPPOSITE in meaning to \"transparent\".",
+    "choices": [
+      "clear",
+      "honest",
+      "open",
+      "opaque"
+    ],
+    "answer": 3,
+    "explanation": "ตอบ opaque\n\n\"Transparent\" แปลว่า โปร่งใส มองทะลุได้ หรือในความหมายเชิงนามธรรมหมายถึง เปิดเผย ซื่อสัตย์ คำตรงข้ามคือ \"opaque\" ที่แปลว่า ทึบแสง ไม่โปร่งใส"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2567,
+    "question": "Select the best word to fill in the blank.\n\"The new director managed to ________ the two rival departments and improve overall productivity.\"",
+    "choices": [
+      "separate",
+      "reconcile",
+      "dismiss",
+      "antagonize"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ reconcile\n\n\"Reconcile\" แปลว่า ประนีประนอม ทำให้คืนดีกัน เหมาะสมกับบริบทที่ผู้อำนวยการใหม่แก้ปัญหาความขัดแย้งระหว่างสองแผนก ตัวเลือกอื่นๆ มีความหมายตรงข้ามหรือไม่เหมาะกับบริบท"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2568,
+    "question": "What does the idiom \"cut corners\" mean?",
+    "choices": [
+      "to take a shorter physical route",
+      "to do something in the easiest or cheapest way, often sacrificing quality",
+      "to be very precise and accurate in your work",
+      "to interrupt a conversation abruptly"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ to do something in the easiest or cheapest way, often sacrificing quality\n\nสำนวน \"cut corners\" หมายถึง การทำงานแบบลวกๆ ตัดทอนขั้นตอนเพื่อประหยัดเวลาหรือเงิน แต่มักส่งผลเสียต่อคุณภาพ มักใช้ในเชิงลบ"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2568,
+    "question": "Choose the word closest in meaning to \"ambiguous\".",
+    "choices": [
+      "precise",
+      "definite",
+      "unclear",
+      "straightforward"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ unclear\n\n\"Ambiguous\" แปลว่า คลุมเครือ ตีความได้หลายแบบ มีความหมายใกล้เคียงกับ \"unclear\" ส่วน \"precise\" \"definite\" และ \"straightforward\" ล้วนมีความหมายตรงข้าม"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2568,
+    "question": "Select the best word to fill in the blank.\n\"Despite numerous obstacles, her ________ to complete the project impressed the entire organization.\"",
+    "choices": [
+      "hesitation",
+      "indifference",
+      "perseverance",
+      "reluctance"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ perseverance\n\n\"Perseverance\" แปลว่า ความมุ่งมั่น ความอดทน ความพยายามไม่ย่อท้อ เหมาะสมกับบริบทที่บรรยายถึงการเอาชนะอุปสรรคต่างๆ ตัวเลือกอื่นๆ มีความหมายในเชิงลบซึ่งขัดกับบริบท"
+  }
+]

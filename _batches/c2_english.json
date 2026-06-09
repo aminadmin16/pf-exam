@@ -1,0 +1,242 @@
+[
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2565,
+    "passage": "",
+    "question": "A: I'm afraid I won't be able to attend tomorrow's briefing. Could you fill me in later?\nB: ______\n\nWhich response best completes the conversation?",
+    "choices": [
+      "Sure, I'll give you a rundown after the meeting.",
+      "No, I am afraid you must attend the briefing.",
+      "Yes, the briefing will start at nine o'clock sharp.",
+      "Of course, please bring your identification card."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (Sure, I'll give you a rundown after the meeting.)\n\nบทสนทนานี้ A ขอให้ B สรุปสิ่งที่เกิดขึ้นในการประชุมให้ฟังในภายหลัง (fill me in = บอกข้อมูลให้ทราบในภายหลัง) ตัวเลือก A ตอบรับอย่างเหมาะสมว่าจะสรุปให้ฟัง (give you a rundown = บอกสรุป) ตัวเลือกอื่นไม่ตรงประเด็น เพราะไม่ได้ตอบรับคำขอของ A"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2566,
+    "passage": "",
+    "question": "A: The project deadline has been moved up to next Friday. Are you confident we can deliver on time?\nB: ______\n\nWhich response is the most appropriate?",
+    "choices": [
+      "It will be tight, but we'll do our best to make it happen.",
+      "The project was submitted last Monday without any issues.",
+      "I think the deadline should be extended to next month.",
+      "We have already hired additional staff for the project."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (It will be tight, but we'll do our best to make it happen.)\n\nA ถามว่า B มั่นใจหรือไม่ว่าจะส่งงานทันเวลา ตัวเลือก A แสดงความจริงใจและความมุ่งมั่น (it will be tight = เวลาจะตึงเครียด) ซึ่งเป็นการตอบที่เหมาะสมที่สุดในบริบทนี้ ตัวเลือกอื่นไม่ตรงกับคำถามหรือไม่สมเหตุสมผลในบริบท"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2567,
+    "passage": "",
+    "question": "A: Would you mind if I borrowed your stapler for a moment?\nB: ______\n\nWhich is the most natural and polite response?",
+    "choices": [
+      "Not at all, go right ahead.",
+      "Yes, I would mind very much.",
+      "No, you cannot borrow my stapler.",
+      "I will staple your documents for you."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (Not at all, go right ahead.)\n\nเมื่อมีคนถามว่า 'Would you mind if I...?' การตอบว่า 'Not at all' หมายถึงไม่รังเกียจ ซึ่งหมายความว่ายินยอม 'go right ahead' แปลว่า 'ทำได้เลย' เป็นการตอบที่สุภาพและเป็นธรรมชาติที่สุด ตัวเลือก B และ C หมายถึงปฏิเสธอย่างไม่สุภาพ ส่วน D ไม่ตรงกับคำถาม"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2568,
+    "passage": "",
+    "question": "A: I heard the training session was postponed. When is it rescheduled for?\nB: ______\n\nChoose the most suitable reply.",
+    "choices": [
+      "They haven't confirmed a new date yet, but I'll let you know.",
+      "Yes, the training was very informative and well-organized.",
+      "The trainer will arrive at the head office next week.",
+      "I registered for the session two weeks ago online."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (They haven't confirmed a new date yet, but I'll let you know.)\n\nA ถามถึงวันที่จัดการฝึกอบรมใหม่หลังจากที่ถูกเลื่อน ตัวเลือก A ตอบตรงประเด็นว่ายังไม่มีการยืนยันวันใหม่ และบอกว่าจะแจ้งให้ทราบในภายหลัง ตัวเลือกอื่นไม่ได้ตอบคำถามว่าจะจัดใหม่เมื่อไร"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2565,
+    "passage": "",
+    "question": "The committee decided to ______ the proposal after discovering several inconsistencies in the financial report.",
+    "choices": [
+      "shelve",
+      "endorse",
+      "escalate",
+      "circulate"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (shelve)\n\n'Shelve' หมายถึง ระงับหรือเลื่อนออกไปก่อน (put aside indefinitely) ซึ่งเหมาะกับบริบทที่พบข้อไม่สอดคล้องในรายงานการเงิน\n- endorse = รับรอง/สนับสนุน (ตรงข้ามกับบริบท)\n- escalate = ยกระดับ/ส่งต่อ\n- circulate = เวียนแจ้ง/จัดส่งให้หลายคน"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2566,
+    "passage": "",
+    "question": "Her ______ manner during the negotiation helped ease tensions and led to a successful agreement.",
+    "choices": [
+      "conciliatory",
+      "belligerent",
+      "ambiguous",
+      "perfunctory"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (conciliatory)\n\n'Conciliatory' หมายถึง มุ่งประนีประนอม/ลดความตึงเครียด ซึ่งสอดคล้องกับผลลัพธ์ที่การเจรจาประสบความสำเร็จ\n- belligerent = ก้าวร้าว/ชอบทะเลาะ (ตรงข้าม)\n- ambiguous = คลุมเครือ\n- perfunctory = ทำพอเป็นพิธี/ขาดความใส่ใจ"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2567,
+    "passage": "",
+    "question": "The government agency released a ______ statement clarifying the new regulations on public procurement.",
+    "choices": [
+      "comprehensive",
+      "frivolous",
+      "redundant",
+      "tentative"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (comprehensive)\n\n'Comprehensive' หมายถึง ครอบคลุม/ละเอียดถี่ถ้วน เหมาะกับบริบทที่หน่วยงานออกแถลงการณ์ชี้แจงกฎระเบียบใหม่\n- frivolous = ไม่จริงจัง/ไม่สำคัญ\n- redundant = ซ้ำซ้อน/ไม่จำเป็น\n- tentative = ยังไม่แน่นอน/เป็นเพียงร่าง"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2568,
+    "passage": "",
+    "question": "The officer was asked to ______ all submitted applications before forwarding them to the selection panel.",
+    "choices": [
+      "scrutinize",
+      "relinquish",
+      "fabricate",
+      "commemorate"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (scrutinize)\n\n'Scrutinize' หมายถึง ตรวจสอบอย่างละเอียดถี่ถ้วน ซึ่งเหมาะสมในบริบทของการตรวจสอบใบสมัครก่อนส่งต่อ\n- relinquish = สละ/ปล่อยวาง\n- fabricate = ประดิษฐ์/สร้างขึ้น (อาจหมายถึงโกหก)\n- commemorate = รำลึก/เฉลิมฉลอง"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2565,
+    "passage": "",
+    "question": "By the time the director arrived at the conference, the keynote speaker ______ for nearly twenty minutes.",
+    "choices": [
+      "had been speaking",
+      "was speaking",
+      "has been speaking",
+      "spoke"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (had been speaking)\n\nประโยคนี้มีเหตุการณ์สองอย่างเกิดขึ้นในอดีต คือ 'ผู้กล่าวสุนทรพจน์พูดมาแล้วเกือบยี่สิบนาที' (เกิดต่อเนื่องก่อน) และ 'ผู้อำนวยการมาถึง' (เกิดทีหลัง) จึงต้องใช้ Past Perfect Continuous (had been + V-ing) เพื่อแสดงการกระทำที่ต่อเนื่องก่อนจุดหนึ่งในอดีต"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2566,
+    "passage": "",
+    "question": "The new policy, ______ was drafted by a team of legal experts, will take effect next quarter.",
+    "choices": [
+      "which",
+      "who",
+      "whom",
+      "whose"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (which)\n\nในประโยค relative clause ที่ขยายสิ่งของหรือสิ่งไม่มีชีวิต (the new policy) ต้องใช้ 'which' ไม่ใช่ 'who/whom' (ใช้กับคน) และ 'whose' (แสดงความเป็นเจ้าของ ไม่เหมาะกับโครงสร้างนี้)"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2567,
+    "passage": "",
+    "question": "Neither the department head nor the staff members ______ informed of the sudden reorganization plan.",
+    "choices": [
+      "were",
+      "was",
+      "has been",
+      "have"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (were)\n\nเมื่อใช้ 'Neither...nor...' (ทั้ง...และ...) กฎ Subject-Verb Agreement คือ กริยาต้องสอดคล้องกับ subject ที่อยู่ใกล้กริยาที่สุด ในที่นี้คือ 'the staff members' (พหูพจน์) จึงต้องใช้ 'were' (past tense, plural)"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2568,
+    "passage": "",
+    "question": "If the budget ______ approved last month, the renovation project would have started by now.",
+    "choices": [
+      "had been",
+      "was",
+      "were",
+      "has been"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (had been)\n\nประโยคนี้เป็น Third Conditional ซึ่งแสดงเงื่อนไขสมมุติในอดีตที่ไม่เป็นความจริง (งบประมาณไม่ได้รับการอนุมัติ) รูปแบบคือ 'If + had + V3, would have + V3' จึงต้องใช้ 'had been' ในส่วน if-clause"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2565,
+    "passage": "Thailand's civil service reform has increasingly emphasized digital literacy as a core competency for public officials. The Office of the Civil Service Commission (OCSC) introduced a digital skills framework in 2021, requiring all government employees below senior executive level to complete a structured e-learning curriculum. The initiative aims to improve service delivery efficiency, reduce paperwork through electronic systems, and enhance transparency in public administration. Officials who meet the required benchmark are awarded a digital competency certificate, which is factored into annual performance evaluations.",
+    "question": "According to the passage, what is one direct benefit that the digital skills initiative is intended to achieve?",
+    "choices": [
+      "Faster and more efficient delivery of public services",
+      "Higher salaries for digitally certified officials",
+      "Mandatory retirement of officials who fail the assessment",
+      "Replacement of all civil servants with automated systems"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (Faster and more efficient delivery of public services)\n\nบทความระบุชัดเจนว่าโครงการนี้มุ่งปรับปรุง 'service delivery efficiency' (ประสิทธิภาพการให้บริการ) ตัวเลือก B ไม่ได้กล่าวถึงในบทความ ตัวเลือก C และ D เป็นข้อสรุปที่เกินจริงและไม่มีในบทความ"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2566,
+    "passage": "Thailand's civil service reform has increasingly emphasized digital literacy as a core competency for public officials. The Office of the Civil Service Commission (OCSC) introduced a digital skills framework in 2021, requiring all government employees below senior executive level to complete a structured e-learning curriculum. The initiative aims to improve service delivery efficiency, reduce paperwork through electronic systems, and enhance transparency in public administration. Officials who meet the required benchmark are awarded a digital competency certificate, which is factored into annual performance evaluations.",
+    "question": "Which group of civil servants is NOT required to complete the digital skills e-learning curriculum, based on the passage?",
+    "choices": [
+      "Senior executive-level officials",
+      "Junior administrative officers",
+      "Mid-level departmental staff",
+      "Entry-level government employees"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (Senior executive-level officials)\n\nบทความระบุว่า หลักสูตร e-learning บังคับสำหรับ 'all government employees below senior executive level' (พนักงานรัฐทุกคนที่ต่ำกว่าระดับผู้บริหารอาวุโส) ดังนั้นผู้บริหารอาวุโส (senior executive-level officials) จึงไม่อยู่ในกลุ่มที่ต้องผ่านหลักสูตรนี้"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2567,
+    "passage": "Public trust is widely regarded as the cornerstone of effective governance. When citizens believe that government institutions act with integrity and competence, they are more likely to comply with regulations, pay taxes willingly, and participate in civic processes. Conversely, a decline in public trust often correlates with increased political apathy, higher rates of tax evasion, and resistance to government initiatives. Research across multiple countries suggests that transparency and accountability mechanisms—such as open budget data, independent audits, and whistleblower protections—are among the most effective tools for rebuilding eroded trust.",
+    "question": "According to the passage, which of the following is a consequence of declining public trust in government?",
+    "choices": [
+      "Greater political apathy among citizens",
+      "Increased willingness to follow new regulations",
+      "Higher voluntary tax compliance rates",
+      "Broader participation in civic activities"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (Greater political apathy among citizens)\n\nบทความระบุว่าเมื่อความเชื่อมั่นของประชาชนลดลง จะส่งผลให้เกิด 'increased political apathy' (ความเฉยเมยทางการเมืองที่เพิ่มขึ้น) ตัวเลือก B, C และ D เป็นผลของ 'การมีความเชื่อมั่น' ไม่ใช่ผลของ 'การสูญเสียความเชื่อมั่น'"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2568,
+    "passage": "Public trust is widely regarded as the cornerstone of effective governance. When citizens believe that government institutions act with integrity and competence, they are more likely to comply with regulations, pay taxes willingly, and participate in civic processes. Conversely, a decline in public trust often correlates with increased political apathy, higher rates of tax evasion, and resistance to government initiatives. Research across multiple countries suggests that transparency and accountability mechanisms—such as open budget data, independent audits, and whistleblower protections—are among the most effective tools for rebuilding eroded trust.",
+    "question": "Based on the passage, which mechanism is cited as effective for restoring lost public trust?",
+    "choices": [
+      "Independent audits and open budget data",
+      "Stricter penalties for tax evasion",
+      "Mandatory civic education in schools",
+      "Reducing the number of government agencies"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (Independent audits and open budget data)\n\nบทความระบุชัดเจนว่า 'transparency and accountability mechanisms—such as open budget data, independent audits, and whistleblower protections' เป็นเครื่องมือที่มีประสิทธิภาพในการสร้างความเชื่อมั่นกลับคืน ตัวเลือก B, C และ D ไม่ได้กล่าวถึงในบทความ"
+  }
+]

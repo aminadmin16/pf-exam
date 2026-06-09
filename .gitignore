@@ -1,0 +1,26 @@
+# ===== dependencies =====
+node_modules/
+
+# ===== build outputs (Vercel จะ build dist เองจากไฟล์ต้นทาง) =====
+dist/
+*.zip
+
+# ===== Android build artifacts =====
+android/.gradle/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/build/
+android/.idea/
+android/local.properties
+
+# ===== signing key (เก็บไว้ในเครื่องเท่านั้น! สำรองที่ปลอดภัย ห้ามขึ้น git) =====
+android/app/kp-release.jks
+
+# ===== dev only =====
+screenshots/
+.vercel/
+*.log
+
+# ===== OS =====
+.DS_Store
+Thumbs.db

@@ -1,0 +1,275 @@
+[
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "นางสาวกานต์เป็นเจ้าหน้าที่ทะเบียนราษฎร ได้รับคำขอจากเพื่อนสมัยเรียนให้ช่วยตรวจดูที่อยู่ปัจจุบันของบุคคลอีกคนหนึ่งในระบบฐานข้อมูลประชาชน โดยอ้างว่าจะนำไปทวงหนี้ส่วนตัว แนวปฏิบัติที่ถูกต้องที่สุดตามหลักธรรมาภิบาลและการคุ้มครองข้อมูลส่วนบุคคลในงานราชการ คือข้อใด",
+    "choices": [
+      "ปฏิเสธคำขอ เพราะการเข้าถึงและเปิดเผยข้อมูลส่วนบุคคลต้องเป็นไปเพื่อวัตถุประสงค์ของราชการและมีฐานทางกฎหมายรองรับเท่านั้น",
+      "ช่วยตรวจให้ได้ เพราะเป็นเพื่อนสนิทและข้อมูลที่อยู่ไม่ถือเป็นความลับ",
+      "ช่วยตรวจให้ แต่ขอให้เพื่อนเขียนคำรับรองว่าจะไม่นำไปใช้ในทางเสียหาย",
+      "แนะนำให้เพื่อนมายื่นคำขอด้วยตนเองในนามส่วนตัว แล้วตนเป็นผู้พิจารณาอนุมัติ"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ ปฏิเสธคำขอ เพราะการเข้าถึงและเปิดเผยข้อมูลส่วนบุคคลต้องเป็นไปเพื่อวัตถุประสงค์ของราชการและมีฐานทางกฎหมายรองรับเท่านั้น\n\nตาม พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 (PDPA) การเก็บรวบรวม ใช้ หรือเปิดเผยข้อมูลส่วนบุคคลต้องทำเพียงเท่าที่จำเป็นและตามวัตถุประสงค์ที่ชอบด้วยกฎหมาย เจ้าหน้าที่เข้าถึงฐานข้อมูลได้เพื่อประโยชน์ของราชการ มิใช่เพื่อช่วยเหลือเรื่องส่วนตัวของผู้ใด การนำข้อมูลไปใช้ทวงหนี้ส่วนตัวจึงผิดทั้งกฎหมายและจริยธรรมข้อ \"ปฏิบัติหน้าที่อย่างเป็นธรรมและไม่เลือกปฏิบัติ\" ตัวเลือกอื่นล้วนเป็นการใช้อำนาจหน้าที่โดยมิชอบไม่ว่าจะอ้อมเพียงใด"
+  },
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "หน่วยงานราชการแห่งหนึ่งเปิดให้ประชาชนยื่นคำขอรับบริการผ่านระบบดิจิทัล (e-Service) นายวุฒิในฐานะผู้รับผิดชอบพบว่าระบบเก็บข้อมูลส่วนบุคคลของผู้ใช้มากเกินกว่าที่จำเป็นต่อการให้บริการจริง การดำเนินการที่สอดคล้องกับหลักธรรมาภิบาลดิจิทัลมากที่สุด คือข้อใด",
+    "choices": [
+      "เสนอให้ปรับปรุงระบบให้เก็บเฉพาะข้อมูลเท่าที่จำเป็น และแจ้งวัตถุประสงค์การเก็บข้อมูลแก่ผู้ใช้ให้ชัดเจน",
+      "คงระบบไว้เช่นเดิม เพราะยิ่งมีข้อมูลมากยิ่งเป็นประโยชน์ต่อการวางแผนของหน่วยงานในอนาคต",
+      "ลบข้อมูลทั้งหมดทิ้งทันทีโดยไม่ต้องแจ้งผู้ใด เพื่อป้องกันความรับผิด",
+      "นำข้อมูลส่วนเกินไปแบ่งปันให้หน่วยงานอื่นเพื่อใช้ประโยชน์ร่วมกันโดยไม่ต้องขอความยินยอม"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ เสนอให้ปรับปรุงระบบให้เก็บเฉพาะข้อมูลเท่าที่จำเป็น และแจ้งวัตถุประสงค์การเก็บข้อมูลแก่ผู้ใช้ให้ชัดเจน\n\nหลักธรรมาภิบาลดิจิทัลและ PDPA ยึดหลักการเก็บข้อมูลเท่าที่จำเป็น (data minimization) ความโปร่งใส และการแจ้งวัตถุประสงค์ การเก็บข้อมูลเกินจำเป็นหรือนำไปใช้/เปิดเผยนอกวัตถุประสงค์โดยไม่มีฐานทางกฎหมายถือว่าไม่ชอบ ส่วนการลบข้อมูลโดยพลการก็อาจกระทบสิทธิและภาระหน้าที่ของหน่วยงาน แนวทางที่ถูกคือปรับระบบให้เก็บเท่าที่จำเป็นและแจ้งวัตถุประสงค์อย่างโปร่งใส"
+  },
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "ตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 ซึ่งบังคับใช้เต็มฉบับเมื่อวันที่ 1 มิถุนายน 2565 ข้อใด \"ไม่ใช่\" สิทธิของเจ้าของข้อมูลส่วนบุคคล (data subject)",
+    "choices": [
+      "สิทธิกำหนดราคาค่าตอบแทนที่หน่วยงานต้องจ่ายทุกครั้งที่นำข้อมูลของตนไปใช้",
+      "สิทธิขอเข้าถึงและขอรับสำเนาข้อมูลส่วนบุคคลของตน",
+      "สิทธิขอให้แก้ไขข้อมูลให้ถูกต้องเป็นปัจจุบัน และสิทธิขอให้ลบหรือทำลายข้อมูล",
+      "สิทธิคัดค้านการเก็บรวบรวม ใช้ หรือเปิดเผยข้อมูล และสิทธิเพิกถอนความยินยอม"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ สิทธิกำหนดราคาค่าตอบแทนที่หน่วยงานต้องจ่ายทุกครั้งที่นำข้อมูลของตนไปใช้\n\nPDPA ให้สิทธิแก่เจ้าของข้อมูลหลายประการ เช่น สิทธิเข้าถึงและขอสำเนา สิทธิขอแก้ไขให้ถูกต้อง สิทธิขอให้ลบหรือทำลาย สิทธิคัดค้านการประมวลผล สิทธิขอให้ระงับการใช้ สิทธิในการโอนย้ายข้อมูล และสิทธิเพิกถอนความยินยอม แต่ \"กฎหมายไม่ได้ให้สิทธิเรียกค่าตอบแทนเป็นรายครั้งจากการที่ข้อมูลของตนถูกนำไปใช้\" ตัวเลือกข้อนี้จึงไม่ใช่สิทธิตามกฎหมาย"
+  },
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "นายเอกเป็นคณะกรรมการพิจารณาให้ทุนวิจัยของหน่วยงาน ปรากฏว่ามีโครงการหนึ่งที่ภริยาของตนเป็นหัวหน้าโครงการยื่นขอรับทุนเข้ามาด้วย แนวปฏิบัติที่ถูกต้องที่สุดในการจัดการผลประโยชน์ทับซ้อน คือข้อใด",
+    "choices": [
+      "เปิดเผยความสัมพันธ์ต่อคณะกรรมการและถอนตัวจากการพิจารณาเฉพาะโครงการนั้น",
+      "ร่วมพิจารณาตามปกติ แต่ตั้งใจให้คะแนนโครงการของภริยาต่ำกว่าความเป็นจริงเพื่อแสดงความเป็นกลาง",
+      "ลาออกจากการเป็นกรรมการทั้งคณะ เพื่อไม่ให้ถูกครหา",
+      "ร่วมพิจารณาได้ตามปกติ เพราะการตัดสินใช้เสียงข้างมากของกรรมการทั้งคณะอยู่แล้ว"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ เปิดเผยความสัมพันธ์ต่อคณะกรรมการและถอนตัวจากการพิจารณาเฉพาะโครงการนั้น\n\nหลักการจัดการผลประโยชน์ทับซ้อน (conflict of interest) คือ \"เปิดเผยและถอนตัว\" เมื่อมีส่วนได้เสีย ผู้มีส่วนได้เสียต้องแจ้งให้ทราบและไม่เข้าร่วมพิจารณาเรื่องที่ตนมีส่วนได้เสีย การจงใจให้คะแนนต่ำก็ยังถือว่าใช้ดุลพินิจโดยมีอคติและไม่เป็นธรรม ส่วนการลาออกทั้งคณะเกินความจำเป็น เพราะเพียงถอนตัวเฉพาะเรื่องที่มีส่วนได้เสียก็เพียงพอ"
+  },
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "ตามพระราชบัญญัติมาตรฐานทางจริยธรรม พ.ศ. 2562 มาตรฐานทางจริยธรรม 7 ประการ ถือเป็น \"หลักเกณฑ์การประพฤติปฏิบัติ\" ของบุคคลกลุ่มใด",
+    "choices": [
+      "เจ้าหน้าที่ของรัฐ",
+      "เฉพาะข้าราชการพลเรือนสามัญเท่านั้น",
+      "เฉพาะผู้ดำรงตำแหน่งทางการเมืองเท่านั้น",
+      "เฉพาะพนักงานรัฐวิสาหกิจเท่านั้น"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ เจ้าหน้าที่ของรัฐ\n\nพ.ร.บ.มาตรฐานทางจริยธรรม พ.ศ. 2562 กำหนดมาตรฐานทางจริยธรรม 7 ประการให้เป็นหลักเกณฑ์การประพฤติปฏิบัติของ \"เจ้าหน้าที่ของรัฐ\" ในภาพรวม (เพื่อให้องค์กรกลางบริหารงานบุคคลนำไปจัดทำประมวลจริยธรรมของแต่ละประเภท) มิได้จำกัดเฉพาะข้าราชการพลเรือนสามัญ ผู้ดำรงตำแหน่งทางการเมือง หรือพนักงานรัฐวิสาหกิจกลุ่มใดกลุ่มหนึ่ง"
+  },
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "ในการประชุมเลือกผู้รับจ้างปรับปรุงระบบไอทีของหน่วยงาน ผู้บริหารท่านหนึ่งสั่งวาจาให้เจ้าหน้าที่ \"ปรับเงื่อนไขคุณสมบัติให้บริษัทที่ผู้บริหารสนิทด้วยได้เปรียบ\" ในฐานะเจ้าหน้าที่ที่ดี ควรทำอย่างไรจึงสอดคล้องกับมาตรฐานทางจริยธรรมมากที่สุด",
+    "choices": [
+      "ทักท้วงโดยอ้างหลักเกณฑ์ที่ถูกต้อง และหากยังถูกสั่งการต่อ ให้ขอคำสั่งเป็นลายลักษณ์อักษรพร้อมรายงานตามช่องทางที่เหมาะสม",
+      "ปฏิบัติตามคำสั่งทันที เพราะเป็นคำสั่งของผู้บังคับบัญชาที่ต้องเชื่อฟังโดยไม่มีข้อยกเว้น",
+      "เพิกเฉยไม่ทำตามและไม่แจ้งผู้ใด เพื่อหลีกเลี่ยงปัญหากับผู้บริหาร",
+      "นำเรื่องไปเผยแพร่ในสื่อสังคมออนไลน์ทันทีก่อนตรวจสอบข้อเท็จจริงภายใน"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ ทักท้วงโดยอ้างหลักเกณฑ์ที่ถูกต้อง และหากยังถูกสั่งการต่อ ให้ขอคำสั่งเป็นลายลักษณ์อักษรพร้อมรายงานตามช่องทางที่เหมาะสม\n\nมาตรฐานทางจริยธรรมกำหนดให้เจ้าหน้าที่ยึดมั่นความถูกต้องชอบธรรม กล้ายืนหยัดทำในสิ่งที่ถูกต้อง และซื่อสัตย์สุจริต การปรับเงื่อนไขให้เอื้อพวกพ้องเป็นการเอื้อประโยชน์โดยมิชอบ เจ้าหน้าที่จึงควรทักท้วงด้วยเหตุผลตามหลักเกณฑ์ และหากยังถูกสั่งให้ทำผิด ควรขอคำสั่งเป็นลายลักษณ์อักษรและรายงานตามลำดับชั้น/ช่องทางที่กฎหมายกำหนด การทำตามคำสั่งที่ไม่ชอบ การเพิกเฉย หรือการนำไปเผยแพร่ก่อนตรวจสอบ ล้วนไม่เหมาะสม"
+  },
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "หลังเกิดอุทกภัยในชุมชน นางสาวพิมพ์ซึ่งเป็นข้าราชการได้สละเวลาวันหยุดมาช่วยจัดระบบแจกจ่ายถุงยังชีพ ประสานอาสาสมัคร และดูแลผู้สูงอายุที่ติดค้าง โดยไม่เรียกร้องสิ่งตอบแทน พฤติกรรมนี้สะท้อนคุณลักษณะของข้าราชการที่ดีในข้อใดเด่นชัดที่สุด",
+    "choices": [
+      "การมีจิตสาธารณะ (จิตอาสา) และการมุ่งประโยชน์ส่วนรวม",
+      "การรักษาความลับของทางราชการ",
+      "การวางตัวเป็นกลางทางการเมือง",
+      "การประหยัดงบประมาณของหน่วยงาน"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ การมีจิตสาธารณะ (จิตอาสา) และการมุ่งประโยชน์ส่วนรวม\n\nการสละเวลาส่วนตัวเข้าช่วยเหลือผู้ประสบภัยและดูแลผู้เดือดร้อนโดยไม่หวังสิ่งตอบแทน คือการแสดงออกของ \"จิตสาธารณะ\" และการคำนึงถึงประโยชน์ส่วนรวมมากกว่าประโยชน์ส่วนตน ซึ่งเป็นคุณลักษณะสำคัญของข้าราชการที่ดี ส่วนตัวเลือกอื่นเป็นคุณลักษณะคนละด้านที่ไม่ตรงกับสถานการณ์นี้"
+  },
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "นายชัยเป็นเจ้าหน้าที่จัดซื้อ นอกเวลาราชการได้เปิดร้านขายอุปกรณ์สำนักงานออนไลน์เป็นของตนเอง ต่อมาหน่วยงานของนายชัยมีการจัดซื้ออุปกรณ์ประเภทเดียวกัน ข้อใดคือการปฏิบัติที่ถูกต้องที่สุดเพื่อป้องกันผลประโยชน์ทับซ้อน",
+    "choices": [
+      "เปิดเผยการมีกิจการของตน และไม่เข้าไปเกี่ยวข้องกับการจัดซื้อที่ร้านของตนอาจได้ประโยชน์ ทั้งทางตรงและทางอ้อม",
+      "ให้ร้านของตนเข้าเสนอราคาได้ตามปกติ ตราบใดที่เสนอราคาต่ำสุดก็ถือว่าโปร่งใส",
+      "ใช้ชื่อญาติเป็นเจ้าของร้านแทน เพื่อให้ร้านเข้าร่วมการจัดซื้อได้โดยไม่ผิดระเบียบ",
+      "ไม่ต้องเปิดเผยสิ่งใด เพราะเป็นกิจการส่วนตัวที่ทำนอกเวลาราชการ"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ เปิดเผยการมีกิจการของตน และไม่เข้าไปเกี่ยวข้องกับการจัดซื้อที่ร้านของตนอาจได้ประโยชน์ ทั้งทางตรงและทางอ้อม\n\nการที่เจ้าหน้าที่จัดซื้อมีกิจการที่อาจได้ประโยชน์จากการจัดซื้อของหน่วยงานตน ถือเป็นผลประโยชน์ทับซ้อนโดยตรง แนวปฏิบัติคือเปิดเผยและถอนตัว/ไม่เข้าไปมีส่วนร่วมในกระบวนการที่ตนได้ประโยชน์ การให้ร้านตนเข้าเสนอราคา การใช้ชื่อญาติอำพราง หรือการนิ่งเฉยไม่เปิดเผย ล้วนเป็นการขัดกันแห่งผลประโยชน์และอาจผิดทั้งระเบียบและกฎหมาย"
+  },
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "หน่วยงานนำระบบปัญญาประดิษฐ์ (AI) มาช่วยคัดกรองคำร้องของประชาชนเพื่อความรวดเร็ว ต่อมาพบว่าผลการคัดกรองมีแนวโน้มปฏิเสธคำร้องของคนบางกลุ่มมากผิดปกติ ในฐานะข้าราชการที่ยึดหลักธรรมาภิบาลดิจิทัล ควรดำเนินการอย่างไรเป็นลำดับแรก",
+    "choices": [
+      "ตรวจสอบความเป็นธรรมและความถูกต้องของระบบ พร้อมเปิดให้มีการทบทวนโดยมนุษย์ เพื่อมิให้เกิดการเลือกปฏิบัติ",
+      "ใช้ผลของ AI ต่อไปโดยไม่ตั้งคำถาม เพราะระบบประมวลผลด้วยข้อมูลย่อมเป็นกลางเสมอ",
+      "ปิดบังปัญหาไว้ภายในเพื่อรักษาภาพลักษณ์ของโครงการ",
+      "ยกเลิกการให้บริการประชาชนกลุ่มที่ระบบปฏิเสธทั้งหมดทันที"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ ตรวจสอบความเป็นธรรมและความถูกต้องของระบบ พร้อมเปิดให้มีการทบทวนโดยมนุษย์ เพื่อมิให้เกิดการเลือกปฏิบัติ\n\nธรรมาภิบาลดิจิทัลเน้นความโปร่งใส ความรับผิดชอบ (accountability) และความเป็นธรรม ระบบ AI อาจมีอคติจากข้อมูลที่ใช้ฝึก (bias) จึงไม่อาจถือว่าเป็นกลางเสมอไป เมื่อพบผลที่ส่อการเลือกปฏิบัติ ต้องตรวจสอบและเปิดให้มนุษย์ทบทวน (human oversight) เพื่อคุ้มครองสิทธิประชาชน การใช้ผลต่อโดยไม่ตั้งคำถาม การปิดบัง หรือการตัดสิทธิประชาชนทันที ล้วนขัดหลักการให้บริการที่เป็นธรรมและตรวจสอบได้"
+  },
+  {
+    "subject": "ethics",
+    "topic": "จริยธรรมและการเป็นข้าราชการที่ดี",
+    "year": 2569,
+    "predicted": true,
+    "question": "เจ้าหน้าที่คนหนึ่งถ่ายภาพหน้าจอเอกสารที่มีเลขบัตรประจำตัวประชาชนและข้อมูลสุขภาพของผู้รับบริการ แล้วนำไปโพสต์ในกลุ่มไลน์เพื่อน เพื่อ \"เล่าเรื่องตลกในที่ทำงาน\" การกระทำนี้มีปัญหาในด้านใดมากที่สุด",
+    "choices": [
+      "ละเมิดการคุ้มครองข้อมูลส่วนบุคคล โดยเฉพาะข้อมูลอ่อนไหว และผิดจริยธรรมเรื่องการรักษาความลับของผู้รับบริการ",
+      "ไม่มีปัญหาใด เพราะโพสต์ในกลุ่มปิดเฉพาะเพื่อนสนิทเท่านั้น",
+      "มีปัญหาเฉพาะเรื่องการใช้โทรศัพท์ในเวลาราชการเท่านั้น",
+      "เป็นเพียงมารยาทที่ไม่เหมาะสม แต่ไม่เกี่ยวกับกฎหมายข้อมูลส่วนบุคคล"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ ละเมิดการคุ้มครองข้อมูลส่วนบุคคล โดยเฉพาะข้อมูลอ่อนไหว และผิดจริยธรรมเรื่องการรักษาความลับของผู้รับบริการ\n\nเลขบัตรประจำตัวประชาชนเป็นข้อมูลส่วนบุคคล และข้อมูลสุขภาพเป็น \"ข้อมูลอ่อนไหว\" (sensitive data) ที่ PDPA คุ้มครองเข้มงวดเป็นพิเศษ การนำไปเปิดเผยโดยไม่มีฐานทางกฎหมายและนอกวัตถุประสงค์ ถือเป็นการละเมิดสิทธิเจ้าของข้อมูล แม้จะโพสต์ในกลุ่มปิดก็เป็นการเปิดเผยต่อบุคคลภายนอกที่ไม่มีสิทธิรับรู้ อีกทั้งยังขัดจริยธรรมเรื่องการรักษาความลับและการให้เกียรติศักดิ์ศรีผู้รับบริการ"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2569,
+    "predicted": true,
+    "passage": "When a government agency announced that all citizen-facing services would migrate to a single online portal within two years, the response was far from uniform. Officials hailed the move as a long-overdue step toward efficiency, pointing to the hours of queuing it would eliminate and the paperwork it would render obsolete. Yet not everyone shared their optimism. Advocacy groups warned that the elderly and those in remote districts, many of whom have never used a smartphone, risked being left behind. The agency, to its credit, did not dismiss these concerns outright. Instead, it pledged to keep a limited number of physical counters open and to deploy mobile assistance units to underserved areas. Critics, however, remain unconvinced, noting that such promises have been made before and quietly abandoned once budgets tightened.",
+    "question": "What is the author's attitude toward the agency's plan, as conveyed in the passage?",
+    "choices": [
+      "Cautiously skeptical, acknowledging the benefits while doubting whether the safeguards will last",
+      "Wholeheartedly supportive of moving every service online without exception",
+      "Completely dismissive, arguing the plan has no merit whatsoever",
+      "Entirely indifferent, presenting no evaluation of the plan at all"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Cautiously skeptical, acknowledging the benefits while doubting whether the safeguards will last\n\nผู้เขียนยอมรับข้อดี (eliminate queuing, reduce paperwork) แต่ก็ยกข้อกังวลของกลุ่มเปราะบางและปิดท้ายด้วยประโยคที่ว่า \"such promises have been made before and quietly abandoned\" ซึ่งสะท้อนความเคลือบแคลงว่ามาตรการช่วยเหลือจะคงอยู่จริงหรือไม่ จึงเป็นท่าที \"ระแวงอย่างระมัดระวัง\" ไม่ใช่สนับสนุนเต็มที่ ไม่ใช่ปฏิเสธสิ้นเชิง และไม่ใช่วางเฉยไม่ประเมิน"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2569,
+    "predicted": true,
+    "passage": "When a government agency announced that all citizen-facing services would migrate to a single online portal within two years, the response was far from uniform. Officials hailed the move as a long-overdue step toward efficiency, pointing to the hours of queuing it would eliminate and the paperwork it would render obsolete. Yet not everyone shared their optimism. Advocacy groups warned that the elderly and those in remote districts, many of whom have never used a smartphone, risked being left behind. The agency, to its credit, did not dismiss these concerns outright. Instead, it pledged to keep a limited number of physical counters open and to deploy mobile assistance units to underserved areas. Critics, however, remain unconvinced, noting that such promises have been made before and quietly abandoned once budgets tightened.",
+    "question": "The phrase \"to its credit\" in the passage suggests that the author believes the agency ______.",
+    "choices": [
+      "deserves some recognition for not ignoring the objections raised",
+      "had already solved every problem with the new portal",
+      "received financial credit to fund the physical counters",
+      "was solely responsible for creating the digital divide"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ deserves some recognition for not ignoring the objections raised\n\nสำนวน \"to its credit\" ใช้เพื่อชมเชยบางสิ่งที่ฝ่ายนั้นทำได้ดี ในที่นี้ตามด้วย \"did not dismiss these concerns outright\" จึงหมายถึงผู้เขียนเห็นว่าหน่วยงานควรได้รับการยกย่องที่ไม่เพิกเฉยต่อข้อทักท้วง มิได้แปลว่าได้เงินสนับสนุน (credit ในความหมายการเงิน) หรือว่าแก้ปัญหาได้หมดแล้ว"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2569,
+    "predicted": true,
+    "passage": "For decades, the prevailing assumption in public administration was that offering more choices to citizens would invariably improve their satisfaction. Recent behavioural research, however, complicates this view. In one study, applicants presented with a streamlined form containing only three options completed the process faster and reported greater confidence in their decisions than those given a form with a dozen options. The researchers attribute this to what is sometimes called \"choice overload\": when confronted with too many alternatives, people tend to second-guess themselves, delay, or abandon the task entirely. The finding does not imply that choice is undesirable; rather, it suggests that the design of public services should weigh the cognitive burden placed on citizens as carefully as it weighs the range of options provided.",
+    "question": "Which of the following best captures the main point the author is making?",
+    "choices": [
+      "Beyond a certain point, adding more options can hinder rather than help citizens, so service design must balance choice against cognitive burden",
+      "Citizens should never be given any choices because choices always cause confusion",
+      "The number of options on a form has no measurable effect on how people decide",
+      "Public services should always provide the largest possible number of options"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Beyond a certain point, adding more options can hinder rather than help citizens, so service design must balance choice against cognitive burden\n\nใจความหลักอยู่ที่ประโยคสุดท้าย: ไม่ได้บอกว่าทางเลือกเป็นสิ่งไม่ดี (\"does not imply that choice is undesirable\") แต่เสนอว่าการออกแบบบริการต้องชั่งน้ำหนัก \"ภาระทางความคิด\" ควบคู่กับจำนวนทางเลือก ตัวเลือกที่บอกว่าไม่ควรมีทางเลือกเลย หรือต้องมีมากที่สุด หรือจำนวนทางเลือกไม่มีผล ล้วนขัดกับเนื้อหา"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "Rarely ______ such a well-organized response to a public emergency in this province.",
+    "choices": [
+      "have we seen",
+      "we have seen",
+      "we saw",
+      "did we have seen"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ have we seen\n\nเมื่อขึ้นต้นประโยคด้วยคำปฏิเสธ/กึ่งปฏิเสธ เช่น Rarely, Seldom, Never, Hardly ต้องใช้การสลับประธานกับกริยาช่วย (inversion) โครงสร้างที่ถูกคือ Rarely + auxiliary + subject + main verb จึงเป็น \"Rarely have we seen\" ส่วน \"we have seen\" ไม่สลับ และ \"did we have seen\" ผิดไวยากรณ์"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "The director insisted that every report ______ submitted before the end of the fiscal year.",
+    "choices": [
+      "be",
+      "is",
+      "was",
+      "will be"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ be\n\nหลังกริยาแสดงการเรียกร้อง/เสนอแนะ/สั่งการ เช่น insist, demand, suggest, recommend, require ที่ตามด้วย that-clause ต้องใช้ \"subjunctive\" คือกริยารูป base form (V1) เสมอ ไม่ผันตามประธานหรือกาล จึงใช้ \"be submitted\" ไม่ใช่ is/was/will be"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "______ the heavy rain, the outdoor ceremony proceeded as scheduled.",
+    "choices": [
+      "Despite",
+      "Although",
+      "However",
+      "Because of"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ Despite\n\nช่องว่างตามด้วยคำนาม (the heavy rain) ที่แสดงความขัดแย้งกับเหตุการณ์ในประโยคหลัก จึงต้องใช้บุพบทแสดงการขัดแย้งที่ตามด้วยคำนามได้ คือ \"Despite\" (หรือ In spite of) ส่วน \"Although\" ต้องตามด้วยอนุประโยค (S+V) \"However\" เป็นคำเชื่อมระหว่างประโยค และ \"Because of\" แสดงเหตุผล ไม่ใช่การขัดแย้ง"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2569,
+    "predicted": true,
+    "question": "Choose the word closest in meaning to \"scrutinize\". \"The audit committee will scrutinize every transaction in the report.\"",
+    "choices": [
+      "examine closely",
+      "approve quickly",
+      "ignore deliberately",
+      "summarize briefly"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ examine closely\n\n\"scrutinize\" แปลว่า ตรวจสอบอย่างละเอียดถี่ถ้วน จึงมีความหมายใกล้เคียงกับ \"examine closely\" มากที่สุด ส่วน approve quickly (อนุมัติอย่างรวดเร็ว) ignore deliberately (จงใจเพิกเฉย) และ summarize briefly (สรุปอย่างย่อ) ล้วนมีความหมายตรงข้ามหรือต่างออกไป"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2569,
+    "predicted": true,
+    "question": "What does the idiom \"a grey area\" mean in the sentence: \"Whether the official's gift counts as a bribe falls into a grey area\"?",
+    "choices": [
+      "A situation where the rules are unclear or open to interpretation",
+      "A region that receives very little sunlight",
+      "A clearly illegal act with no room for doubt",
+      "A topic that everyone agrees on completely"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A situation where the rules are unclear or open to interpretation\n\nสำนวน \"a grey area\" หมายถึงเรื่องที่กฎเกณฑ์ไม่ชัดเจน คลุมเครือ หรือตีความได้หลายทาง ว่าถูกหรือผิด ในประโยคจึงหมายถึงกรณีที่ยังไม่ชัดว่าของขวัญนับเป็นสินบนหรือไม่ ตัวเลือกอื่นเป็นการตีความตามตัวอักษรหรือมีความหมายตรงข้าม (ชัดเจนว่าผิด/เห็นพ้องกันหมด)"
+  }
+]

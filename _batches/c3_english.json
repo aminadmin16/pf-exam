@@ -1,0 +1,242 @@
+[
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2565,
+    "passage": "",
+    "question": "A: I noticed the figures in Section 3 don't match the summary table. Should I flag this before we circulate the report?\nB: ______\n\nWhich response best completes the conversation?",
+    "choices": [
+      "Yes, please highlight the discrepancy so we can correct it before distribution.",
+      "No, the figures were approved by the director last quarter.",
+      "Section 3 covers the regional statistics from the previous fiscal year.",
+      "You should circulate the report to all department heads immediately."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (Yes, please highlight the discrepancy so we can correct it before distribution.)\n\nA ตั้งคำถามว่าควรแจ้งข้อผิดพลาดในรายงานก่อนส่งต่อหรือไม่ ตัวเลือก A ตอบรับอย่างเหมาะสมและแก้ปัญหาตรงจุด คือให้ระบุความคลาดเคลื่อน (discrepancy) ก่อนส่งรายงาน\n- ตัวเลือก B ไม่ตรงประเด็น เพราะการอนุมัติก่อนหน้าไม่ได้แก้ไขข้อมูลที่ผิด\n- ตัวเลือก C อธิบายเนื้อหาแทนที่จะตอบคำถาม\n- ตัวเลือก D ให้ส่งรายงานก่อนโดยไม่แก้ไข ซึ่งไม่ถูกต้อง"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2566,
+    "passage": "",
+    "question": "A: The conference room is already booked for Friday afternoon. What do we do about the budget review meeting?\nB: ______\n\nWhich is the most appropriate response?",
+    "choices": [
+      "The budget review was submitted to the finance team last week.",
+      "Let's see if we can move it to Monday morning or use the smaller meeting room.",
+      "The conference room holds up to thirty participants at a time.",
+      "Friday afternoon is always the busiest time in our department."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (Let's see if we can move it to Monday morning or use the smaller meeting room.)\n\nA แจ้งว่าห้องประชุมถูกจองแล้ว และถามว่าจะจัดการกับการประชุมทบทวนงบประมาณอย่างไร ตัวเลือก B ให้ทางออกที่เป็นรูปธรรม คือเลื่อนวันหรือใช้ห้องอื่น ซึ่งตอบตรงประเด็นที่สุด\n- ตัวเลือก A พูดถึงเรื่องที่ผ่านไปแล้ว ไม่ตอบคำถาม\n- ตัวเลือก C ให้ข้อมูลห้องประชุมแต่ไม่แก้ปัญหา\n- ตัวเลือก D เป็นเพียงความคิดเห็นทั่วไป ไม่ใช่การแก้ปัญหา"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2567,
+    "passage": "",
+    "question": "A: I'm not sure whether this complaint falls under our department's jurisdiction or the legal division's.\nB: ______\n\nChoose the most suitable reply.",
+    "choices": [
+      "The complaint was filed by a contractor from the northern region.",
+      "You should check the departmental handbook or consult with the legal team directly.",
+      "All complaints must be submitted in writing within thirty days.",
+      "Our department received over fifty complaints last fiscal year."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (You should check the departmental handbook or consult with the legal team directly.)\n\nA ไม่แน่ใจว่าเรื่องร้องเรียนนั้นอยู่ในอำนาจของหน่วยงานใด ตัวเลือก B แนะนำวิธีหาคำตอบที่ชัดเจนและเป็นประโยชน์ที่สุด คือตรวจสอบคู่มือหรือปรึกษาทีมกฎหมาย\n- ตัวเลือก A ให้ข้อมูลที่ไม่เกี่ยวข้องกับคำถาม\n- ตัวเลือก C พูดถึงขั้นตอนการยื่นเรื่อง ไม่ตอบว่าหน่วยงานใดรับผิดชอบ\n- ตัวเลือก D เป็นสถิติที่ไม่ช่วยแก้ปัญหาเฉพาะหน้า"
+  },
+  {
+    "subject": "english",
+    "topic": "Conversation",
+    "year": 2568,
+    "passage": "",
+    "question": "A: Could you please send over the revised policy draft before end of business today?\nB: I'm afraid I'm tied up with the audit documentation all afternoon.\nA: ______\n\nWhich response best continues the dialogue?",
+    "choices": [
+      "In that case, could you at least send what you have so far, and I'll review it tomorrow?",
+      "The audit is a very important process for our organization.",
+      "Please make sure all policy drafts follow the standard template.",
+      "The end of business is at five o'clock in the afternoon."
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (In that case, could you at least send what you have so far, and I'll review it tomorrow?)\n\nB บอกว่าไม่ว่างเพราะต้องทำเอกสารตรวจสอบบัญชี ตัวเลือก A แสดงความยืดหยุ่นและหาทางออกที่เป็นประโยชน์ร่วมกัน คือขอรับร่างที่มีอยู่ก่อนและเลื่อนการตรวจสอบออกไป\n- ตัวเลือก B เป็นเพียงความเห็นเรื่องการตรวจสอบ ไม่ตอบสนองต่อสถานการณ์\n- ตัวเลือก C เป็นคำแนะนำทั่วไปที่ไม่เกี่ยวกับสถานการณ์ตรงหน้า\n- ตัวเลือก D ให้ข้อมูลที่รู้อยู่แล้วและไม่เป็นประโยชน์"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2565,
+    "passage": "",
+    "question": "The minister's speech was deliberately ______, avoiding any firm commitment on the proposed budget cuts.",
+    "choices": [
+      "transparent",
+      "equivocal",
+      "assertive",
+      "methodical"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (equivocal)\n\n'Equivocal' หมายถึง คลุมเครือ หลีกเลี่ยงการพูดชัดเจน (deliberately vague or ambiguous) ซึ่งสอดคล้องกับบริบทที่รัฐมนตรีไม่ยอมให้คำมั่นสัญญาใดๆ\n- transparent = โปร่งใส/ชัดเจน (ตรงข้าม)\n- assertive = กล้าแสดงออก/มั่นใจ (ตรงข้าม)\n- methodical = มีระเบียบ/เป็นขั้นตอน (ไม่ตรงบริบท)"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2566,
+    "passage": "",
+    "question": "Employees are encouraged to ______ any unethical conduct they observe in the workplace through the official reporting channel.",
+    "choices": [
+      "condone",
+      "overlook",
+      "disclose",
+      "perpetuate"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (disclose)\n\n'Disclose' หมายถึง เปิดเผย/รายงาน (to report or reveal information) เหมาะกับบริบทที่พนักงานควรรายงานพฤติกรรมผิดจรรยาบรรณผ่านช่องทางอย่างเป็นทางการ\n- condone = ยอมรับ/มองข้ามความผิด (ตรงข้ามกับบริบท)\n- overlook = มองข้าม/เพิกเฉย (ตรงข้ามกับบริบท)\n- perpetuate = ทำให้ดำเนินต่อไป (ไม่เหมาะกับบริบท)"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2567,
+    "passage": "",
+    "question": "The department head praised the intern for her ______ approach to solving the data management problem, noting that her solution was both creative and practical.",
+    "choices": [
+      "reckless",
+      "conventional",
+      "ingenious",
+      "lethargic"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (ingenious)\n\n'Ingenious' หมายถึง ฉลาดหลักแหลม/คิดสร้างสรรค์ (clever and inventive) ซึ่งสอดคล้องกับคำยกย่องว่าวิธีแก้ปัญหานั้นทั้งสร้างสรรค์และใช้ได้จริง\n- reckless = สะเพร่า/ไม่รอบคอบ (ตรงข้ามกับการยกย่อง)\n- conventional = ธรรมดา/ตามแบบแผน (ไม่สอดคล้องกับคำว่า 'creative')\n- lethargic = เชื่องช้า/ขาดพลังงาน (ตรงข้ามกับบริบท)"
+  },
+  {
+    "subject": "english",
+    "topic": "Vocabulary & Expression",
+    "year": 2568,
+    "passage": "",
+    "question": "After months of negotiation, both parties reached a ______ agreement that satisfied neither side completely but allowed the project to proceed.",
+    "choices": [
+      "decisive",
+      "unilateral",
+      "mandatory",
+      "compromise"
+    ],
+    "answer": 3,
+    "explanation": "ตอบ D (compromise)\n\n'Compromise' ในฐานะคำคุณศัพท์ (หรือใช้เป็นคำนาม) หมายถึง ข้อตกลงที่แต่ละฝ่ายยอมลดเงื่อนไขบางส่วน ซึ่งตรงกับบริบทที่ไม่มีฝ่ายใดได้ทุกอย่างแต่โครงการดำเนินต่อได้\n- decisive = เด็ดขาด/ชัดเจน (ไม่สอดคล้อง เพราะทั้งสองฝ่ายไม่พอใจเต็มที่)\n- unilateral = ฝ่ายเดียว (ขัดกับบริบทที่มีสองฝ่าย)\n- mandatory = บังคับ (ไม่ตรงบริบท เพราะเป็นการเจรจาสมัครใจ)"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2565,
+    "passage": "",
+    "question": "By the time the new director ______ office, the restructuring plan had already been approved by the board.",
+    "choices": [
+      "takes",
+      "has taken",
+      "took",
+      "will take"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (took)\n\nประโยคนี้ใช้ Past Perfect ('had already been approved') ในอนุประโยคหนึ่ง แสดงว่าเหตุการณ์นั้นเกิดขึ้นก่อน ดังนั้นอนุประโยค 'By the time...' ต้องใช้ Simple Past ('took') เพื่อระบุเหตุการณ์ที่เกิดขึ้นก่อนอีกเหตุการณ์หนึ่งในอดีต\n- takes = Simple Present (ไม่ตรงกาล)\n- has taken = Present Perfect (ไม่ตรงกาล)\n- will take = Future (ไม่ตรงกาล)"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2566,
+    "passage": "",
+    "question": "Neither the department head nor the team members ______ informed of the change in venue before the announcement.",
+    "choices": [
+      "was",
+      "were",
+      "has been",
+      "is"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (were)\n\nเมื่อใช้ 'Neither...nor...' กริยาจะต้องสอดคล้องกับประธานที่อยู่ใกล้กริยามากที่สุด ซึ่งในที่นี้คือ 'the team members' (พหูพจน์) จึงต้องใช้ 'were'\n- was = ใช้กับประธานเอกพจน์ (ไม่ตรง เพราะประธานใกล้สุดคือพหูพจน์)\n- has been = Present Perfect (ไม่ตรงกาล)\n- is = Present tense (ไม่ตรงกาล)"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2567,
+    "passage": "",
+    "question": "The report must ______ to the committee no later than the fifteenth of each month.",
+    "choices": [
+      "submit",
+      "be submitted",
+      "have submitted",
+      "submitting"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (be submitted)\n\nประโยคนี้ต้องการ Passive Voice เพราะรายงานเป็น 'ผู้ถูกกระทำ' (ถูกส่ง ไม่ใช่ส่งเอง) และใช้ Modal 'must' นำหน้า ดังนั้นรูปถูกต้องคือ 'must be submitted'\n- submit = Active form (รายงานส่งเองไม่ได้)\n- have submitted = ใช้กับ Active Perfect ไม่ใช่ Passive หลัง modal\n- submitting = Gerund/Present Participle ไม่สามารถตามหลัง modal ได้โดยตรง"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2568,
+    "passage": "",
+    "question": "______ the heavy workload, the team managed to complete the audit on schedule.",
+    "choices": [
+      "Despite of",
+      "Although",
+      "Even so",
+      "Despite"
+    ],
+    "answer": 3,
+    "explanation": "ตอบ D (Despite)\n\n'Despite' เป็น Preposition ที่ใช้ตามด้วยคำนามหรือ Gerund phrase ได้โดยตรง เช่น 'Despite the heavy workload' ซึ่งถูกต้องตามไวยากรณ์\n- Despite of = ผิดไวยากรณ์ (ไม่มีโครงสร้างนี้ในภาษาอังกฤษ)\n- Although = Conjunction ต้องตามด้วยประโยค (Subject + Verb) ไม่ใช่แค่ Noun Phrase\n- Even so = Adverbial Conjunction ใช้เชื่อมประโยคสองประโยค ไม่ใช้นำหน้า Noun Phrase"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2565,
+    "passage": "Thailand's Open Government initiative, launched in 2019, aims to increase public access to government data and strengthen citizen participation in policy-making. Under this framework, all ministries are required to publish budget allocations, procurement records, and performance reports on a centralised online portal. Monitoring teams conduct quarterly reviews to ensure compliance. Officials who fail to meet disclosure standards may face administrative penalties. The initiative has been praised by international observers for its transparency mechanisms, though some civil society groups argue that data formats remain too technical for ordinary citizens to interpret effectively.",
+    "question": "Passage: \"Thailand's Open Government initiative, launched in 2019, aims to increase public access to government data and strengthen citizen participation in policy-making. Under this framework, all ministries are required to publish budget allocations, procurement records, and performance reports on a centralised online portal. Monitoring teams conduct quarterly reviews to ensure compliance. Officials who fail to meet disclosure standards may face administrative penalties. The initiative has been praised by international observers for its transparency mechanisms, though some civil society groups argue that data formats remain too technical for ordinary citizens to interpret effectively.\"\n\nAccording to the passage, what is one criticism raised about the Open Government initiative?",
+    "choices": [
+      "It lacks a centralised online portal for data publication.",
+      "Monitoring teams do not conduct reviews frequently enough.",
+      "The data published is too complex for the general public to understand.",
+      "International observers have opposed the transparency mechanisms."
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (The data published is too complex for the general public to understand.)\n\nข้อวิจารณ์ที่บทอ่านระบุคือ 'data formats remain too technical for ordinary citizens to interpret effectively' ซึ่งตรงกับตัวเลือก C\n- ตัวเลือก A ผิด เพราะบทอ่านระบุว่ามีพอร์ทัลกลาง\n- ตัวเลือก B ผิด เพราะทบทวนทุกไตรมาส ซึ่งหมายถึงทำสม่ำเสมอ\n- ตัวเลือก D ผิด เพราะผู้สังเกตการณ์ระหว่างประเทศยกย่องไม่ใช่คัดค้าน"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2566,
+    "passage": "Thailand's Open Government initiative, launched in 2019, aims to increase public access to government data and strengthen citizen participation in policy-making. Under this framework, all ministries are required to publish budget allocations, procurement records, and performance reports on a centralised online portal. Monitoring teams conduct quarterly reviews to ensure compliance. Officials who fail to meet disclosure standards may face administrative penalties. The initiative has been praised by international observers for its transparency mechanisms, though some civil society groups argue that data formats remain too technical for ordinary citizens to interpret effectively.",
+    "question": "Passage: \"Thailand's Open Government initiative, launched in 2019, aims to increase public access to government data and strengthen citizen participation in policy-making. Under this framework, all ministries are required to publish budget allocations, procurement records, and performance reports on a centralised online portal. Monitoring teams conduct quarterly reviews to ensure compliance. Officials who fail to meet disclosure standards may face administrative penalties. The initiative has been praised by international observers for its transparency mechanisms, though some civil society groups argue that data formats remain too technical for ordinary citizens to interpret effectively.\"\n\nWhich of the following best describes the consequence for officials who do not comply with disclosure requirements?",
+    "choices": [
+      "They are dismissed from their positions immediately.",
+      "They receive a formal warning from the monitoring team.",
+      "They may be subject to administrative penalties.",
+      "They must resubmit all reports within one week."
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (They may be subject to administrative penalties.)\n\nบทอ่านระบุว่า 'Officials who fail to meet disclosure standards may face administrative penalties' ซึ่งตรงกับตัวเลือก C โดยตรง\n- ตัวเลือก A ผิด เพราะบทอ่านไม่ได้กล่าวถึงการไล่ออกทันที\n- ตัวเลือก B ผิด เพราะบทอ่านไม่ได้ระบุว่าได้รับคำเตือนอย่างเป็นทางการ\n- ตัวเลือก D ผิด เพราะไม่มีข้อมูลเรื่องการส่งรายงานใหม่ภายในหนึ่งสัปดาห์"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2567,
+    "passage": "Workplace wellness programmes in the public sector have gained considerable attention in recent years. Research indicates that organisations offering structured wellness initiatives — such as stress management workshops, flexible working hours, and access to counselling services — experience lower rates of absenteeism and higher employee retention. However, experts caution that the effectiveness of such programmes depends heavily on leadership support and a genuine organisational culture of care. Programmes introduced merely as a formality, without adequate resources or follow-through, often yield little measurable benefit and may even breed cynicism among staff.",
+    "question": "Passage: \"Workplace wellness programmes in the public sector have gained considerable attention in recent years. Research indicates that organisations offering structured wellness initiatives — such as stress management workshops, flexible working hours, and access to counselling services — experience lower rates of absenteeism and higher employee retention. However, experts caution that the effectiveness of such programmes depends heavily on leadership support and a genuine organisational culture of care. Programmes introduced merely as a formality, without adequate resources or follow-through, often yield little measurable benefit and may even breed cynicism among staff.\"\n\nWhat do experts warn is essential for a workplace wellness programme to be truly effective?",
+    "choices": [
+      "A mandatory participation policy for all employees",
+      "Consistent government funding allocated each fiscal year",
+      "Genuine leadership commitment and a supportive organisational culture",
+      "Regular external audits of all wellness-related expenditures"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (Genuine leadership commitment and a supportive organisational culture)\n\nบทอ่านระบุว่า 'the effectiveness of such programmes depends heavily on leadership support and a genuine organisational culture of care' ซึ่งตรงกับตัวเลือก C\n- ตัวเลือก A ไม่มีในบทอ่าน\n- ตัวเลือก B ไม่มีการกล่าวถึงเรื่องเงินทุนจากรัฐบาล\n- ตัวเลือก D ไม่มีการกล่าวถึงการตรวจสอบภายนอก"
+  },
+  {
+    "subject": "english",
+    "topic": "Reading Comprehension",
+    "year": 2568,
+    "passage": "Workplace wellness programmes in the public sector have gained considerable attention in recent years. Research indicates that organisations offering structured wellness initiatives — such as stress management workshops, flexible working hours, and access to counselling services — experience lower rates of absenteeism and higher employee retention. However, experts caution that the effectiveness of such programmes depends heavily on leadership support and a genuine organisational culture of care. Programmes introduced merely as a formality, without adequate resources or follow-through, often yield little measurable benefit and may even breed cynicism among staff.",
+    "question": "Passage: \"Workplace wellness programmes in the public sector have gained considerable attention in recent years. Research indicates that organisations offering structured wellness initiatives — such as stress management workshops, flexible working hours, and access to counselling services — experience lower rates of absenteeism and higher employee retention. However, experts caution that the effectiveness of such programmes depends heavily on leadership support and a genuine organisational culture of care. Programmes introduced merely as a formality, without adequate resources or follow-through, often yield little measurable benefit and may even breed cynicism among staff.\"\n\nAccording to the passage, what is a likely outcome when wellness programmes are implemented without genuine commitment?",
+    "choices": [
+      "Employees become more motivated and productive over time.",
+      "Staff absenteeism decreases significantly within the first year.",
+      "The programmes are eventually discontinued by government mandate.",
+      "Staff may develop distrust or negative attitudes toward the initiatives."
+    ],
+    "answer": 3,
+    "explanation": "ตอบ D (Staff may develop distrust or negative attitudes toward the initiatives.)\n\nบทอ่านระบุว่าโปรแกรมที่ทำแบบพิธีการ 'may even breed cynicism among staff' ซึ่ง 'cynicism' หมายถึงทัศนคติเชิงลบ/การไม่ไว้วางใจ ตรงกับตัวเลือก D\n- ตัวเลือก A ตรงข้ามกับสิ่งที่บทอ่านระบุ\n- ตัวเลือก B ตรงข้ามกับนัยของบทอ่าง (โปรแกรมที่ไม่จริงจังให้ผลน้อย)\n- ตัวเลือก C ไม่มีการกล่าวถึงในบทอ่าน"
+  }
+]

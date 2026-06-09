@@ -1,0 +1,362 @@
+[
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If it _____ tomorrow, the outdoor ceremony will be moved indoors.\n(Fill in the correct verb form.)",
+    "choices": [
+      "rains",
+      "will rain",
+      "rained",
+      "would rain"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (rains)\n\nประโยคนี้คือ Conditional Type 1 ซึ่งใช้โครงสร้าง If + Present Simple, S + will + V1 เพราะพูดถึงสถานการณ์ที่เป็นไปได้จริงในอนาคต ใน if-clause จึงใช้ rains (V1/present simple) ส่วน main clause ใช้ will be moved"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If she studies hard enough, she _____ the scholarship exam.\n(Fill in the correct verb form.)",
+    "choices": [
+      "passes",
+      "would pass",
+      "will pass",
+      "passed"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (will pass)\n\nประโยคนี้คือ Conditional Type 1 โครงสร้าง If + Present Simple, S + will + V1 if-clause ใช้ studies (present simple) ดังนั้น main clause ต้องใช้ will pass"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If you _____ the form before Friday, your application will be processed on time.\n(Fill in the correct verb form.)",
+    "choices": [
+      "submitted",
+      "will submit",
+      "would submit",
+      "submit"
+    ],
+    "answer": 3,
+    "explanation": "ตอบ D (submit)\n\nประโยคนี้คือ Conditional Type 1 โครงสร้าง If + Present Simple, S + will + V1 ใน if-clause ต้องใช้ submit (V1) ไม่ใช้ will ซ้ำใน if-clause"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "The bus will leave without you if you _____ on time.\n(Fill in the correct verb form.)",
+    "choices": [
+      "don't arrive",
+      "won't arrive",
+      "didn't arrive",
+      "wouldn't arrive"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (don't arrive)\n\nประโยคนี้คือ Conditional Type 1 if-clause ต้องใช้ Present Simple ในรูปปฏิเสธ คือ don't arrive ไม่ใช้ won't ใน if-clause"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If the manager approves the budget, the team _____ the new equipment next week.\n(Fill in the correct verb form.)",
+    "choices": [
+      "orders",
+      "ordered",
+      "would order",
+      "will order"
+    ],
+    "answer": 3,
+    "explanation": "ตอบ D (will order)\n\nประโยคนี้คือ Conditional Type 1 โครงสร้าง If + Present Simple (approves), main clause + will + V1 ดังนั้นต้องใช้ will order"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If he doesn't call back soon, I _____ him another message.\n(Fill in the correct verb form.)",
+    "choices": [
+      "send",
+      "sent",
+      "will send",
+      "would send"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (will send)\n\nประโยคนี้คือ Conditional Type 1 โครงสร้าง If + Present Simple (doesn't call), S + will + V1 main clause ต้องใช้ will send"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If we _____ the train, we will have to take a taxi to the conference.\n(Fill in the correct verb form.)",
+    "choices": [
+      "miss",
+      "missed",
+      "will miss",
+      "would miss"
+    ],
+    "answer": 0,
+    "explanation": "ตอบ A (miss)\n\nประโยคนี้คือ Conditional Type 1 if-clause ต้องใช้ Present Simple คือ miss (V1) ส่วน main clause มี will have to อยู่แล้ว"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "Which sentence is a correct Type 1 Conditional?",
+    "choices": [
+      "If she will work overtime, she earns extra pay.",
+      "If the report is ready, the director will review it today.",
+      "If they studied more, they would pass the test.",
+      "If he would call, I will answer."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (If the report is ready, the director will review it today.)\n\nประโยค B ใช้โครงสร้าง Conditional Type 1 ที่ถูกต้อง: If + Present Simple (is ready), S + will + V1 (will review)\n- A ผิด: if-clause ใช้ will work ซึ่งไม่ถูก\n- C เป็น Type 2\n- D ผิด: if-clause ใช้ would call"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "Which sentence is a correct Type 1 Conditional?",
+    "choices": [
+      "If I were rich, I will buy a house.",
+      "If he would cooperate, the project succeeds.",
+      "Unless you sign the contract, the deal will not proceed.",
+      "If the weather was good, we go to the park."
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (Unless you sign the contract, the deal will not proceed.)\n\nประโยค C ใช้ unless (= if...not) + Present Simple (sign) และ main clause + will not + V1 ซึ่งเป็น Conditional Type 1 ที่ถูกต้อง\n- A ผิด: ผสม were (Type 2) กับ will (Type 1)\n- B ผิด: would ใน if-clause ไม่ถูก\n- D ผิด: was ใน if-clause และ go โดยไม่มี will"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If I _____ a millionaire, I would donate half my wealth to charity.\n(Fill in the correct verb form.)",
+    "choices": [
+      "am",
+      "was",
+      "were",
+      "will be"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (were)\n\nประโยคนี้คือ Conditional Type 2 ซึ่งใช้โครงสร้าง If + Past Simple, S + would + V1 สำหรับ verb to be ใน Type 2 ใช้ were กับ ทุก ประธาน (I, he, she, it, we, they) ไม่ใช้ was"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If she _____ the local language, she would communicate more easily with the villagers.\n(Fill in the correct verb form.)",
+    "choices": [
+      "knows",
+      "knew",
+      "would know",
+      "will know"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (knew)\n\nประโยคนี้คือ Conditional Type 2 โครงสร้าง If + Past Simple (knew), S + would + V1 ใช้ knew (past simple of know) ใน if-clause เพราะเป็นสถานการณ์สมมติที่ไม่เป็นความจริงในปัจจุบัน"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If the government _____ stricter environmental laws, air pollution would decrease significantly.\n(Fill in the correct verb form.)",
+    "choices": [
+      "enforces",
+      "will enforce",
+      "enforced",
+      "enforce"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (enforced)\n\nประโยคนี้คือ Conditional Type 2 โครงสร้าง If + Past Simple, S + would + V1 ใน if-clause ใช้ enforced (past simple) เพราะเป็นสถานการณ์ที่ผู้พูดมองว่าไม่น่าจะเกิดขึ้นในปัจจุบัน"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "He would feel much better if he _____ enough sleep every night.\n(Fill in the correct verb form.)",
+    "choices": [
+      "gets",
+      "got",
+      "will get",
+      "would get"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (got)\n\nประโยคนี้คือ Conditional Type 2 main clause ใช้ would feel ดังนั้น if-clause ต้องใช้ Past Simple คือ got ไม่ใช้ would get ซ้ำใน if-clause"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If it _____ not so hot outside, we would enjoy a walk in the park.\n(Fill in the correct verb form.)",
+    "choices": [
+      "is",
+      "was",
+      "were",
+      "will be"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (were)\n\nประโยคนี้คือ Conditional Type 2 สำหรับ verb to be ใน if-clause ของ Type 2 ต้องใช้ were กับทุกประธาน รวมถึง it ด้วย ไม่ใช้ was"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If the company offered better salaries, more qualified workers _____ to apply.\n(Fill in the correct verb form.)",
+    "choices": [
+      "will be likely",
+      "are likely",
+      "would be likely",
+      "were likely"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (would be likely)\n\nประโยคนี้คือ Conditional Type 2 โครงสร้าง If + Past Simple (offered), S + would + V1 main clause จึงต้องใช้ would be likely"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If I _____ you, I would think twice before accepting that offer.\n(Fill in the correct verb form.)",
+    "choices": [
+      "am",
+      "were",
+      "was",
+      "would be"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (were)\n\nสำนวน \"If I were you\" เป็น Conditional Type 2 ที่ใช้บ่อยมาก ต้องใช้ were เสมอแม้ประธานจะเป็น I ซึ่งเป็นกฎของ Type 2: be → were ทุกประธาน"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "They would not have to work overtime if the deadline _____ extended by two weeks.\n(Fill in the correct verb form.)",
+    "choices": [
+      "is",
+      "will be",
+      "were",
+      "would be"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (were)\n\nประโยคนี้คือ Conditional Type 2 main clause ใช้ would not have to ดังนั้น if-clause ต้องใช้ Past Simple ซึ่งสำหรับ to be คือ were (ทุกประธาน)"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "If the president _____ more transparent with the public, citizens would trust the government more.\n(Fill in the correct verb form.)",
+    "choices": [
+      "is",
+      "will be",
+      "was",
+      "were"
+    ],
+    "answer": 3,
+    "explanation": "ตอบ D (were)\n\nประโยคนี้คือ Conditional Type 2 ซึ่งพูดถึงสถานการณ์สมมติ main clause ใช้ would trust ดังนั้น if-clause ต้องใช้ Past Simple ของ to be คือ were (ทุกประธาน รวมถึง the president = he)"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "Which sentence is a correct Type 2 Conditional?",
+    "choices": [
+      "If I am taller, I would play basketball professionally.",
+      "If she were a doctor, she would open a free clinic.",
+      "If they would have more time, they finished the project.",
+      "If he studies harder, he would pass the exam."
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (If she were a doctor, she would open a free clinic.)\n\nประโยค B ใช้โครงสร้าง Conditional Type 2 ที่ถูกต้อง: If + were (past simple of be), S + would + V1\n- A ผิด: if-clause ใช้ am แทน were\n- C ผิด: if-clause ใช้ would have และ main clause ไม่มี would\n- D ผิด: if-clause ใช้ present simple แต่ main clause ใช้ would (ผสม Type 1 และ Type 2)"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "Identify the sentence that correctly uses a conditional structure.",
+    "choices": [
+      "If you will leave now, you catch the 8 o'clock train.",
+      "If he knew the answer, he will tell us immediately.",
+      "If the train runs on time, we will arrive before noon.",
+      "If she would cooperate, the team finishes early."
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (If the train runs on time, we will arrive before noon.)\n\nประโยค C ถูกต้อง: Conditional Type 1 — If + Present Simple (runs), S + will + V1 (will arrive)\n- A ผิด: if-clause ใช้ will leave ไม่ถูก\n- B ผิด: ผสม past simple (knew = Type 2) กับ will (Type 1)\n- D ผิด: if-clause ใช้ would cooperate ไม่ถูก"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "Which of the following contains an error in conditional sentence structure?",
+    "choices": [
+      "If the water is hot enough, the tea will taste better.",
+      "If I were the principal, I would revise the school policy.",
+      "If they would listen carefully, they understand the instructions.",
+      "If you press that button, the alarm will go off."
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (If they would listen carefully, they understand the instructions.)\n\nประโยค C ผิด: ใช้ would ใน if-clause ซึ่งไม่ถูกต้องสำหรับทั้ง Type 1 และ Type 2 รวมถึง main clause ไม่มี will หรือ would\n- A ถูก: Type 1 — is / will taste\n- B ถูก: Type 2 — were / would revise\n- D ถูก: Type 1 — press / will go"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "Choose the sentence that correctly completes this Type 2 conditional:\n\"If the old bridge _____, the town would be cut off from the main road.\"",
+    "choices": [
+      "collapses",
+      "will collapse",
+      "collapsed",
+      "would collapse"
+    ],
+    "answer": 2,
+    "explanation": "ตอบ C (collapsed)\n\nประโยคนี้คือ Conditional Type 2 — พูดถึงสถานการณ์สมมติที่ไม่น่าเกิดขึ้น (หรือยังไม่เกิด) main clause ใช้ would be cut off ดังนั้น if-clause ต้องใช้ Past Simple คือ collapsed ไม่ใช้ would"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "Choose the option that correctly identifies the type and structure of this sentence:\n\"If the staff receive proper training, productivity will increase.\"",
+    "choices": [
+      "Type 2 — ถูกต้อง: past simple + would",
+      "Type 1 — ถูกต้อง: present simple + will",
+      "Type 1 — ผิด: ควรใช้ received แทน receive",
+      "Type 2 — ผิด: ควรใช้ would increase แทน will increase"
+    ],
+    "answer": 1,
+    "explanation": "ตอบ B (Type 1 — ถูกต้อง: present simple + will)\n\nประโยคนี้คือ Conditional Type 1 ที่ถูกต้อง: If + Present Simple (receive), S + will + V1 (will increase) พูดถึงสถานการณ์ที่เป็นไปได้จริงในอนาคต"
+  },
+  {
+    "subject": "english",
+    "topic": "Grammar & Structure",
+    "year": 2569,
+    "predicted": true,
+    "question": "Four sentences are given. Choose the one that is grammatically INCORRECT.",
+    "choices": [
+      "If we leave early, we will avoid the traffic jam.",
+      "If she were more patient, she would become a great teacher.",
+      "If he works late tonight, he will finish the report.",
+      "If they were honest, they will admit the mistake."
+    ],
+    "answer": 3,
+    "explanation": "ตอบ D (If they were honest, they will admit the mistake.)\n\nประโยค D ผสมโครงสร้าง Type 1 และ Type 2 อย่างผิดกฎ: if-clause ใช้ were (Type 2) แต่ main clause ใช้ will admit (Type 1) ต้องเลือกใช้แบบเดียวกัน: ถ้า Type 2 ต้องใช้ would admit\n- A ถูก: Type 1\n- B ถูก: Type 2\n- C ถูก: Type 1"
+  }
+]
