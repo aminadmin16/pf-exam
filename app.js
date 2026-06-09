@@ -876,7 +876,7 @@
     if (dev) {
       if (D.developerFacebookUrl && D.developerFacebookName) {
         dev.innerHTML = '👨‍💻 ผู้พัฒนา · Facebook: <a class="dn-fb" href="' + escapeHtml(D.developerFacebookUrl) + '" target="_blank" rel="noopener">' + escapeHtml(D.developerFacebookName) + ' ↗</a>' +
-          '<div class="dn-dev-sub">เผื่ออยากแนะนำ ติชม หรือติดตามผลงาน กดที่ชื่อได้เลย — ขอบคุณครับ 🙏</div>';
+          '<div class="dn-dev-sub">ปีหน้าผมตั้งใจจะไปสมัครสอบเหมือนกันครับ ใครจำข้อสอบได้หลังสอบ รบกวนฝากทิ้งไว้สักข้อก็ยังดี (ทักมาทางเฟซได้เลย) เผื่อเป็นประโยชน์ให้คนรุ่นถัดไปและตัวผมเอง จะเป็นพระคุณอย่างสูงครับ 🙏</div>';
         dev.style.display = "";
       } else dev.style.display = "none";
     }
