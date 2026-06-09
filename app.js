@@ -705,8 +705,55 @@
       '<span class="lib-chip pc">ภาค ค ' + partC + " ข้อ</span>" +
       '<span class="lib-chip pp">🔮 เก็ง 2569 ' + pred + " ข้อ</span>";
   }
+  /* คลังข้อสอบ — กดดูรายละเอียดแต่ละหมวด (พับเก็บไว้ก่อน เปิดดูได้ทีละกลุ่ม) */
+  function libRows(items) {
+    return items.map((it) => '<div class="lib-row"><span class="lib-row-name">' + escapeHtml(it.name) + '</span><span class="lib-row-num">' + it.count.toLocaleString("th-TH") + ' ข้อ</span></div>').join("");
+  }
+  function renderLibraryGroups() {
+    const host = $("lib-groups"); if (!host) return;
+    const partA = window.QUESTIONS || [];
+    // ภาค ก → แยกตามวิชา แล้วลงลึกเป็นหมวด (topic)
+    const subjOrder = window.SUBJECT_ORDER || ["analytical", "ethics", "english"];
+    const aGroups = subjOrder.map((key) => {
+      const qs = partA.filter((q) => q.subject === key);
+      const tmap = {};
+      qs.forEach((q) => { const t = q.topic || "อื่น ๆ"; tmap[t] = (tmap[t] || 0) + 1; });
+      const topics = Object.keys(tmap).map((t) => ({ name: t, count: tmap[t] })).sort((a, b) => b.count - a.count);
+      return { name: (window.SUBJECTS[key] ? window.SUBJECTS[key].name : key), count: qs.length, topics };
+    });
+    const partAtotal = partA.length;
+    // ภาค ข / ค → แยกตามคลังกฎหมาย/ชุดข้อสอบ
+    const bBanks = [], cBanks = [];
+    (window.SPECIAL_BANK_ORDER || []).forEach((b) => {
+      const list = window.SPECIAL_BANKS[b] || [], m = window.SPECIAL_BANK_META[b] || {};
+      const item = { name: (m.icon ? m.icon + " " : "") + (m.short || m.name || b), count: list.length };
+      if (m.part === "ค") cBanks.push(item); else bBanks.push(item);
+    });
+    const bTotal = bBanks.reduce((s, x) => s + x.count, 0), cTotal = cBanks.reduce((s, x) => s + x.count, 0);
+    const grand = partAtotal + bTotal + cTotal;
+
+    const subjAcc = (g) => '<div class="lib-sub">'
+      + '<button class="lib-sub-head" data-libtoggle><span class="lib-sub-name">' + escapeHtml(g.name) + '</span>'
+      + '<span class="lib-sub-meta">' + g.count.toLocaleString("th-TH") + ' ข้อ <span class="lib-chev">▾</span></span></button>'
+      + '<div class="lib-sub-body">' + libRows(g.topics) + '</div></div>';
+
+    const accGroup = (cls, chip, title, total, bodyHtml) => '<div class="lib-acc ' + cls + '">'
+      + '<button class="lib-acc-head" data-libtoggle><span class="lib-eye">👁</span>'
+      + '<span class="lib-acc-title"><b>' + chip + '</b> ' + title + '</span>'
+      + '<span class="lib-acc-count">' + total.toLocaleString("th-TH") + ' ข้อ <span class="lib-chev">▾</span></span></button>'
+      + '<div class="lib-acc-body">' + bodyHtml + '</div></div>';
+
+    host.innerHTML =
+      '<div class="lib-groups-cap">👁 รวมทั้งหมด <b>' + grand.toLocaleString("th-TH") + ' ข้อ</b> · แตะแต่ละหมวดเพื่อดูว่ามีอะไรบ้าง กี่ข้อ</div>'
+      + accGroup("pa", "ภาค ก", "ความรู้ความสามารถทั่วไป", partAtotal, aGroups.map(subjAcc).join(""))
+      + accGroup("pb", "ภาค ข", "ความรู้เฉพาะตำแหน่ง", bTotal, libRows(bBanks))
+      + accGroup("pc", "ภาค ค", "ความเหมาะสมกับตำแหน่ง", cTotal, libRows(cBanks));
+
+    host.querySelectorAll("[data-libtoggle]").forEach((btn) => btn.addEventListener("click", () => btn.parentElement.classList.toggle("open")));
+  }
   function renderStudy() {
     fillLibStats();
+    renderLibraryGroups();
     const body = $("study-body"); body.innerHTML = "";
     (window.STUDY_NOTES || []).forEach((n) => {
       const card = document.createElement("div");
