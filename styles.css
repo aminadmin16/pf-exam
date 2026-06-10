@@ -167,6 +167,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* คลังข้อสอบ — กดดูรายละเอียดแต่ละหมวด (พับเก็บ เปิดทีละกลุ่ม) */
 .lib-groups { margin: 10px 16px 4px; }
+/* แหล่งที่มาของข้อสอบ — ใต้การ์ดคลังคำถาม */
+.lib-credit { margin: 14px 16px 18px; padding: 14px 16px 12px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--green); border-radius: 14px; box-shadow: var(--shadow-soft); }
+.lib-credit .lc-h { font-size: 14px; font-weight: 800; color: var(--green-dark); margin-bottom: 7px; }
+.lib-credit p { font-size: 13.5px; line-height: 1.72; color: #33433b; margin: 0; }
+.lib-credit p + p { margin-top: 7px; }
+.lib-credit b { color: var(--green-dark); font-weight: 800; }
+.lib-credit .lc-thanks { color: var(--muted); font-size: 12.5px; font-weight: 600; }
+[data-theme="dark"] .lib-credit { background: var(--card); }
+[data-theme="dark"] .lib-credit p { color: var(--text); }
+[data-theme="dark"] .lib-credit .lc-thanks { color: var(--muted); }
 .lib-groups-cap { font-size: 12.5px; color: var(--muted); text-align: center; margin: 4px 2px 12px; line-height: 1.5; }
 .lib-groups-cap b { color: var(--text); }
 .lib-acc { border: 1px solid var(--line); border-left-width: 4px; border-radius: 12px; margin-bottom: 9px; background: var(--card); overflow: hidden; }
