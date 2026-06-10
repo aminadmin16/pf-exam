@@ -1216,12 +1216,12 @@
       btn.innerHTML = '<span>' + m.icon + " " + escapeHtml(m.short) + '</span><span class="sb-count">' + m.count + " ข้อ</span>";
       btn.addEventListener("click", () => startSpecial(b));
       wrap.appendChild(btn);
-      // ปุ่ม "อ่านข้อมูล" — พาไปอ่านการ์ดสรุปในแท็บ "อ่านก่อน" ของหัวข้อนี้
+      // ปุ่ม "อ่านข้อมูลสรุป" — พาไปอ่านการ์ดสรุปในแท็บ "อ่านก่อน" ของหัวข้อนี้
       const studyId = studyCardIdForBank(b);
       if (studyId) {
         const readBtn = document.createElement("button");
         readBtn.className = "bank-read"; readBtn.type = "button";
-        readBtn.innerHTML = '<span class="br-ic">📖</span><span>อ่านข้อมูล</span>';
+        readBtn.innerHTML = '<span class="br-ic">📖</span><span class="br-t">อ่านข้อมูล<br>สรุป</span>';
         readBtn.title = "อ่านสรุปและทริคของหัวข้อนี้";
         readBtn.addEventListener("click", (e) => { e.stopPropagation(); openStudyCard(studyId); });
         wrap.appendChild(readBtn);
