@@ -834,8 +834,8 @@
     host.innerHTML =
       '<div class="lib-groups-cap">👁 รวมทั้งหมด <b>' + grand.toLocaleString("th-TH") + ' ข้อ</b> · แตะแต่ละหมวดเพื่อดูว่ามีอะไรบ้าง กี่ข้อ</div>'
       + accGroup("pa", "ภาค ก", "ความรู้ความสามารถทั่วไป", partAtotal, aGroups.map(subjAcc).join(""))
-      + accGroup("pb", "ภาค ข", "ความรู้เฉพาะตำแหน่ง", bTotal, libRows(bBanks))
-      + accGroup("pc", "ภาค ค", "ความเหมาะสมกับตำแหน่ง", cTotal, libRows(cBanks));
+      + accGroup("pb", "ภาค ข", "ความรู้เฉพาะตำแหน่ง (แนวข้อสอบ)", bTotal, libRows(bBanks))
+      + accGroup("pc", "ภาค ค", "ความเหมาะสมกับตำแหน่ง (แนวข้อสอบ)", cTotal, libRows(cBanks));
 
     host.querySelectorAll("[data-libtoggle]").forEach((btn) => btn.addEventListener("click", () => btn.parentElement.classList.toggle("open")));
   }
@@ -909,8 +909,8 @@
     const cBanks = ["sjt_service", "sjt_integrity", "interview"];
     $("position-detail").innerHTML =
       '<div class="pd-intro">ตำแหน่ง <b>' + escapeHtml(p.name) + '</b> เน้นสอบ <b>ภาค ข</b> (ความรู้เฉพาะตำแหน่ง) และ <b>ภาค ค</b> (ความเหมาะสมกับตำแหน่ง) ดังนี้</div>' +
-      '<div class="pd-block"><div class="pd-h"><span class="pchip pb">ภาค ข</span> ความรู้เฉพาะตำแหน่งนี้</div><div class="pd-chips">' + p.banks.map(chip).join("") + '</div></div>' +
-      '<div class="pd-block"><div class="pd-h"><span class="pchip pc">ภาค ค</span> ความเหมาะสมกับตำแหน่ง</div><div class="pd-chips">' + cBanks.map(chip).join("") + '</div></div>' +
+      '<div class="pd-block"><div class="pd-h"><span class="pchip pb">ภาค ข</span> ความรู้เฉพาะตำแหน่งนี้ (แนวข้อสอบ)</div><div class="pd-chips">' + p.banks.map(chip).join("") + '</div></div>' +
+      '<div class="pd-block"><div class="pd-h"><span class="pchip pc">ภาค ค</span> ความเหมาะสมกับตำแหน่ง (แนวข้อสอบ)</div><div class="pd-chips">' + cBanks.map(chip).join("") + '</div></div>' +
       '<div class="pd-prop">📊 ชุดจำลองตามตำแหน่ง: ภาค ข ~20 · ภาค ค ~10 (รวม ~30 ข้อ)</div>' +
       '<button class="btn btn-primary" id="pd-start">▶ เริ่มชุดจำลองตามตำแหน่งนี้</button>';
     $("position-detail").querySelectorAll(".pd-chip[data-bank]").forEach((el) => el.addEventListener("click", () => startSpecial(el.getAttribute("data-bank"))));
