@@ -858,6 +858,26 @@
     if ((bankId === "sjt_service" || bankId === "sjt_integrity") && studyCardById("law")) return "law";
     return null;
   }
+  /* คู่กลับด้าน: studyCard id → bankId (เพื่อปุ่ม "กลับไปลองทำข้อสอบ" ในหน้าอ่านก่อน) */
+  function bankIdForStudyCard(cardId) {
+    if (!cardId) return null;
+    if (cardId === "interview") return "interview";
+    if (cardId.indexOf("law-") === 0) return cardId.slice(4);           // law-constitution -> constitution
+    return null;                                                          // "law" general / การ์ดอื่นไม่มีปลายทางแน่นอน
+  }
+  /* นำผู้ใช้กลับไปหน้าแรก แล้วเลื่อนไปการ์ดของแบงก์ที่กดมา + กะพริบให้สายตาจับ */
+  function goToBankFromStudy(bankId) {
+    if (!bankId) return;
+    showScreen("screen-home");
+    setTimeout(() => {
+      const row = document.querySelector('.bank-row[data-bank="' + bankId + '"]');
+      if (!row) return;
+      row.scrollIntoView({ behavior: "smooth", block: "center" });
+      const target = row.querySelector(".special-btn") || row;
+      target.classList.add("flash");
+      setTimeout(() => target.classList.remove("flash"), 1400);
+    }, 80);
+  }
   /* เปิดแท็บ "อ่านก่อน" + เลื่อนไปการ์ดที่ต้องการ + กางการ์ดให้อ่านได้ทันที */
   function openStudyCard(cardId) {
     if (!cardId) return;
@@ -908,8 +928,13 @@
       cards.forEach((n) => {
         const card = document.createElement("div");
         card.className = "study-card" + (n.pinned ? " open" : "");
-        card.innerHTML = '<button class="study-head"><span class="sh-ic">' + n.icon + '</span><span class="sh-t">' + escapeHtml(n.title) + "</span>" + (n.tag ? '<span class="sh-tag">' + escapeHtml(n.tag) + "</span>" : "") + '<span class="sh-arrow">⌄</span></button><div class="study-inner">' + studyBlocksHtml(n.blocks) + "</div>";
+        // ปุ่ม "กลับไปลองทำข้อสอบ" — เฉพาะการ์ดในหมวด ข/ค ที่จับคู่กับแบงก์ได้
+        const targetBank = bankIdForStudyCard(n.id);
+        const backHtml = targetBank ? '<div class="study-back-wrap"><button class="study-back" data-bank="' + escapeHtml(targetBank) + '" type="button">📝 กลับไปลองทำข้อสอบ</button></div>' : '';
+        card.innerHTML = '<button class="study-head"><span class="sh-ic">' + n.icon + '</span><span class="sh-t">' + escapeHtml(n.title) + "</span>" + (n.tag ? '<span class="sh-tag">' + escapeHtml(n.tag) + "</span>" : "") + '<span class="sh-arrow">⌄</span></button><div class="study-inner">' + studyBlocksHtml(n.blocks) + backHtml + "</div>";
         card.querySelector(".study-head").addEventListener("click", () => card.classList.toggle("open"));
+        const backBtn = card.querySelector(".study-back");
+        if (backBtn) backBtn.addEventListener("click", (e) => { e.stopPropagation(); goToBankFromStudy(backBtn.getAttribute("data-bank")); });
         body.appendChild(card);
       });
     });
@@ -1211,7 +1236,7 @@
     const pb = $("partB-pick"), pc = $("partC-pick");
     (window.SPECIAL_BANK_ORDER || []).forEach((b) => {
       const m = window.SPECIAL_BANK_META[b];
-      const wrap = document.createElement("div"); wrap.className = "bank-row";
+      const wrap = document.createElement("div"); wrap.className = "bank-row"; wrap.setAttribute("data-bank", b);
       const btn = document.createElement("button"); btn.className = "btn btn-outline special-btn";
       btn.innerHTML = '<span>' + m.icon + " " + escapeHtml(m.short) + '</span><span class="sb-count">' + m.count + " ข้อ</span>";
       btn.addEventListener("click", () => startSpecial(b));
