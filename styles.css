@@ -197,6 +197,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 /* โหมดทำข้อสอบแยกตามปี */
 .year-pick { display: none; flex-direction: column; gap: 10px; margin-top: 4px; }
+/* คำชี้แจงใต้ปุ่มปี — ให้ผู้ใช้เข้าใจว่าเป็นแนวข้อสอบจำลอง ไม่ใช่ข้อสอบจริงของ ก.พ. */
+.year-disclaim { font-size: 12px; line-height: 1.55; color: var(--muted); background: #fff8ec; border: 1px dashed #f3d49b; border-radius: 10px; padding: 9px 12px; margin-top: 4px; }
+.year-disclaim b { color: #a67318; font-weight: 800; }
+[data-theme="dark"] .year-disclaim { background: #2a2417; border-color: #4a3f22; color: #e8d6a8; }
+[data-theme="dark"] .year-disclaim b { color: #ffcf73; }
 .year-pick.show { display: flex; }
 .scope-pick { display: flex; flex-wrap: wrap; gap: 7px; }
 .scope-pick button { padding: 8px 13px; border-radius: 999px; font-size: 13px; font-weight: 700; background: var(--surface-2); color: var(--muted); border: 1.5px solid transparent; transition: transform .12s, background .15s, color .15s; }

@@ -64,9 +64,9 @@
   };
   let currentLevel = "undergrad";
   let currentFeedback = "instant";
-  let currentSource = "all";   // all = รวมข้อเก็ง 2569, real = เฉพาะข้อสอบจริง
+  let currentSource = "all";   // all = รวมข้อเก็ง 2569, real = เฉพาะแนวข้อสอบ (ไม่รวมข้อเก็ง)
   let currentSubjectCount = 30; // จำนวนข้อเมื่อฝึกแยกรายวิชา (20/30/40/50)
-  let currentYearAmount = "full"; // ข้อสอบจริงแยกปี: จำนวน full | 20/30/40/50
+  let currentYearAmount = "full"; // แนวข้อสอบแยกปี: จำนวน full | 20/30/40/50
   let currentYearSubjects = new Set(["analytical", "ethics", "english"]); // วิชาที่เลือก (ค่าเริ่มต้น = ทั้งหมด)
   let timerInterval = null;
   let reviewFilter = "all";
@@ -235,29 +235,29 @@
     cp.classList.remove("bounce"); void cp.offsetWidth; cp.classList.add("bounce");
   }
   function startYear(year, amountOverride, subjectsOverride) {
-    // ข้อสอบจริงแยกปี — เลือกจำนวน (เต็ม/สุ่ม N) + วิชาที่ออก (หลายวิชา) · ใช้เฉพาะข้อสอบจริง
+    // แนวข้อสอบแยกปี — เลือกจำนวน (เต็ม/สุ่ม N) + วิชาที่ออก (หลายวิชา) · ใช้เฉพาะแนวข้อสอบ ไม่รวมข้อเก็ง
     const amount = amountOverride || currentYearAmount;
     const subjSet = subjectsOverride ? new Set(subjectsOverride) : currentYearSubjects;
     const subjects = window.SUBJECT_ORDER.filter((k) => subjSet.has(k));
     if (!subjects.length) { toast("เลือกอย่างน้อย 1 วิชาก่อนนะ"); bounceYearHint(); return; }
     const yq = (sub) => window.QUESTIONS.filter((q) => !q.predicted && q.year === year && q.subject === sub);
     const allPool = window.QUESTIONS.filter((q) => !q.predicted && q.year === year && subjects.indexOf(q.subject) >= 0);
-    if (!allPool.length) { toast("ปี " + year + " ยังไม่มีข้อสอบจริงในวิชาที่เลือก — เลือกรูปแบบใหม่นะ"); bounceYearHint(); return; }
+    if (!allPool.length) { toast("ปี " + year + " ยังไม่มีแนวข้อสอบในวิชาที่เลือก — เลือกรูปแบบใหม่นะ"); bounceYearHint(); return; }
     state.year = year; state.yearAmount = amount; state.yearSubjects = subjects.slice();
     state.bankId = null; state.positionId = null; state.weakSource = null; state.level = currentLevel; state.feedback = currentFeedback;
     if (amount !== "full") {                          // สุ่ม N ข้อ จากวิชาที่เลือก — ถ้ามีไม่ถึง ให้เด้งเลือกใหม่
       const N = parseInt(amount, 10);
-      if (allPool.length < N) { toast("ปี " + year + " มีข้อสอบจริงในวิชาที่เลือกไม่ถึง " + N + " ข้อ — เลือกรูปแบบใหม่นะ"); bounceYearHint(); return; }
+      if (allPool.length < N) { toast("ปี " + year + " มีแนวข้อสอบในวิชาที่เลือกไม่ถึง " + N + " ข้อ — เลือกรูปแบบใหม่นะ"); bounceYearHint(); return; }
       state.kind = "kp"; state.mode = "year-sample"; state.subjectKey = null; state.count = N;
       state.questions = shuffle(allPool).slice(0, N).map(prepare);
-      state.title = "ข้อสอบจริง ปี " + year + " — " + N + " ข้อ";
+      state.title = "แนวข้อสอบ ปี " + year + " — " + N + " ข้อ";
     } else if (subjects.length === 1) {              // เต็ม + วิชาเดียว → สรุปแบบรายวิชา
       const sub = subjects[0];
       state.kind = "kp"; state.mode = "year-subject"; state.subjectKey = sub; state.count = null;
       let pool = shuffle(yq(sub));
       pool = sub === "analytical" ? orderByAnalyticalCat(pool) : sub === "english" ? orderByEnglishCat(pool) : pool;
       state.questions = pool.map(prepare);
-      state.title = "ข้อสอบจริง ปี " + year + " — " + window.SUBJECTS[sub].name;
+      state.title = "แนวข้อสอบ ปี " + year + " — " + window.SUBJECTS[sub].name;
     } else {                                         // เต็ม + หลายวิชา → สรุปแบบตาราง ก.พ.
       state.kind = "kp"; state.mode = "year"; state.subjectKey = null; state.count = null;
       const bp = window.EXAM_BLUEPRINT || { analytical: 50, ethics: 25, english: 25 };
@@ -268,7 +268,7 @@
         set = set.concat(k === "analytical" ? orderByAnalyticalCat(picked) : k === "english" ? orderByEnglishCat(picked) : picked);
       });
       state.questions = set.map(prepare);
-      state.title = "ข้อสอบจริง ปี " + year + (subjects.length === window.SUBJECT_ORDER.length ? " (เต็มทั้งปี)" : " — " + subjects.map((s) => window.SUBJECTS[s].name).join(" + "));
+      state.title = "แนวข้อสอบ ปี " + year + (subjects.length === window.SUBJECT_ORDER.length ? " (เต็มทั้งปี)" : " — " + subjects.map((s) => window.SUBJECTS[s].name).join(" + "));
     }
     initSession();
   }
