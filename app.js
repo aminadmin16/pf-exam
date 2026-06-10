@@ -850,6 +850,37 @@
     return inner;
   }
   function studyCardById(id) { return (window.STUDY_NOTES || []).find((n) => n.id === id) || null; }
+  /* จับคู่ bankId → studyCard id (เช่น "constitution" → "law-constitution") */
+  function studyCardIdForBank(bankId) {
+    if (!bankId) return null;
+    if (studyCardById("law-" + bankId)) return "law-" + bankId;          // กฎหมาย ภาค ข ทุกใบ
+    if (bankId === "interview" && studyCardById("interview")) return "interview";
+    if ((bankId === "sjt_service" || bankId === "sjt_integrity") && studyCardById("law")) return "law";
+    return null;
+  }
+  /* เปิดแท็บ "อ่านก่อน" + เลื่อนไปการ์ดที่ต้องการ + กางการ์ดให้อ่านได้ทันที */
+  function openStudyCard(cardId) {
+    if (!cardId) return;
+    renderStudy(); showScreen("screen-study");
+    setTimeout(() => {
+      const cards = document.querySelectorAll("#study-body .study-card");
+      const list = window.STUDY_NOTES.filter((n) => studyGroupKey(n) === studyGroupKey(studyCardById(cardId)));
+      const idx = list.findIndex((n) => n.id === cardId);
+      // หาในกลุ่มเดียวกัน → ใช้ลำดับใน DOM (cards เรียงตาม group + ลำดับการ์ดในกลุ่ม)
+      // เพื่อความแน่ใจ ค้นจาก title ที่ตรงกัน
+      const target = studyCardById(cardId);
+      if (!target) return;
+      let foundEl = null;
+      cards.forEach((c) => {
+        const t = c.querySelector(".sh-t"); if (t && t.textContent === target.title) foundEl = c;
+      });
+      if (!foundEl) return;
+      if (!foundEl.classList.contains("open")) foundEl.classList.add("open");
+      foundEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      foundEl.classList.add("flash");
+      setTimeout(() => foundEl.classList.remove("flash"), 1400);
+    }, 80);
+  }
   const STUDY_GROUPS = [
     { key: "intro", title: "📌 เริ่มที่นี่ — ภาพรวม & ผังสอบ" },
     { key: "analytical", title: "🧮 วิชาคิดวิเคราะห์ (50 ข้อ)" },
@@ -1180,10 +1211,22 @@
     const pb = $("partB-pick"), pc = $("partC-pick");
     (window.SPECIAL_BANK_ORDER || []).forEach((b) => {
       const m = window.SPECIAL_BANK_META[b];
+      const wrap = document.createElement("div"); wrap.className = "bank-row";
       const btn = document.createElement("button"); btn.className = "btn btn-outline special-btn";
       btn.innerHTML = '<span>' + m.icon + " " + escapeHtml(m.short) + '</span><span class="sb-count">' + m.count + " ข้อ</span>";
       btn.addEventListener("click", () => startSpecial(b));
-      (m.part === "ค" ? pc : pb).appendChild(btn);
+      wrap.appendChild(btn);
+      // ปุ่ม "อ่านข้อมูล" — พาไปอ่านการ์ดสรุปในแท็บ "อ่านก่อน" ของหัวข้อนี้
+      const studyId = studyCardIdForBank(b);
+      if (studyId) {
+        const readBtn = document.createElement("button");
+        readBtn.className = "bank-read"; readBtn.type = "button";
+        readBtn.innerHTML = '<span class="br-ic">📖</span><span>อ่านข้อมูล</span>';
+        readBtn.title = "อ่านสรุปและทริคของหัวข้อนี้";
+        readBtn.addEventListener("click", (e) => { e.stopPropagation(); openStudyCard(studyId); });
+        wrap.appendChild(readBtn);
+      }
+      (m.part === "ค" ? pc : pb).appendChild(wrap);
     });
 
     document.querySelectorAll("[data-nav]").forEach((b) => b.addEventListener("click", () => {
