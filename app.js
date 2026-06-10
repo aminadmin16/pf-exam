@@ -66,7 +66,8 @@
   let currentFeedback = "instant";
   let currentSource = "all";   // all = รวมข้อเก็ง 2569, real = เฉพาะข้อสอบจริง
   let currentSubjectCount = 30; // จำนวนข้อเมื่อฝึกแยกรายวิชา (20/30/40/50)
-  let currentYearScope = "full"; // ข้อสอบจริงแยกปี: full | 20/30/40/50 | s_analytical/s_ethics/s_english
+  let currentYearAmount = "full"; // ข้อสอบจริงแยกปี: จำนวน full | 20/30/40/50
+  let currentYearSubjects = new Set(["analytical", "ethics", "english"]); // วิชาที่เลือก (ค่าเริ่มต้น = ทั้งหมด)
   let timerInterval = null;
   let reviewFilter = "all";
   let lastResult = null;
@@ -102,11 +103,24 @@
     try { localStorage.setItem("kp_theme", t); } catch (e) {}
     document.querySelectorAll("[data-theme-set]").forEach((b) => b.classList.toggle("active", b.getAttribute("data-theme-set") === t));
   }
+  const THEME_ORDER = ["light", "dark", "reading"];
+  const THEME_ICON = { light: "☀️", dark: "🌙", reading: "📖" };
+  const THEME_LABEL = { light: "☀️ โหมดสว่าง", dark: "🌙 โหมดมืด", reading: "📖 โหมดอ่าน (โทนอุ่น)" };
+  function currentTheme() { return document.documentElement.getAttribute("data-theme") || "light"; }
+  function syncQuizThemeIcon() { const b = $("quiz-theme"); if (b) b.textContent = THEME_ICON[currentTheme()] || "🎨"; }
+  function cycleQuizTheme() {  // ปุ่มเปลี่ยนธีมในหน้าทำข้อสอบ → วน สว่าง→มืด→อ่าน
+    const next = THEME_ORDER[(THEME_ORDER.indexOf(currentTheme()) + 1) % THEME_ORDER.length];
+    applyTheme(next); syncQuizThemeIcon(); toast(THEME_LABEL[next]);
+  }
 
   /* ---------- ป๊อปอัปยืนยัน (แทน confirm ของระบบ) ---------- */
-  function showConfirm(msg, onOk) {
+  function showConfirm(msg, onOk, opts) {
+    opts = opts || {};
     $("cf-msg").textContent = msg;
+    $("cf-ic").textContent = opts.icon || "❓";
     const m = $("confirm-modal"), ok = $("cf-ok"), cancel = $("cf-cancel");
+    ok.innerHTML = opts.okHtml || escapeHtml(opts.okText || "ยืนยัน");
+    cancel.innerHTML = opts.cancelHtml || escapeHtml(opts.cancelText || "ยกเลิก");
     const close = () => { m.classList.remove("show"); ok.onclick = null; cancel.onclick = null; };
     ok.onclick = () => { close(); if (onOk) onOk(); };
     cancel.onclick = close;
@@ -120,7 +134,7 @@
     if (NAV_SCREENS[id]) { nav.style.display = "flex"; document.querySelectorAll(".nav-btn").forEach((b) => b.classList.toggle("active", b.getAttribute("data-nav") === NAV_SCREENS[id])); }
     else nav.style.display = "none";
     const fab = $("theme-fab"); if (fab) fab.style.display = (id === "screen-quiz") ? "none" : "";
-    if (id === "screen-quiz") hideDlBanner();   // เริ่มทำข้อสอบแล้ว เก็บแบนเนอร์ชวนโหลดแอป
+    if (id === "screen-quiz") { hideDlBanner(); syncQuizThemeIcon(); }   // เริ่มทำข้อสอบแล้ว เก็บแบนเนอร์ชวนโหลดแอป + อัปไอคอนปุ่มธีม
     const tm = $("theme-menu"); if (tm) tm.classList.remove("show");
     window.scrollTo({ top: 0, behavior: "auto" });
   }
@@ -216,36 +230,45 @@
         : mode === "predicted" ? "ข้อสอบเก็ง 2569 (คาดการณ์)" : "ข้อสอบเสมือนจริง (ครบทุกวิชา)";
     initSession();
   }
-  function startYear(year, scope) {
-    // ข้อสอบจริงแยกปี — เลือกได้: เต็มทั้งปี / สุ่ม N ข้อ / เจาะวิชาเดียว
-    scope = scope || currentYearScope;
-    const yp = (sub) => window.QUESTIONS.filter((q) => !q.predicted && q.year === year && (!sub || q.subject === sub));
-    state.year = year; state.yearScope = scope; state.bankId = null; state.positionId = null; state.weakSource = null; state.level = currentLevel; state.feedback = currentFeedback;
-    if (scope.indexOf("s_") === 0) {                 // เจาะวิชาเดียวของปีนั้น → สรุปแบบรายวิชา
-      const sub = scope.slice(2);
+  function bounceYearHint() {  // เด้งดึงความสนใจให้ผู้ใช้เลือกรูปแบบ/วิชาใหม่
+    const cp = $("count-pick"); if (!cp) return;
+    cp.classList.remove("bounce"); void cp.offsetWidth; cp.classList.add("bounce");
+  }
+  function startYear(year, amountOverride, subjectsOverride) {
+    // ข้อสอบจริงแยกปี — เลือกจำนวน (เต็ม/สุ่ม N) + วิชาที่ออก (หลายวิชา) · ใช้เฉพาะข้อสอบจริง
+    const amount = amountOverride || currentYearAmount;
+    const subjSet = subjectsOverride ? new Set(subjectsOverride) : currentYearSubjects;
+    const subjects = window.SUBJECT_ORDER.filter((k) => subjSet.has(k));
+    if (!subjects.length) { toast("เลือกอย่างน้อย 1 วิชาก่อนนะ"); bounceYearHint(); return; }
+    const yq = (sub) => window.QUESTIONS.filter((q) => !q.predicted && q.year === year && q.subject === sub);
+    const allPool = window.QUESTIONS.filter((q) => !q.predicted && q.year === year && subjects.indexOf(q.subject) >= 0);
+    if (!allPool.length) { toast("ปี " + year + " ยังไม่มีข้อสอบจริงในวิชาที่เลือก — เลือกรูปแบบใหม่นะ"); bounceYearHint(); return; }
+    state.year = year; state.yearAmount = amount; state.yearSubjects = subjects.slice();
+    state.bankId = null; state.positionId = null; state.weakSource = null; state.level = currentLevel; state.feedback = currentFeedback;
+    if (amount !== "full") {                          // สุ่ม N ข้อ จากวิชาที่เลือก — ถ้ามีไม่ถึง ให้เด้งเลือกใหม่
+      const N = parseInt(amount, 10);
+      if (allPool.length < N) { toast("ปี " + year + " มีข้อสอบจริงในวิชาที่เลือกไม่ถึง " + N + " ข้อ — เลือกรูปแบบใหม่นะ"); bounceYearHint(); return; }
+      state.kind = "kp"; state.mode = "year-sample"; state.subjectKey = null; state.count = N;
+      state.questions = shuffle(allPool).slice(0, N).map(prepare);
+      state.title = "ข้อสอบจริง ปี " + year + " — " + N + " ข้อ";
+    } else if (subjects.length === 1) {              // เต็ม + วิชาเดียว → สรุปแบบรายวิชา
+      const sub = subjects[0];
       state.kind = "kp"; state.mode = "year-subject"; state.subjectKey = sub; state.count = null;
-      let pool = shuffle(yp(sub));
+      let pool = shuffle(yq(sub));
       pool = sub === "analytical" ? orderByAnalyticalCat(pool) : sub === "english" ? orderByEnglishCat(pool) : pool;
-      if (!pool.length) { toast("ยังไม่มีข้อสอบวิชานี้ของปี " + year); return; }
       state.questions = pool.map(prepare);
       state.title = "ข้อสอบจริง ปี " + year + " — " + window.SUBJECTS[sub].name;
-    } else if (/^\d+$/.test(scope)) {                // สุ่ม N ข้อ คละวิชาของปีนั้น → สรุปตามที่สุ่มมา
-      state.kind = "kp"; state.mode = "year-sample"; state.subjectKey = null; state.count = parseInt(scope, 10);
-      const pool = shuffle(yp(null)).slice(0, parseInt(scope, 10));
-      if (!pool.length) { toast("ยังไม่มีข้อสอบจริงของปี " + year); return; }
-      state.questions = pool.map(prepare);
-      state.title = "ข้อสอบจริง ปี " + year + " — สุ่ม " + state.questions.length + " ข้อ";
-    } else {                                         // เต็มทั้งปี (เสมือนจริง ภาค ก) → สรุป 3 วิชา
+    } else {                                         // เต็ม + หลายวิชา → สรุปแบบตาราง ก.พ.
       state.kind = "kp"; state.mode = "year"; state.subjectKey = null; state.count = null;
       const bp = window.EXAM_BLUEPRINT || { analytical: 50, ethics: 25, english: 25 };
       let set = [];
       window.SUBJECT_ORDER.forEach((k) => {
-        const all = yp(k), picked = shuffle(all).slice(0, Math.min(bp[k] || all.length, all.length));
+        if (!subjSet.has(k)) return;
+        const picked = shuffle(yq(k)).slice(0, Math.min(bp[k] || 999, yq(k).length));
         set = set.concat(k === "analytical" ? orderByAnalyticalCat(picked) : k === "english" ? orderByEnglishCat(picked) : picked);
       });
-      if (!set.length) { toast("ยังไม่มีข้อสอบจริงของปี " + year); return; }
       state.questions = set.map(prepare);
-      state.title = "ข้อสอบจริง ปี " + year + " (เต็มทั้งปี)";
+      state.title = "ข้อสอบจริง ปี " + year + (subjects.length === window.SUBJECT_ORDER.length ? " (เต็มทั้งปี)" : " — " + subjects.map((s) => window.SUBJECTS[s].name).join(" + "));
     }
     initSession();
   }
@@ -285,28 +308,28 @@
 
   /* ---------- คำใบ้ (ไกด์) รายข้อ — มีทุกหมวด ทุกข้อ ---------- */
   const HINT_BY_TOPIC = {
-    "อนุกรม": "หาความสัมพันธ์ของพจน์ที่ติดกัน (บวก ลบ คูณ หาร หรือยกกำลัง) ถ้าไม่เข้าให้ลองสลับฟันปลาทีละ 2 ชั้น หรือแยกตำแหน่งคี่/คู่",
-    "อนุกรมตัวเลข": "หาความสัมพันธ์ของตัวเลขที่ติดกัน (บวก ลบ คูณ หาร หรือยกกำลัง) บางชุดสลับฟันปลาทีละ 2 ชั้น",
-    "อนุกรมตัวอักษร": "แปลงตัวอักษรเป็นลำดับที่ (ก=1, ข=2 / A=1) แล้วหาแพทเทิร์นเหมือนอนุกรมตัวเลข",
-    "อนุกรมตัวเลขหลายชุด": "ลองแยกตำแหน่งคี่/คู่ออกจากกัน อาจเป็นคนละแพทเทิร์น",
-    "เงื่อนไขสัญลักษณ์": "แปลงสัญลักษณ์เป็นเครื่องหมาย >,<,=,≥,≤ แล้วไล่เชื่อมโยงทีละทอด ระวังเครื่องหมายผสม",
-    "เงื่อนไขภาษา": "จัดกลุ่มเงื่อนไขเป็นตาราง/ผัง แล้วเลือกข้อที่ 'จริงแน่นอน' เท่านั้น",
-    "การวิเคราะห์ข้อมูลจากตาราง": "อ่านหัวตารางและหน่วยให้ชัด คำนวณเฉพาะช่องที่โจทย์ถาม อย่าเผลอรวมทั้งหมด",
-    "การวิเคราะห์ข้อมูล": "ดูแนวโน้ม ผลรวม และร้อยละจากข้อมูลที่ให้ เทียบเฉพาะสิ่งที่ถาม",
-    "อุปมาอุปไมย": "หา 'ความสัมพันธ์' ของคู่แรกก่อน (หน้าที่/ประเภท/ส่วนประกอบ) แล้วหาคู่หลังที่สัมพันธ์แบบเดียวกัน",
-    "การสรุปเหตุผล": "ดูว่าข้อสรุปตามมาจากเงื่อนไขที่ให้จริงไหม ระวังคำว่า 'ทั้งหมด/บางส่วน'",
-    "ตรรกศาสตร์": "ใช้หลัก ถ้า-แล้ว และนิเสธให้ครบ ระวังการสลับเหตุกับผล",
-    "ภาษาไทย: การจับใจความ": "อ่านคำถามก่อนแล้วค่อยกวาดหาคำตอบในบทความ ระวังตัวเลือกที่ 'จริงแต่ไม่ตรงคำถาม'",
-    "ภาษาไทย: การตีความเชิงวิเคราะห์": "จับเจตนาและน้ำเสียงของผู้เขียน ไม่ใช่แค่ความหมายตรงตัว",
-    "ภาษาไทย: การเรียงประโยค": "หาประโยคเปิด (ใจความหลัก) ก่อน แล้วไล่ตามเหตุ-ผล/ลำดับเวลา",
-    "ภาษาไทย: เรียงลำดับประโยค": "หาประโยคเปิดก่อน แล้วเชื่อมด้วยคำเชื่อม (ดังนั้น เพราะ ต่อมา)",
-    "ภาษาไทย: การใช้ภาษา": "เลือกคำให้ถูกตามบริบทและระดับภาษา ระวังคำฟุ่มเฟือย/กำกวม",
-    "ภาษาไทย: คำและสำนวน": "นึกถึงความหมายโดยนัยของสำนวน ไม่ใช่ความหมายตรงตัว",
-    "ภาษาไทย: สำนวน": "สำนวนเน้นความหมายแฝง ลองแทนสถานการณ์จริงดู",
-    "ภาษาไทย: สำนวนสุภาษิต": "จับใจความสอนใจของสุภาษิต แล้วจับคู่กับสถานการณ์",
-    "ภาษาไทย: การสะกดคำ": "ระวังการันต์ สระ และตัวสะกดมาตราเดียวกัน"
+    "อนุกรม": "ใจเย็นๆ นะ ดูทีละคู่ที่ติดกันก่อน ว่าจากตัวหนึ่งไปอีกตัวต้อง +, −, × หรือ ÷ ด้วยเท่าไร · ถ้ารูปแบบยังไม่นิ่ง ลองสองทางนี้: (1) แยกตำแหน่งคี่กับคู่ออกเป็น 2 ชุด (2) ดู 'ผลต่างของผลต่าง' อีกชั้น แล้วค่อยทดตัวถัดไป",
+    "อนุกรมตัวเลข": "ดูทีละคู่ว่าบวก/ลบ/คูณ/หารด้วยเท่าไร ค่อยๆ ทดข้างๆ ไว้ · บางชุดสลับฟันปลา 2 ชั้น หรือแยกตำแหน่งคี่-คู่ ลองทั้งสองแบบก่อนตัดสินใจ",
+    "อนุกรมตัวอักษร": "เปลี่ยนตัวอักษรเป็นเลขลำดับก่อน (ก=1, ข=2 ... หรือ A=1, B=2) แล้วทำเหมือนอนุกรมตัวเลขที่เราถนัด พอได้เลขแล้วค่อยแปลงกลับเป็นตัวอักษร",
+    "อนุกรมตัวเลขหลายชุด": "เคล็ดลับคือ 'แยกร่าง' พจน์ตำแหน่งคี่กับคู่ออกจากกัน เพราะมักเป็นคนละแพทเทิร์น แล้วดูทีละชุดจะง่ายขึ้นเยอะ",
+    "เงื่อนไขสัญลักษณ์": "แปลงสัญลักษณ์ทุกตัวเป็นเครื่องหมาย >, <, = ก่อน แล้ว 'ต่อเป็นสายโซ่เดียว' เช่น A>B>C จากนั้นอ่านปลายทั้งสองข้าง · จำไว้ว่า = ใช้แทนค่ากันได้ และเลือกเฉพาะข้อที่ 'จริงแน่นอน' เท่านั้น",
+    "เงื่อนไขภาษา": "ค่อยๆ จดเงื่อนไขเป็นผังหรือสายโซ่ก่อน แล้วถามตัวเองว่าข้อสรุปนี้ 'จริงเสมอ' ไหม · ระวังการสรุปย้อนกลับ และคำว่า 'ทุก/บาง' ให้ดี",
+    "การวิเคราะห์ข้อมูลจากตาราง": "อ่านหัวตารางและ 'หน่วย' ให้ชัดก่อนคิดเลข · คำนวณเฉพาะช่องที่โจทย์ถามจริงๆ อย่าเผลอรวมทั้งตาราง แนะนำให้วงสูงสุด-ต่ำสุดไว้ก่อน",
+    "การวิเคราะห์ข้อมูล": "ดูแนวโน้ม ผลรวม และร้อยละจากข้อมูลที่ให้ · เทียบเฉพาะสิ่งที่โจทย์ถาม แล้วตัดข้อมูลที่ไม่เกี่ยวออกไป จะได้ไม่สับสน",
+    "อุปมาอุปไมย": "พูดความสัมพันธ์ของคู่แรกออกมาเป็นประโยคสั้นๆ ก่อน เช่น 'A ใช้สำหรับ B' หรือ 'A เป็นที่ทำงานของ B' · แล้วเอาประโยคนั้นไปทาบกับคู่หลัง ข้อไหนเข้ารูปประโยคเดียวกันคือคำตอบ",
+    "การสรุปเหตุผล": "เช็กว่าข้อสรุปไหลออกมาจากเงื่อนไขที่ให้จริงไหม · ระวังคำว่า 'ทั้งหมด/บางส่วน' และอย่าเอาความรู้นอกโจทย์มาตัดสิน ใช้เฉพาะที่โจทย์บอก",
+    "ตรรกศาสตร์": "ใช้หลัก 'ถ้า–แล้ว' ให้ครบ และระวังกับดักการสลับเหตุกับผล (ถ้า A→B ไม่ได้แปลว่า B→A) ค่อยๆ ไล่ทีละขั้นนะ",
+    "ภาษาไทย: การจับใจความ": "อ่านคำถามก่อน แล้วค่อยกลับไปกวาดหาคำตอบในบทความ · กับดักที่เจอบ่อยคือตัวเลือกที่ 'จริงแต่ไม่ตรงคำถาม' ให้ยึดสิ่งที่โจทย์ถามเป็นหลัก",
+    "ภาษาไทย: การตีความเชิงวิเคราะห์": "มองให้ลึกกว่าความหมายตรงตัว จับ 'เจตนา' และ 'น้ำเสียง' ของผู้เขียนว่าชม ติ เตือน หรือเสนอแนะ",
+    "ภาษาไทย: การเรียงประโยค": "หา 'ประโยคเปิด' ที่เป็นใจความหลักก่อน แล้วไล่ต่อตามเหตุ→ผล หรือลำดับเวลา · สังเกตคำเชื่อม (ดังนั้น เพราะ ต่อมา) เป็นตัวช่วยจัดลำดับ",
+    "ภาษาไทย: เรียงลำดับประโยค": "เริ่มจากประโยคที่เป็น 'จุดเริ่ม' ก่อน แล้วโยงด้วยคำเชื่อม (ดังนั้น เพราะ ต่อมา จึง) ไปทีละขั้นจนครบ",
+    "ภาษาไทย: การใช้ภาษา": "เลือกคำให้เข้ากับบริบทและระดับภาษา · ระวังคำฟุ่มเฟือย ซ้ำซ้อน และความกำกวม อ่านทวนทั้งประโยคว่าฟังลื่นไหม",
+    "ภาษาไทย: คำและสำนวน": "สำนวนไม่ได้แปลตรงตัวนะ ให้ถามว่า 'สอนเรื่องอะไรในชีวิตจริง' แล้วจับคู่กับตัวเลือกที่ความหมายตรงกัน",
+    "ภาษาไทย: สำนวน": "สำนวนเน้นความหมายแฝง ลองนึกภาพสถานการณ์จริงที่ใช้สำนวนนั้น แล้วเทียบกับตัวเลือก",
+    "ภาษาไทย: สำนวนสุภาษิต": "จับ 'ข้อคิดสอนใจ' ของสุภาษิตให้ได้ก่อน แล้วค่อยจับคู่กับสถานการณ์ในตัวเลือก",
+    "ภาษาไทย: การสะกดคำ": "ดูทีละตัวอย่างใจเย็น ระวังการันต์ สระ และตัวสะกดมาตราเดียวกัน (เช่น น/ณ, ส/ศ/ษ) ที่ออกเสียงเหมือนกันแต่เขียนต่างกัน"
   };
-  const HINT_MATH = "ตั้งสมการจากสิ่งที่โจทย์ให้ ระวังหน่วยและคำว่า 'มากกว่า/น้อยกว่า/ของ' แล้วแทนค่ากลับไปตรวจ";
+  const HINT_MATH = "ค่อยๆ อ่านโจทย์ให้ครบก่อนนะ แล้วตั้งตัวแปร/สมการจากสิ่งที่โจทย์ให้ · ระวังหน่วยและคำว่า 'มากกว่า/น้อยกว่า/ของ/เป็นเท่าตัว' · ได้คำตอบแล้วอย่าลืมแทนค่ากลับไปตรวจอีกครั้ง";
   const HINT_ENG = {
     "Grammar & Structure": "ดูโครงสร้างประโยคและ tense ที่ช่องว่างต้องการ ตัดตัวเลือกที่ผิดรูปออกก่อน",
     "Grammar: Tense": "ดูคำบอกเวลา (yesterday, since, already) เพื่อเลือก tense ให้ถูก",
@@ -341,6 +364,16 @@
     if (q.subject === "english") return HINT_ENG[t] || "อ่านบริบทรอบช่องว่าง ตัดตัวเลือกที่ผิดไวยากรณ์/ความหมายออกก่อน";
     if (q.subject === "ethics") return "ยึดหลักธรรมาภิบาล จริยธรรมข้าราชการ และประโยชน์ส่วนรวมเป็นที่ตั้ง";
     return "อ่านโจทย์ให้ครบ จับคีย์เวิร์ด แล้วตัดตัวเลือกที่ไม่เกี่ยวออกทีละข้อ";
+  }
+  // ทริค/วิธีคิดสำหรับ "หัวข้อ" (ใช้ในหน้าสรุปผล: อ่านเสริมก่อนทดสอบเรื่องที่ควรเสริม)
+  function tipForTopic(t) {
+    if (!t) return "ทบทวนหลักการสำคัญของเรื่องนี้ แล้วลองจับคีย์เวิร์ดในโจทย์ ตัดตัวเลือกที่ไม่เข้าหลักการออกทีละข้อนะ";
+    if (HINT_BY_TOPIC[t]) return HINT_BY_TOPIC[t];
+    if (HINT_ENG[t]) return HINT_ENG[t];
+    if (t.indexOf("คณิตศาสตร์") === 0 || ["ร้อยละ", "กำไร-ขาดทุน", "ค่าเฉลี่ย", "อัตราเร็ว", "โจทย์อายุ", "อัตราส่วน"].indexOf(t) !== -1) return HINT_MATH;
+    if (HINT_BY_BANK[t]) return HINT_BY_BANK[t];
+    if (/อังกฤษ|English|Grammar|Vocab|Reading|Conversation/i.test(t)) return "อ่านบริบทรอบช่องว่าง/คีย์เวิร์ดในบทความ ตัดตัวเลือกที่ผิดไวยากรณ์หรือความหมายออกก่อน แล้วเทียบที่เหลือ";
+    return "ทบทวนหลักการสำคัญของเรื่องนี้ แล้วจับคีย์เวิร์ดในโจทย์ ตัดตัวเลือกที่ขัดหลักการออกทีละข้อ จะเหลือคำตอบที่ชัดขึ้นนะ";
   }
   function toggleHint() { const p = $("hint-pop"), b = $("hint-btn"); const show = !p.classList.contains("show"); p.classList.toggle("show", show); b.classList.toggle("active", show); }
 
@@ -385,7 +418,6 @@
     $("hint-pop").textContent = hintFor(q); $("hint-pop").classList.remove("show"); $("hint-btn").classList.remove("active");
 
     renderChoices();
-    $("btn-prev").disabled = idx === 0; $("btn-next-top").disabled = idx === total - 1;
     $("btn-prev2").disabled = idx === 0;
 
     const examMode = state.feedback === "end";
@@ -422,13 +454,15 @@
     const i = state.current, answered = state.answers[i] !== null, rev = state.revealed[i];
     const locked = !answered && !rev;
     be.classList.toggle("locked", locked);
-    be.disabled = locked;   // ยังไม่ตอบ → กดไม่ได้จริง ๆ
-    be.textContent = rev ? "ซ่อนเฉลย ⌄" : (answered ? "อ่านเฉลยละเอียด ⌃" : "🔒 ตอบคำถามก่อน จึงจะดูเฉลยได้");
+    be.classList.toggle("revealed", rev);          // เฉลยเปิดแล้ว → ปุ่มเป็นสถานะแสดงผล (กดยุบไม่ได้)
+    be.disabled = locked || rev;                    // ยังไม่ตอบ หรือ เปิดเฉลยแล้ว → กดไม่ได้
+    be.textContent = rev ? "ดูเฉลย" : (answered ? "อ่านเฉลยละเอียด ⌃" : "🔒 ตอบคำถามก่อน จึงจะดูเฉลยได้");
   }
   function toggleExplanation() {
     const i = state.current;
     if (state.answers[i] === null) { toast("เลือกคำตอบก่อน แล้วจึงดูเฉลยได้"); return; }
-    state.revealed[i] = !state.revealed[i]; renderQuiz();
+    if (state.revealed[i]) return;                  // เปิดเฉลยแล้ว → ดูได้อย่างเดียว ยุบกลับไม่ได้
+    state.revealed[i] = true; renderQuiz();
   }
   function go(d) { const n = state.current + d; if (n < 0 || n >= state.questions.length) return; state.current = n; renderQuiz(); }
   function onNext() {
@@ -506,7 +540,12 @@
     const sum = $("screen-summary");
     sum.classList.add("loading");          // เข้าหน้าสรุปเลย แล้วโชว์เป็นเงา + สปินเนอร์บนหน้าเดียวกัน
     showScreen("screen-summary");
-    setTimeout(() => { sum.classList.remove("loading"); animateSummary(); }, 1200);  // หมดเวลา → เฉลย + อนิเมชั่นวิ่ง
+    setTimeout(() => {
+      sum.classList.remove("loading");
+      const banner = $("overall-banner");
+      if (banner) { banner.classList.remove("pop"); void banner.offsetWidth; banner.classList.add("pop"); }  // การ์ดผลรวมเด้งขึ้นมาแล้วลอยกลับเข้าที่
+      setTimeout(animateSummary, 620);     // รอการ์ดเด้งเข้าที่ก่อน แล้วค่อยเล่นอนิเมชั่นสรุปผล (ตัวเลข/กราฟ)
+    }, 1400);                              // loading 1400ms ก่อนเข้าหน้าสรุปผล
   }
 
   function renderSummary(res) {
@@ -593,12 +632,59 @@
     const row = (x, cls) => '<div class="ana-item"><div class="ana-top"><span>' + escapeHtml(x.topic) + '</span><b class="' + cls + '">' + x.pct + "% (" + x.correct + "/" + x.total + ")</b></div><div class=\"ana-bar\"><i class=\"" + cls + "\" style=\"width:0\" data-w=\"" + x.pct + "\"></i></div></div>";
     $("ana-strong").innerHTML = ana.strong.length ? ana.strong.slice(0, 6).map((x) => row(x, "good")).join("") : '<div class="ana-empty">— ยังไม่มีหัวข้อที่ทำได้ ≥ 80%</div>';
     $("ana-weak").innerHTML = ana.weak.length ? ana.weak.slice(0, 6).map((x) => row(x, "bad")).join("") : '<div class="ana-empty">— ไม่มีเรื่องที่ต้องเสริมเพิ่ม เยี่ยมมาก!</div>';
-    const reco = $("ana-reco"), btn = $("btn-weak");
+    const reco = $("ana-reco"), btn = $("btn-weak"), tbtn = $("btn-weak-trick");
     if (ana.targets.length) {
-      reco.innerHTML = "เรื่องที่ยังควรเสริมให้ดีขึ้น: <b>" + ana.targets.slice(0, 5).map(escapeHtml).join(", ") + "</b><br>อยากลองทบทวนเรื่องเหล่านี้ให้แน่นขึ้นไหม?";
+      reco.innerHTML = "เรื่องที่ยังควรเสริมให้ดีขึ้น: <b>" + ana.targets.slice(0, 5).map(escapeHtml).join(", ") + "</b><br>ลองอ่านทริคเสริมก่อน แล้วค่อยไปทดสอบจะแม่นขึ้นนะ";
       btn.style.display = ""; btn.textContent = "📝 ทดสอบเรื่องที่ยังควรเสริม (" + ana.targets.length + " เรื่อง)";
-    } else { reco.innerHTML = "🎉 เก่งมาก! คุณทำได้ดีในทุกหัวข้อ ลองทำชุดใหม่เพื่อรักษาฟอร์มได้เลย"; btn.style.display = "none"; }
+      if (tbtn) tbtn.style.display = "";
+    } else { reco.innerHTML = "🎉 เก่งมาก! คุณทำได้ดีในทุกหัวข้อ ลองทำชุดใหม่เพื่อรักษาฟอร์มได้เลย"; btn.style.display = "none"; if (tbtn) tbtn.style.display = "none"; }
   }
+  /* อ่านทริคเสริมก่อนทดสอบเรื่องที่ควรเสริม (หน้าสรุปผล) */
+  function startWeakTest() {
+    if (!lastResult || !lastResult.topics.targets.length) return;
+    const baseline = {};
+    (lastResult.topics.all || []).forEach((x) => { baseline[x.topic] = { pct: x.pct, correct: x.correct, total: x.total }; });
+    const b = {};
+    lastResult.topics.targets.forEach((t) => { if (baseline[t]) b[t] = baseline[t]; });
+    startWeakFrom({ topics: lastResult.topics.targets, kind: lastResult.kind, bankId: state.bankId, baseline: b });
+  }
+  // จับคู่ "หัวข้อที่อ่อน" -> การ์ดเนื้อหาในแท็บอ่านก่อน (เพื่อให้อ่านบทเรียนจริง ไม่ใช่ทริคสั้น ๆ)
+  function cardIdForTopic(t) {
+    if (!t) return null;
+    if (t.indexOf("อนุกรม") === 0) return "ga-series";
+    if (/ห\.ร\.ม\.|ค\.ร\.น\./.test(t)) return "hrm-krn";
+    if (t.indexOf("คณิตศาสตร์") === 0 || ["ร้อยละ", "กำไร-ขาดทุน", "ค่าเฉลี่ย", "อัตราส่วน", "อัตราเร็ว", "โจทย์อายุ"].indexOf(t) !== -1) return "ga-mathgen";
+    if (t.indexOf("การวิเคราะห์ข้อมูล") === 0 || t.indexOf("ตาราง") !== -1) return "ga-table";
+    if (t.indexOf("อุปมา") === 0) return "ga-analogy";
+    if (t.indexOf("เงื่อนไขสัญลักษณ์") === 0) return "ga-symbol";
+    if (t.indexOf("เงื่อนไขภาษา") === 0) return "ga-verbal";
+    if (t.indexOf("เรียงประโยค") !== -1 || t.indexOf("เรียงลำดับประโยค") !== -1) return "ga-order";
+    if (t.indexOf("ภาษาไทย") === 0) return "ga-thairead";
+    if (t.indexOf("Conversation") === 0) return "ga-conversation";
+    if (t.indexOf("Grammar") === 0) return "ga-grammar";
+    if (t.indexOf("Vocabulary") === 0) return "ga-vocab";
+    if (t.indexOf("Reading") === 0) return "ga-reading";
+    if (/จริยธรรม|ธรรมาภิบาล|ข้าราชการ|เศรษฐกิจพอเพียง|ราชการแผ่นดิน|ปกครอง|ละเมิด|ผลประโยชน์|จิตสาธารณะ/.test(t)) return "law";
+    return null;
+  }
+  function openWeakTricks() {
+    if (!lastResult || !lastResult.topics.targets.length) return;
+    const seen = {}; let html = "";
+    lastResult.topics.targets.forEach((t) => {
+      const cid = cardIdForTopic(t);
+      const card = cid ? studyCardById(cid) : null;
+      if (card) {
+        if (seen[cid]) return;
+        seen[cid] = true;
+        html += '<div class="wt-lesson"><div class="wt-lesson-h"><span class="wt-ic">' + card.icon + '</span><span>' + escapeHtml(card.title) + '</span></div><div class="study-inner wt-lesson-body">' + studyBlocksHtml(card.blocks) + "</div></div>";
+      } else {
+        html += '<div class="wt-item"><div class="wt-topic">📌 ' + escapeHtml(t) + '</div><div class="wt-tip">💡 ' + escapeHtml(tipForTopic(t)) + "</div></div>";
+      }
+    });
+    $("wt-body").innerHTML = html || '<div class="ana-empty">— ไม่มีเนื้อหาที่ต้องเสริม</div>';
+    $("weak-trick-modal").classList.add("show");
+  }
+  function closeWeakTricks() { $("weak-trick-modal").classList.remove("show"); }
 
   /* ============================================================
      ประวัติ
@@ -753,22 +839,48 @@
 
     host.querySelectorAll("[data-libtoggle]").forEach((btn) => btn.addEventListener("click", () => btn.parentElement.classList.toggle("open")));
   }
+  function studyBlocksHtml(blocks) {
+    let inner = "";
+    (blocks || []).forEach((b) => {
+      if (b.trick) inner += '<div class="study-trick">💡 ' + fmtNote(b.trick) + "</div>";
+      else if (b.ref) inner += '<div class="study-ref"><div class="sr-cite">📚 ' + fmtNote(b.ref.cite || "") + '</div><div class="sr-by">อ้างอิง: <b>' + escapeHtml(b.ref.by || "") + "</b></div>" + (b.ref.url ? '<a class="sr-link" href="' + escapeHtml(b.ref.url) + '" target="_blank" rel="noopener">🔗 ไปที่แหล่งข้อมูลอ้างอิงจริง</a>' : "") + "</div>";
+      else if (b.p) inner += '<p class="study-p">' + fmtNote(b.p) + "</p>";
+      else if (b.h) inner += '<div class="study-h">' + fmtNote(b.h) + '</div><ul class="study-ul">' + (b.points || []).map((p) => "<li>" + fmtNote(p) + "</li>").join("") + "</ul>";
+    });
+    return inner;
+  }
+  function studyCardById(id) { return (window.STUDY_NOTES || []).find((n) => n.id === id) || null; }
+  const STUDY_GROUPS = [
+    { key: "intro", title: "📌 เริ่มที่นี่ — ภาพรวม & ผังสอบ" },
+    { key: "analytical", title: "🧮 วิชาคิดวิเคราะห์ (50 ข้อ)" },
+    { key: "english", title: "🔤 ภาษาอังกฤษ (25 ข้อ)" },
+    { key: "civil", title: "⚖️ ข้าราชการที่ดี & กฎหมาย ภาค ข/ค" },
+  ];
+  function studyGroupKey(n) {
+    const id = n.id || "";
+    if (id === "overview" || id === "blueprint") return "intro";
+    if (/^law-/.test(id) || id === "law" || id === "interview") return "civil";
+    if (n.tag === "ภาษาอังกฤษ") return "english";
+    return "analytical";
+  }
   function renderStudy() {
     fillLibStats();
     renderLibraryGroups();
     const body = $("study-body"); body.innerHTML = "";
-    (window.STUDY_NOTES || []).forEach((n) => {
-      const card = document.createElement("div");
-      card.className = "study-card" + (n.pinned ? " open" : "");
-      let inner = "";
-      (n.blocks || []).forEach((b) => {
-        if (b.trick) inner += '<div class="study-trick">💡 ' + fmtNote(b.trick) + "</div>";
-        else if (b.p) inner += '<p class="study-p">' + fmtNote(b.p) + "</p>";
-        else if (b.h) inner += '<div class="study-h">' + fmtNote(b.h) + '</div><ul class="study-ul">' + (b.points || []).map((p) => "<li>" + fmtNote(p) + "</li>").join("") + "</ul>";
+    STUDY_GROUPS.forEach((g) => {
+      const cards = (window.STUDY_NOTES || []).filter((n) => studyGroupKey(n) === g.key);
+      if (!cards.length) return;
+      const gh = document.createElement("div");
+      gh.className = "study-group-head sg-" + g.key;
+      gh.innerHTML = "<span>" + g.title + "</span><i>" + cards.length + " เรื่อง</i>";
+      body.appendChild(gh);
+      cards.forEach((n) => {
+        const card = document.createElement("div");
+        card.className = "study-card" + (n.pinned ? " open" : "");
+        card.innerHTML = '<button class="study-head"><span class="sh-ic">' + n.icon + '</span><span class="sh-t">' + escapeHtml(n.title) + "</span>" + (n.tag ? '<span class="sh-tag">' + escapeHtml(n.tag) + "</span>" : "") + '<span class="sh-arrow">⌄</span></button><div class="study-inner">' + studyBlocksHtml(n.blocks) + "</div>";
+        card.querySelector(".study-head").addEventListener("click", () => card.classList.toggle("open"));
+        body.appendChild(card);
       });
-      card.innerHTML = '<button class="study-head"><span class="sh-ic">' + n.icon + '</span><span class="sh-t">' + escapeHtml(n.title) + "</span>" + (n.tag ? '<span class="sh-tag">' + escapeHtml(n.tag) + "</span>" : "") + '<span class="sh-arrow">⌄</span></button><div class="study-inner">' + inner + "</div>";
-      card.querySelector(".study-head").addEventListener("click", () => card.classList.toggle("open"));
-      body.appendChild(card);
     });
   }
 
@@ -833,13 +945,43 @@
   }
 
   /* ---------- นำทาง ---------- */
-  function confirmExit() { if (state.finished) { goHome(); return; } showConfirm("ต้องการออกจากการทำข้อสอบหรือไม่?\nความคืบหน้าจะไม่ถูกบันทึก", () => { stopTimer(); goHome(); }); }
+  // ไอคอนคนวิ่งออกประตู (วาดเองด้วย SVG) สำหรับปุ่ม "ออกเลย"
+  const EXIT_RUN_SVG = '<svg class="ic-exit" viewBox="0 0 28 24" width="22" height="19" aria-hidden="true">'
+    + '<g stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" fill="none">'
+    + '<circle cx="9.6" cy="4.2" r="2.3" fill="currentColor" stroke="none"/>'
+    + '<path d="M10.8 7.6 8 12.1"/><path d="M10 8.7 14.2 10.3"/><path d="M9.2 9.1 5.4 10.7"/>'
+    + '<path d="M8 12.1 10.5 17.6"/><path d="M8 12.1 4.4 15.9"/>'
+    + '<path d="M18.6 2.8H24.4V21.2H18.6"/>'
+    + '</g></svg>';
+  function confirmExit() { if (state.finished) { goHome(); return; } showConfirm("ต้องการออกจากการทำข้อสอบหรือไม่?\nความคืบหน้าจะไม่ถูกบันทึก", () => { stopTimer(); goHome(); }, { icon: "❓", okHtml: EXIT_RUN_SVG + "<span>ออกเลย</span>", cancelText: "ทำต่อ" }); }
   function goHome() { stopTimer(); showScreen("screen-home"); }
+
+  /* ====== ปุ่มย้อนกลับของระบบ (Android hardware back / ปุ่มกลับเบราว์เซอร์) ======
+     ดักไว้ ไม่ให้กดกลับแล้ว "เด้งออกแอป" ทันที — ให้ทำงานแบบย้อนในแอปแทน:
+     มี popup → ปิด popup · กำลังทำข้อสอบ → ถามยืนยันออก · หน้าย่อยอื่น → กลับหน้าแรก · อยู่หน้าแรก → ออกแอป */
+  function capApp() { try { return window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App; } catch (e) { return null; } }
+  function kpPushGuard() { try { history.pushState({ kpBack: 1 }, ""); } catch (e) {} }
+  function kpAnyOverlayOpen() { return document.querySelector(".modal-overlay.show") != null || ($("theme-menu") && $("theme-menu").classList.contains("show")); }
+  function kpCloseOverlays() { document.querySelectorAll(".modal-overlay.show").forEach((m) => m.classList.remove("show")); if ($("theme-menu")) $("theme-menu").classList.remove("show"); }
+  function kpActive(id) { const el = $(id); return el != null && el.classList.contains("active"); }
+  function onSystemBack() {
+    if (kpAnyOverlayOpen()) { kpCloseOverlays(); kpPushGuard(); return; }
+    if (kpActive("screen-quiz") && !state.finished) { confirmExit(); kpPushGuard(); return; }
+    if (!kpActive("screen-home")) { goHome(); kpPushGuard(); return; }
+    const App = capApp();
+    if (App && App.exitApp) App.exitApp(); else kpPushGuard();   // หน้าแรก: ออกแอป (Capacitor) / อยู่ต่อ (เว็บ)
+  }
+  function initBackHandler() {
+    kpPushGuard();                                   // วางสถานะกันชน ให้ปุ่มกลับครั้งแรกวิ่งเข้า handler ไม่ออกแอปทันที
+    window.addEventListener("popstate", onSystemBack);
+    const App = capApp();
+    try { if (App && App.addListener) App.addListener("backButton", onSystemBack); } catch (e) {}   // Android hardware back ผ่าน @capacitor/app (ถ้ามี)
+  }
   function retry() {
     if (state.mode === "weak" && state.weakSource) startWeakFrom(state.weakSource);
     else if (state.kind === "position") startPosition(state.positionId);
     else if (state.kind === "special") startSpecial(state.bankId);
-    else if (state.mode.indexOf("year") === 0) startYear(state.year, state.yearScope);
+    else if (state.mode.indexOf("year") === 0) startYear(state.year, state.yearAmount, state.yearSubjects);
     else startCore(state.mode, state.subjectKey, state.count);
   }
 
@@ -1024,8 +1166,16 @@
     document.querySelectorAll("[data-count]").forEach((el) => el.addEventListener("click", () => { currentSubjectCount = parseInt(el.getAttribute("data-count"), 10); document.querySelectorAll("[data-count]").forEach((b) => b.classList.toggle("active", b === el)); }));
     document.querySelectorAll("[data-subject]").forEach((el) => el.addEventListener("click", () => startCore("subject", el.getAttribute("data-subject"), currentSubjectCount)));
     $("toggle-years").addEventListener("click", () => $("year-pick").classList.toggle("show"));
-    document.querySelectorAll("[data-yscope]").forEach((el) => el.addEventListener("click", () => { currentYearScope = el.getAttribute("data-yscope"); document.querySelectorAll("[data-yscope]").forEach((b) => b.classList.toggle("active", b === el)); }));
-    document.querySelectorAll("[data-year]").forEach((el) => el.addEventListener("click", () => { const yr = parseInt(el.getAttribute("data-year"), 10); if (currentYearScope === "full") showBlueprint(function () { startYear(yr, "full"); }); else startYear(yr); }));
+    document.querySelectorAll("[data-yamount]").forEach((el) => el.addEventListener("click", () => { currentYearAmount = el.getAttribute("data-yamount"); document.querySelectorAll("[data-yamount]").forEach((b) => b.classList.toggle("active", b === el)); }));
+    document.querySelectorAll("[data-ysubject]").forEach((el) => el.addEventListener("click", () => {
+      const s = el.getAttribute("data-ysubject");
+      if (currentYearSubjects.has(s)) {
+        if (currentYearSubjects.size <= 1) { toast("ต้องเลือกอย่างน้อย 1 วิชานะ"); return; }   // ห้ามเอาออกจนหมด
+        currentYearSubjects.delete(s);
+      } else currentYearSubjects.add(s);
+      el.classList.toggle("checked", currentYearSubjects.has(s));
+    }));
+    document.querySelectorAll("[data-year]").forEach((el) => el.addEventListener("click", () => startYear(parseInt(el.getAttribute("data-year"), 10))));
 
     const pb = $("partB-pick"), pc = $("partC-pick");
     (window.SPECIAL_BANK_ORDER || []).forEach((b) => {
@@ -1046,39 +1196,39 @@
     $("posdetail-back").addEventListener("click", () => { renderPositions(); showScreen("screen-positions"); });
 
     $("btn-exit").addEventListener("click", confirmExit);
-    $("btn-prev").addEventListener("click", () => go(-1));
     $("btn-prev2").addEventListener("click", () => go(-1));
-    $("btn-next-top").addEventListener("click", () => go(1));
     $("btn-next").addEventListener("click", onNext);
+    { const qt = $("quiz-theme"); if (qt) qt.addEventListener("click", cycleQuizTheme); }
     $("btn-explain").addEventListener("click", toggleExplanation);
     $("btn-check").addEventListener("click", openCheck);
     $("hint-btn").addEventListener("click", toggleHint);
 
-    $("btn-review").addEventListener("click", () => { reviewFilter = "all"; syncFilterUI(); renderReview(); showScreen("screen-review"); });
-    $("btn-retry").addEventListener("click", retry);
-    $("btn-home").addEventListener("click", goHome);
-    $("btn-weak").addEventListener("click", () => {
-      if (!lastResult || !lastResult.topics.targets.length) return;
-      const baseline = {};
-      (lastResult.topics.all || []).forEach((x) => { baseline[x.topic] = { pct: x.pct, correct: x.correct, total: x.total }; });
-      const b = {};
-      lastResult.topics.targets.forEach((t) => { if (baseline[t]) b[t] = baseline[t]; });
-      startWeakFrom({ topics: lastResult.topics.targets, kind: lastResult.kind, bankId: state.bankId, baseline: b });
-    });
+    // ผูก event แบบกันพัง: ถ้า element ใด element หนึ่งหาย จะไม่ทำให้ปุ่มอื่น ๆ พังตามทั้งหมด
+    const on = (id, ev, fn) => { const el = $(id); if (el) el.addEventListener(ev, fn); };
+    on("btn-review", "click", () => { reviewFilter = "all"; syncFilterUI(); renderReview(); showScreen("screen-review"); });
+    on("btn-retry", "click", retry);
+    on("btn-home", "click", goHome);
+    on("btn-weak", "click", startWeakTest);
+    on("btn-weak-trick", "click", openWeakTricks);
+    on("wt-close", "click", closeWeakTricks);
+    on("wt-summary", "click", closeWeakTricks);
+    on("wt-home", "click", () => { closeWeakTricks(); goHome(); });
+    on("wt-go", "click", () => { closeWeakTricks(); startWeakTest(); });
+    on("weak-trick-modal", "click", (e) => { if (e.target.id === "weak-trick-modal") closeWeakTricks(); });
 
-    $("review-back").addEventListener("click", () => showScreen("screen-summary"));
+    on("review-back", "click", () => showScreen("screen-summary"));
     document.querySelectorAll("#review-filter .chip-btn").forEach((el) => el.addEventListener("click", () => { reviewFilter = el.getAttribute("data-filter"); syncFilterUI(); renderReview(); }));
 
-    $("history-clear").addEventListener("click", () => { showConfirm("ต้องการล้างประวัติทั้งหมดหรือไม่?", () => { saveHistory([]); renderHistory(); toast("ล้างประวัติเรียบร้อยแล้ว"); }); });
+    on("history-clear", "click", () => { showConfirm("ต้องการล้างประวัติทั้งหมดหรือไม่?", () => { saveHistory([]); renderHistory(); toast("ล้างประวัติเรียบร้อยแล้ว"); }); });
 
     // บริจาค / สนับสนุน
-    $("donate-close").addEventListener("click", closeDonate);
-    $("donate-modal").addEventListener("click", (e) => { if (e.target === $("donate-modal")) closeDonate(); });
-    $("check-close").addEventListener("click", closeCheck);
-    $("check-modal").addEventListener("click", (e) => { if (e.target === $("check-modal")) closeCheck(); });
-    $("bp-close").addEventListener("click", closeBlueprint);
-    $("blueprint-modal").addEventListener("click", (e) => { if (e.target === $("blueprint-modal")) closeBlueprint(); });
-    $("bp-start").addEventListener("click", () => { const fn = blueprintCallback; closeBlueprint(); if (fn) fn(); });
+    on("donate-close", "click", closeDonate);
+    on("donate-modal", "click", (e) => { if (e.target === $("donate-modal")) closeDonate(); });
+    on("check-close", "click", closeCheck);
+    on("check-modal", "click", (e) => { if (e.target === $("check-modal")) closeCheck(); });
+    on("bp-close", "click", closeBlueprint);
+    on("blueprint-modal", "click", (e) => { if (e.target === $("blueprint-modal")) closeBlueprint(); });
+    on("bp-start", "click", () => { const fn = blueprintCallback; closeBlueprint(); if (fn) fn(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape") { closeDonate(); closeCheck(); closeBlueprint(); $("confirm-modal").classList.remove("show"); } });
 
     // ธีม สว่าง/มืด/อ่าน
@@ -1094,6 +1244,7 @@
     updateStructureCriteria();
     showScreen("screen-home");
     initDownloadPromo();
+    initBackHandler();
   }
   function updateStructureCriteria() { const a = window.SUBJECTS.analytical, el = $("struct-analytical"); if (el) el.textContent = "100 คะแนน · ผ่าน " + a.passPercent[currentLevel] + "%"; }
   function syncFilterUI() { document.querySelectorAll("#review-filter .chip-btn").forEach((el) => el.classList.toggle("active", el.getAttribute("data-filter") === reviewFilter)); }

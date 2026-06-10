@@ -110,19 +110,23 @@
           <div class="arrow">›</div>
         </button>
         <div class="year-pick" id="year-pick">
-          <div class="count-pick">
+          <div class="count-pick" id="count-pick">
             <span class="cp-label">เลือกรูปแบบก่อน แล้วค่อยกดปี</span>
             <div class="scope-pick">
-              <button class="active" data-yscope="full">เต็มทั้งปี</button>
-              <button data-yscope="20">20 ข้อ</button>
-              <button data-yscope="30">30 ข้อ</button>
-              <button data-yscope="40">40 ข้อ</button>
-              <button data-yscope="50">50 ข้อ</button>
-              <button data-yscope="s_analytical">① คิดวิเคราะห์</button>
-              <button data-yscope="s_ethics">② ข้าราชการที่ดี</button>
-              <button data-yscope="s_english">③ ภาษาอังกฤษ</button>
+              <button class="active" data-yamount="full">เต็มทั้งปี</button>
+              <button data-yamount="20">20 ข้อ</button>
+              <button data-yamount="30">30 ข้อ</button>
+              <button data-yamount="40">40 ข้อ</button>
+              <button data-yamount="50">50 ข้อ</button>
+            </div>
+            <span class="cp-sublabel">วิชาที่ออก (เลือกได้หลายวิชา)</span>
+            <div class="scope-pick subj-pick">
+              <button class="checked" data-ysubject="analytical">① คิดวิเคราะห์</button>
+              <button class="checked" data-ysubject="ethics">② ข้าราชการที่ดี</button>
+              <button class="checked" data-ysubject="english">③ ภาษาอังกฤษ</button>
             </div>
           </div>
+          <button class="btn btn-outline" data-year="2569">📅 ข้อสอบจริง ปี 2569 · ล่าสุด</button>
           <button class="btn btn-outline" data-year="2568">📅 ข้อสอบจริง ปี 2568</button>
           <button class="btn btn-outline" data-year="2567">📅 ข้อสอบจริง ปี 2567</button>
           <button class="btn btn-outline" data-year="2566">📅 ข้อสอบจริง ปี 2566</button>
@@ -174,8 +178,7 @@
         <button class="icon-btn" id="btn-exit" title="ออก">←</button>
         <div class="topbar-title">PF แนวข้อสอบ กพ<span id="topbar-sub">ฟรี พร้อมเฉลย</span></div>
         <div class="topbar-nav">
-          <button class="round-btn" id="btn-prev" title="ข้อก่อนหน้า">❮</button>
-          <button class="round-btn" id="btn-next-top" title="ข้อถัดไป">❯</button>
+          <button class="round-btn quiz-theme-btn" id="quiz-theme" title="เปลี่ยนธีม" aria-label="เปลี่ยนธีม">🎨</button>
         </div>
       </header>
       <div class="progress-row">
@@ -267,6 +270,7 @@
             <div class="ana-box"><div class="ana-h bad">📈 ควรเสริมให้ดีขึ้น</div><div id="ana-weak"></div></div>
           </div>
           <div class="ana-reco" id="ana-reco"></div>
+          <button class="btn btn-outline wt-trick-btn" id="btn-weak-trick" style="display:none">📖 อ่านทริคเสริมก่อน</button>
           <button class="btn btn-primary" id="btn-weak" style="display:none">📝 ทดสอบเฉพาะเรื่องที่อ่อน</button>
         </div>
 
@@ -289,14 +293,16 @@
 
     <!-- ============ ทบทวนเฉลย ============ -->
     <section id="screen-review" class="screen">
-      <div class="subscreen-head">
-        <button class="icon-btn" id="review-back">←</button>
-        <h2>เฉลยละเอียดทุกข้อ</h2>
-      </div>
-      <div class="filter-row" id="review-filter">
-        <button class="chip-btn active" data-filter="all">ทั้งหมด</button>
-        <button class="chip-btn" data-filter="wrong">เฉพาะข้อที่ผิด</button>
-        <button class="chip-btn" data-filter="correct">เฉพาะข้อที่ถูก</button>
+      <div class="rv-stick">
+        <div class="subscreen-head">
+          <button class="icon-btn" id="review-back">←</button>
+          <h2>เฉลยละเอียดทุกข้อ</h2>
+        </div>
+        <div class="filter-row" id="review-filter">
+          <button class="chip-btn active" data-filter="all">ทั้งหมด</button>
+          <button class="chip-btn" data-filter="wrong">เฉพาะข้อที่ผิด</button>
+          <button class="chip-btn" data-filter="correct">เฉพาะข้อที่ถูก</button>
+        </div>
       </div>
       <div class="review-body" id="review-body"></div>
     </section>
@@ -361,6 +367,19 @@
     </div>
 
     <!-- ป๊อปอัปผังข้อสอบ ภาค ก (แสดงก่อนเข้าสอบเสมือนจริง / เต็มทั้งปี) -->
+    <div class="modal-overlay" id="weak-trick-modal" aria-hidden="true">
+      <div class="modal wt-modal">
+        <button class="modal-close" id="wt-close" aria-label="ปิด">✕</button>
+        <h3 class="bp-title">📖 ทริคเสริมเรื่องที่ควรพัฒนา</h3>
+        <p class="bp-intro">อ่านวิธีคิด/ทริคของเรื่องที่ยังพลาดบ่อยสักนิดก่อนนะ แล้วค่อยไปลองทำใหม่ เดี๋ยวก็แม่นขึ้นเยอะเลย 💪</p>
+        <div id="wt-body" class="wt-body"></div>
+        <div class="wt-actions">
+          <button class="btn btn-primary" id="wt-go">📝 ทดสอบเรื่องที่ควรเสริม</button>
+          <button class="btn btn-outline" id="wt-summary">↩ กลับหน้าสรุปผล</button>
+          <button class="btn btn-ghost" id="wt-home">🏠 กลับหน้าแรก</button>
+        </div>
+      </div>
+    </div>
     <div class="modal-overlay" id="blueprint-modal" aria-hidden="true">
       <div class="modal bp-modal">
         <button class="modal-close" id="bp-close" aria-label="ปิด">✕</button>
@@ -429,7 +448,19 @@
   <script src="app.js"></script>
   <script>
     if ("serviceWorker" in navigator) {
-      window.addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
+      // โหลดเนื้อหาใหม่อัตโนมัติเมื่อมีเวอร์ชันใหม่ (ไม่ต้อง hard-refresh เอง)
+      var __hadController = !!navigator.serviceWorker.controller;
+      var __reloaded = false;
+      navigator.serviceWorker.addEventListener("controllerchange", function () {
+        if (__reloaded || !__hadController) return;   // ครั้งแรกที่ติดตั้ง SW ไม่ต้องรีโหลด
+        __reloaded = true;
+        window.location.reload();
+      });
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").then(function (reg) {
+          if (reg.update) { reg.update(); setInterval(function () { reg.update(); }, 60000); }
+        }).catch(function () {});
+      });
     }
   </script>
 </body>

@@ -1,0 +1,14 @@
+const fs = require("fs");
+const out = "C:/Users/perap/AppData/Local/Temp/claude/D--02-Personal-Projects-PF-Examination/9b11dc0b-1bcd-40ca-bfb4-acca66f386d1/tasks/wistxch9e.output";
+let raw = fs.readFileSync(out, "utf8");
+const start = raw.indexOf("{");
+const parsed = JSON.parse(raw.slice(start));
+const obj = parsed.result || parsed;
+console.log("count:", obj.count, "rewrites len:", obj.rewrites.length);
+fs.writeFileSync(__dirname + "/_rewrites.json", JSON.stringify(obj.rewrites, null, 1), "utf8");
+console.log("saved _batches/_rewrites.json");
+const reRef = /(?:ข้อ|ตัวเลือก|ตอบ)\s+(?:ข้อ\s+)?[A-Eกขคง](?![A-Za-zก-๛])/;
+const stillRef = obj.rewrites.filter((r) => reRef.test(r.newExplanation)).map((r) => r.id);
+console.log("rewrites STILL with letter-ref pattern:", stillRef.length ? stillRef : "NONE");
+const needCheck = obj.rewrites.filter((r) => /\[ตรวจสอบ\]/.test(r.newExplanation)).map((r) => r.id);
+console.log("flagged [ตรวจสอบ] (possible wrong key):", needCheck.length ? needCheck : "NONE");
