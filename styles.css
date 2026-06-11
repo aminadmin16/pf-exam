@@ -842,28 +842,6 @@ mark { background: #fff2a8; color: inherit; padding: 0 3px; border-radius: 4px; 
 [data-theme="dark"] .bp-subject { border-color: var(--line); }
 [data-theme="dark"] .bp-score { opacity: .85; }
 
-/* แจ้งเตือนลอย: เว็บช้า → โหลดแอป (เกาะคอลัมน์แอป เว้นมุมขวาบนให้ปุ่มธีม) */
-.dl-banner {
-  position: fixed; top: 8px;
-  left: max(10px, calc(50vw - 230px));
-  right: max(54px, calc(50vw - 186px));
-  z-index: 80;
-  display: flex; align-items: stretch;
-  background: var(--card); color: var(--text);
-  border: 1px solid var(--line); border-left: 4px solid var(--primary);
-  border-radius: 13px; box-shadow: 0 12px 30px rgba(0,0,0,.22); overflow: hidden;
-  transform: translateY(-150%); opacity: 0;
-  transition: transform .4s cubic-bezier(.2,.85,.3,1), opacity .3s ease;
-}
-.dl-banner.show { transform: translateY(0); opacity: 1; }
-.dl-banner:not(.show) { pointer-events: none; }   /* ปิดแล้วต้องไม่ดักคลิกทับปุ่มอื่น */
-.dl-banner-main { flex: 1; min-width: 0; display: flex; align-items: center; gap: 9px; padding: 9px 11px; text-decoration: none; color: var(--text); }
-.dl-banner-ic { font-size: 19px; flex-shrink: 0; }
-.dl-banner-txt { font-size: 12.5px; line-height: 1.35; font-weight: 600; }
-.dl-banner-txt b { font-weight: 800; color: var(--primary); }
-.dl-banner-x { width: 40px; flex-shrink: 0; background: var(--surface-2); border: none; color: var(--muted); font-size: 14px; cursor: pointer; }
-.dl-banner-x:active { background: var(--line); }
-
 /* ปุ่มโหลดแอปบนหน้าแรก */
 .menu-card.dl-card { text-decoration: none; color: inherit; }
 

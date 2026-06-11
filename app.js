@@ -135,7 +135,7 @@
     if (NAV_SCREENS[id]) { nav.style.display = "flex"; document.querySelectorAll(".nav-btn").forEach((b) => b.classList.toggle("active", b.getAttribute("data-nav") === NAV_SCREENS[id])); }
     else nav.style.display = "none";
     const fab = $("theme-fab"); if (fab) fab.style.display = (id === "screen-quiz") ? "none" : "";
-    if (id === "screen-quiz") { hideDlBanner(); syncQuizThemeIcon(); }   // เริ่มทำข้อสอบแล้ว เก็บแบนเนอร์ชวนโหลดแอป + อัปไอคอนปุ่มธีม
+    if (id === "screen-quiz") syncQuizThemeIcon();   // เริ่มทำข้อสอบแล้ว อัปไอคอนปุ่มธีมให้ตรงธีมปัจจุบัน
     const tm = $("theme-menu"); if (tm) tm.classList.remove("show");
     window.scrollTo({ top: 0, behavior: "auto" });
   }
@@ -1261,36 +1261,13 @@
   function closeBlueprint() { $("blueprint-modal").classList.remove("show"); blueprintCallback = null; }
 
   /* ============================================================
-     โปรโมตโหลดแอป (เฉพาะตอนเปิดบนเว็บ ไม่โชว์ในแอป Android)
-     - แบนเนอร์ลอยข้างบนตอนเข้าใหม่ ๆ · หายเองใน 1 นาที · กดปิดได้ · แตะแล้วไปหน้าวิธีติดตั้ง
+     โปรโมตโหลดแอป — เหลือเฉพาะการ์ดในหน้าแรก (ซ่อนเมื่อเปิดจากในแอป Android)
      ============================================================ */
-  let dlBannerEl = null;
   function isNativeApp() {
     return !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || window.Capacitor.isNative));
   }
-  function hideDlBanner() {
-    if (!dlBannerEl || dlBannerEl.hidden) return;
-    dlBannerEl.classList.remove("show");
-    try { sessionStorage.setItem("kp_dlbanner", "1"); } catch (e) {}
-    clearTimeout(dlBannerEl._t);
-    setTimeout(() => { if (dlBannerEl) dlBannerEl.hidden = true; }, 380);
-  }
   function initDownloadPromo() {
-    const native = isNativeApp();
-    const card = $("home-download");
-    dlBannerEl = $("dl-banner");
-    if (native) {                              // อยู่ในแอปแล้ว ไม่ต้องชวนโหลด
-      if (card) card.style.display = "none";
-      if (dlBannerEl) dlBannerEl.hidden = true;
-      return;
-    }
-    if (!dlBannerEl) return;
-    let seen = false; try { seen = sessionStorage.getItem("kp_dlbanner") === "1"; } catch (e) {}
-    if (seen) return;                          // เคยเห็น/ปิดไปแล้วในรอบนี้ ไม่กวนซ้ำ
-    dlBannerEl.hidden = false;
-    requestAnimationFrame(() => dlBannerEl.classList.add("show"));
-    const x = $("dl-banner-x"); if (x) x.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); hideDlBanner(); });
-    dlBannerEl._t = setTimeout(hideDlBanner, 60000);   // หายเองใน 1 นาที
+    if (isNativeApp()) { const card = $("home-download"); if (card) card.style.display = "none"; }   // อยู่ในแอปแล้ว ไม่ต้องชวนโหลด
   }
 
   /* ============================================================
