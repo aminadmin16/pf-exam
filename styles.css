@@ -555,6 +555,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ไฮไลต์การ์ดที่ถูกพาเข้ามาดู (กะพริบสั้น ๆ ให้สายตาจับได้) */
 @keyframes studyFlash { 0%,100% { box-shadow: 0 0 0 0 rgba(30,175,93,0); } 35% { box-shadow: 0 0 0 6px rgba(30,175,93,.35); } }
 .study-card.flash, .special-btn.flash { animation: studyFlash 1.4s ease-in-out; }
+/* ปุ่ม "อ่านให้ฟัง" — ใช้เสียงอ่านในเครื่อง (TTS) ไม่ต่อเน็ต */
+.study-tts { display: inline-flex; align-items: center; gap: 6px; margin: 10px 0 2px; padding: 7px 15px; border-radius: 999px; background: var(--card); border: 1.5px solid var(--green); color: var(--green-dark); font-size: 13px; font-weight: 700; cursor: pointer; transition: transform .12s, background .15s; }
+.study-tts:active { transform: scale(.96); }
+.study-tts.speaking { background: var(--green); color: #fff; animation: ttsPulse 1.2s ease-in-out infinite; }
+@keyframes ttsPulse { 0%, 100% { opacity: 1; } 50% { opacity: .72; } }
+[data-theme="dark"] .study-tts { background: #14241b; }
+[data-theme="dark"] .study-tts.speaking { background: var(--green); }
+
 /* ปุ่ม "กลับไปลองทำข้อสอบ" ในการ์ดอ่านก่อน (หมวด ข/ค) — มุมขวาล่าง เคาะ 1 บรรทัด */
 .study-back-wrap { margin-top: 18px; padding-top: 12px; border-top: 1px dashed var(--line); display: flex; justify-content: flex-end; }
 .study-back { display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; background: var(--green); color: #fff; border: none; border-radius: 999px; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: transform .12s, background .15s; box-shadow: 0 3px 8px rgba(30,175,93,.28); }

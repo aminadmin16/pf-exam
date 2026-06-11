@@ -128,6 +128,7 @@
   }
 
   function showScreen(id) {
+    if (id !== "screen-study") ttsStop();        // ออกจากหน้าอ่านก่อน → หยุดเสียงอ่าน
     document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
     $(id).classList.add("active");
     const nav = $("bottom-nav");
@@ -839,6 +840,80 @@
 
     host.querySelectorAll("[data-libtoggle]").forEach((btn) => btn.addEventListener("click", () => btn.parentElement.classList.toggle("open")));
   }
+  /* ============================================================
+     อ่านให้ฟัง (TTS) — ใช้เสียงอ่านในเครื่องเท่านั้น ไม่ต่อเน็ต ไม่มีค่าใช้จ่าย
+     · ในแอป Android → ปลั๊กอิน TextToSpeech (เครื่องอ่านของระบบ เช่น Google TTS)
+     · บนเว็บ/เบราว์เซอร์ → Web Speech API (speechSynthesis)
+     ============================================================ */
+  const TTS = { current: null, btn: null };
+  function ttsNative() { try { return window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.TextToSpeech; } catch (e) { return null; } }
+  function ttsSupported() { return !!ttsNative() || ("speechSynthesis" in window && "SpeechSynthesisUtterance" in window); }
+  function ttsClean(s) {
+    return String(s || "")
+      .replace(/==(.+?)==/g, "$1").replace(/\*\*(.+?)\*\*/g, "$1")
+      .replace(/https?:\/\/\S+/g, "")
+      .replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{2190}-\u{21FF}️]/gu, "")
+      .replace(/[·•→⇒]/g, ", ").replace(/\s+/g, " ").trim();
+  }
+  function cardTtsParts(n) {
+    const parts = [n.title];
+    (n.blocks || []).forEach((b) => {
+      if (b.p) parts.push(b.p);
+      else if (b.h) { parts.push(b.h); (b.points || []).forEach((p) => parts.push(p)); }
+      else if (b.trick) parts.push("เคล็ดลับ. " + b.trick);
+    });
+    return parts.map(ttsClean).filter(Boolean);
+  }
+  function ttsChunks(parts) {   // ตัดเป็นท่อนสั้น ๆ กันเสียงโดนตัดกลางคันในบางเครื่อง
+    const out = [];
+    parts.forEach((p) => {
+      let rest = p;
+      while (rest.length > 200) {
+        let cut = rest.lastIndexOf(" ", 200); if (cut < 80) cut = 200;
+        out.push(rest.slice(0, cut)); rest = rest.slice(cut).trim();
+      }
+      if (rest) out.push(rest);
+    });
+    return out;
+  }
+  function ttsStop() {
+    const N = ttsNative();
+    if (N) { try { N.stop(); } catch (e) {} }
+    if ("speechSynthesis" in window) { try { window.speechSynthesis.cancel(); } catch (e) {} }
+    if (TTS.btn) { TTS.btn.classList.remove("speaking"); TTS.btn.innerHTML = "🔊 อ่านให้ฟัง"; }
+    TTS.current = null; TTS.btn = null;
+  }
+  async function ttsSpeakCard(n, btn) {
+    if (!ttsSupported()) { toast("เครื่องนี้ยังไม่รองรับเสียงอ่านอัตโนมัติ"); return; }
+    if (TTS.current === n.id) { ttsStop(); return; }   // กดซ้ำ = หยุด
+    ttsStop();
+    const chunks = ttsChunks(cardTtsParts(n));
+    if (!chunks.length) return;
+    TTS.current = n.id; TTS.btn = btn;
+    btn.classList.add("speaking"); btn.innerHTML = "⏹ หยุดอ่าน";
+    const N = ttsNative();
+    if (N) {
+      try {
+        for (let i = 0; i < chunks.length; i++) {
+          if (TTS.current !== n.id) return;
+          await N.speak({ text: chunks[i], lang: "th-TH", rate: 1.0, category: "playback" });
+        }
+      } catch (e) {}
+      if (TTS.current === n.id) ttsStop();
+    } else {
+      let i = 0;
+      const next = () => {
+        if (TTS.current !== n.id) return;
+        if (i >= chunks.length) { ttsStop(); return; }
+        const u = new SpeechSynthesisUtterance(chunks[i++]);
+        u.lang = "th-TH"; u.rate = 1.0;
+        u.onend = next; u.onerror = () => ttsStop();
+        window.speechSynthesis.speak(u);
+      };
+      next();
+    }
+  }
+
   function studyBlocksHtml(blocks) {
     let inner = "";
     (blocks || []).forEach((b) => {
@@ -915,6 +990,7 @@
     return "analytical";
   }
   function renderStudy() {
+    ttsStop();                                   // re-render = ปุ่มเดิมหาย ต้องหยุดเสียงก่อน
     fillLibStats();
     renderLibraryGroups();
     const body = $("study-body"); body.innerHTML = "";
@@ -931,10 +1007,17 @@
         // ปุ่ม "กลับไปลองทำข้อสอบ" — เฉพาะการ์ดในหมวด ข/ค ที่จับคู่กับแบงก์ได้
         const targetBank = bankIdForStudyCard(n.id);
         const backHtml = targetBank ? '<div class="study-back-wrap"><button class="study-back" data-bank="' + escapeHtml(targetBank) + '" type="button">📝 กลับไปลองทำข้อสอบ</button></div>' : '';
-        card.innerHTML = '<button class="study-head"><span class="sh-ic">' + n.icon + '</span><span class="sh-t">' + escapeHtml(n.title) + "</span>" + (n.tag ? '<span class="sh-tag">' + escapeHtml(n.tag) + "</span>" : "") + '<span class="sh-arrow">⌄</span></button><div class="study-inner">' + studyBlocksHtml(n.blocks) + backHtml + "</div>";
-        card.querySelector(".study-head").addEventListener("click", () => card.classList.toggle("open"));
+        const ttsHtml = ttsSupported() ? '<button class="study-tts" type="button" title="ให้เครื่องอ่านสรุปเรื่องนี้ให้ฟัง">🔊 อ่านให้ฟัง</button>' : '';
+        card.innerHTML = '<button class="study-head"><span class="sh-ic">' + n.icon + '</span><span class="sh-t">' + escapeHtml(n.title) + "</span>" + (n.tag ? '<span class="sh-tag">' + escapeHtml(n.tag) + "</span>" : "") + '<span class="sh-arrow">⌄</span></button><div class="study-inner">' + ttsHtml + studyBlocksHtml(n.blocks) + backHtml + "</div>";
+        card.querySelector(".study-head").addEventListener("click", () => {
+          const closing = card.classList.contains("open");
+          card.classList.toggle("open");
+          if (closing && TTS.current === n.id) ttsStop();   // ปิดการ์ดที่กำลังอ่าน → หยุดเสียง
+        });
         const backBtn = card.querySelector(".study-back");
         if (backBtn) backBtn.addEventListener("click", (e) => { e.stopPropagation(); goToBankFromStudy(backBtn.getAttribute("data-bank")); });
+        const ttsBtn = card.querySelector(".study-tts");
+        if (ttsBtn) ttsBtn.addEventListener("click", (e) => { e.stopPropagation(); ttsSpeakCard(n, ttsBtn); });
         body.appendChild(card);
       });
     });
