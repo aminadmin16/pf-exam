@@ -68,6 +68,8 @@
   let currentSubjectCount = 30; // จำนวนข้อเมื่อฝึกแยกรายวิชา (20/30/40/50)
   let currentYearAmount = "full"; // แนวข้อสอบแยกปี: จำนวน full | 20/30/40/50
   let currentYearSubjects = new Set(["analytical", "ethics", "english"]); // วิชาที่เลือก (ค่าเริ่มต้น = ทั้งหมด)
+  let currentPredAmount = "full"; // ข้อสอบเก็ง 2569: จำนวน full | 20/30/40/50
+  let currentPredSubjects = new Set(["analytical", "ethics", "english"]); // วิชาที่เลือกของชุดเก็ง (ค่าเริ่มต้น = ทั้งหมด)
   let timerInterval = null;
   let reviewFilter = "all";
   let lastResult = null;
@@ -271,6 +273,45 @@
       });
       state.questions = set.map(prepare);
       state.title = "แนวข้อสอบ ปี " + year + (subjects.length === window.SUBJECT_ORDER.length ? " (เต็มทั้งปี)" : " — " + subjects.map((s) => window.SUBJECTS[s].name).join(" + "));
+    }
+    initSession();
+  }
+  function bouncePredHint() { const cp = $("pred-count-pick"); if (!cp) return; cp.classList.remove("bounce"); void cp.offsetWidth; cp.classList.add("bounce"); }
+  function startPredicted(amountOverride, subjectsOverride) {
+    // ข้อสอบเก็ง 2569 — เลือกจำนวน (เต็ม/สุ่ม N) + วิชาที่ออก (หลายวิชา) · เฉพาะข้อ predicted
+    const amount = amountOverride || currentPredAmount;
+    const subjSet = subjectsOverride ? new Set(subjectsOverride) : currentPredSubjects;
+    const subjects = window.SUBJECT_ORDER.filter((k) => subjSet.has(k));
+    if (!subjects.length) { toast("เลือกอย่างน้อย 1 วิชาก่อนนะ"); bouncePredHint(); return; }
+    const pq = (sub) => window.QUESTIONS.filter((q) => q.predicted && q.subject === sub);
+    const allPool = window.QUESTIONS.filter((q) => q.predicted && subjects.indexOf(q.subject) >= 0);
+    if (!allPool.length) { toast("ยังไม่มีข้อสอบเก็งในวิชาที่เลือก — เลือกใหม่นะ"); bouncePredHint(); return; }
+    state.predAmount = amount; state.predSubjects = subjects.slice();
+    state.kind = "kp"; state.bankId = null; state.positionId = null; state.weakSource = null; state.level = currentLevel; state.feedback = currentFeedback; state.subjectKey = null; state.count = null;
+    if (amount !== "full") {
+      const N = parseInt(amount, 10);
+      if (allPool.length < N) { toast("ข้อสอบเก็งในวิชาที่เลือกมีไม่ถึง " + N + " ข้อ — เลือกรูปแบบใหม่นะ"); bouncePredHint(); return; }
+      state.mode = "predicted-sample";
+      state.questions = shuffle(allPool).slice(0, N).map(prepare);
+      state.title = "ข้อสอบเก็ง 2569 — สุ่ม " + N + " ข้อ";
+    } else if (subjects.length === 1) {
+      const sub = subjects[0];
+      state.mode = "predicted-subject"; state.subjectKey = sub;
+      let pool = shuffle(pq(sub));
+      pool = sub === "analytical" ? orderByAnalyticalCat(pool) : sub === "english" ? orderByEnglishCat(pool) : pool;
+      state.questions = pool.map(prepare);
+      state.title = "ข้อสอบเก็ง 2569 — " + window.SUBJECTS[sub].name;
+    } else {
+      state.mode = "predicted";
+      const bp = window.EXAM_BLUEPRINT || { analytical: 50, ethics: 25, english: 25 };
+      let set = [];
+      window.SUBJECT_ORDER.forEach((k) => {
+        if (!subjSet.has(k)) return;
+        const picked = shuffle(pq(k)).slice(0, Math.min(bp[k] || 999, pq(k).length));
+        set = set.concat(k === "analytical" ? orderByAnalyticalCat(picked) : k === "english" ? orderByEnglishCat(picked) : picked);
+      });
+      state.questions = set.map(prepare);
+      state.title = "ข้อสอบเก็ง 2569 (คาดการณ์)" + (subjects.length === window.SUBJECT_ORDER.length ? "" : " — " + subjects.map((s) => window.SUBJECTS[s].name).join(" + "));
     }
     initSession();
   }
@@ -753,16 +794,19 @@
       else loose.push(t);
     });
     let html = "";
-    order.forEach((cid) => {
+    order.forEach((cid) => {                          // แต่ละบทย่อไว้ก่อน (accordion) — แตะหัวข้อเพื่อเปิดอ่าน
       const card = studyCardById(cid), cover = groups[cid];
-      html += '<div class="wt-lesson"><div class="wt-lesson-h"><span class="wt-ic">' + card.icon + '</span><span>' + escapeHtml(card.title) + '</span></div>'
+      html += '<div class="wt-lesson"><button class="wt-lesson-h" type="button"><span class="wt-ic">' + card.icon + '</span><span class="wt-ttl">' + escapeHtml(card.title) + '</span><span class="wt-arrow">⌄</span></button>'
         + (cover.length ? '<div class="wt-cover">📌 เรื่องที่ยังพลาด: <b>' + cover.map(escapeHtml).join("</b> · <b>") + '</b></div>' : "")
         + '<div class="study-inner wt-lesson-body">' + studyBlocksHtml(card.blocks) + "</div></div>";
     });
     loose.forEach((t) => {
       html += '<div class="wt-item"><div class="wt-topic">📌 ' + escapeHtml(t) + '</div><div class="wt-tip">💡 ' + escapeHtml(tipForTopic(t)) + "</div></div>";
     });
-    $("wt-body").innerHTML = html || '<div class="ana-empty">— ไม่มีเนื้อหาที่ต้องเสริม</div>';
+    const wb = $("wt-body");
+    wb.innerHTML = html || '<div class="ana-empty">— ไม่มีเนื้อหาที่ต้องเสริม</div>';
+    wb.querySelectorAll(".wt-lesson-h").forEach((h) => h.addEventListener("click", () => h.parentElement.classList.toggle("open")));
+    wb.scrollTop = 0;
     $("weak-trick-modal").classList.add("show");
   }
   function closeWeakTricks() { $("weak-trick-modal").classList.remove("show"); }
@@ -1219,6 +1263,7 @@
     else if (state.kind === "position") startPosition(state.positionId);
     else if (state.kind === "special") startSpecial(state.bankId);
     else if (state.mode.indexOf("year") === 0) startYear(state.year, state.yearAmount, state.yearSubjects);
+    else if (state.mode.indexOf("predicted") === 0) startPredicted(state.predAmount, state.predSubjects);
     else startCore(state.mode, state.subjectKey, state.count);
   }
 
@@ -1375,7 +1420,22 @@
     document.querySelectorAll("[data-level]").forEach((el) => el.addEventListener("click", () => { currentLevel = el.getAttribute("data-level"); document.querySelectorAll("[data-level]").forEach((b) => b.classList.toggle("active", b === el)); updateStructureCriteria(); }));
     document.querySelectorAll("[data-feedback]").forEach((el) => el.addEventListener("click", () => { currentFeedback = el.getAttribute("data-feedback"); document.querySelectorAll("[data-feedback]").forEach((b) => b.classList.toggle("active", b === el)); }));
     document.querySelectorAll("[data-source]").forEach((el) => el.addEventListener("click", () => { currentSource = el.getAttribute("data-source"); document.querySelectorAll("[data-source]").forEach((b) => b.classList.toggle("active", b === el)); }));
-    document.querySelectorAll("[data-action]").forEach((el) => el.addEventListener("click", () => { const a = el.getAttribute("data-action"); if (a === "start-full") showBlueprint(function () { startCore("full"); }); else if (a === "quick") startCore("quick"); else if (a === "predicted") startCore("predicted"); else if (a === "donate") openDonate(); }));
+    document.querySelectorAll("[data-action]").forEach((el) => el.addEventListener("click", () => { const a = el.getAttribute("data-action"); if (a === "start-full") showBlueprint(function () { startCore("full"); }); else if (a === "quick") startCore("quick"); else if (a === "donate") openDonate(); }));
+    // ข้อสอบเก็ง 2569 — เปิดแผงเลือกรูปแบบ/วิชา ก่อนเริ่ม
+    $("toggle-pred").addEventListener("click", () => $("pred-pick").classList.toggle("show"));
+    document.querySelectorAll("[data-pamount]").forEach((el) => el.addEventListener("click", () => { currentPredAmount = el.getAttribute("data-pamount"); document.querySelectorAll("[data-pamount]").forEach((b) => b.classList.toggle("active", b === el)); }));
+    document.querySelectorAll("[data-psubject]").forEach((el) => el.addEventListener("click", () => {
+      const s = el.getAttribute("data-psubject");
+      if (currentPredSubjects.has(s)) {
+        if (currentPredSubjects.size <= 1) { toast("ต้องเลือกอย่างน้อย 1 วิชานะ"); return; }
+        currentPredSubjects.delete(s);
+      } else currentPredSubjects.add(s);
+      el.classList.toggle("checked", currentPredSubjects.has(s));
+    }));
+    $("pred-start").addEventListener("click", () => {
+      const fullAll = currentPredAmount === "full" && currentPredSubjects.size === window.SUBJECT_ORDER.length;
+      if (fullAll) showBlueprint(function () { startPredicted(); }); else startPredicted();
+    });
     $("toggle-subjects").addEventListener("click", () => $("subject-pick").classList.toggle("show"));
     document.querySelectorAll("[data-count]").forEach((el) => el.addEventListener("click", () => { currentSubjectCount = parseInt(el.getAttribute("data-count"), 10); document.querySelectorAll("[data-count]").forEach((b) => b.classList.toggle("active", b === el)); }));
     document.querySelectorAll("[data-subject]").forEach((el) => el.addEventListener("click", () => startCore("subject", el.getAttribute("data-subject"), currentSubjectCount)));
@@ -1389,7 +1449,11 @@
       } else currentYearSubjects.add(s);
       el.classList.toggle("checked", currentYearSubjects.has(s));
     }));
-    document.querySelectorAll("[data-year]").forEach((el) => el.addEventListener("click", () => startYear(parseInt(el.getAttribute("data-year"), 10))));
+    document.querySelectorAll("[data-year]").forEach((el) => el.addEventListener("click", () => {
+      const yr = parseInt(el.getAttribute("data-year"), 10);
+      const fullAll = currentYearAmount === "full" && currentYearSubjects.size === window.SUBJECT_ORDER.length;
+      if (fullAll) showBlueprint(function () { startYear(yr); }); else startYear(yr);   // เต็มปี+ครบ 3 วิชา → โชว์ผังข้อสอบก่อน
+    }));
 
     const pb = $("partB-pick"), pc = $("partC-pick");
     (window.SPECIAL_BANK_ORDER || []).forEach((b, bi) => {

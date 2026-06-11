@@ -66,11 +66,30 @@
           <div class="mc-text"><b>ข้อสอบเสมือนจริง (100 ข้อ)</b><span>วิเคราะห์ 50 + กฎหมาย 25 + อังกฤษ 25</span></div>
           <div class="arrow">›</div>
         </button>
-        <button class="menu-card highlight" data-action="predicted">
+        <button class="menu-card highlight" id="toggle-pred">
           <div class="ico">🔮</div>
           <div class="mc-text"><b>ข้อสอบเก็ง 2569 (คาดการณ์)</b><span>ต่อยอดแนวข้อสอบเดิม เก็งที่จะออกปีหน้า</span></div>
           <div class="arrow">›</div>
         </button>
+        <div class="year-pick" id="pred-pick">
+          <div class="count-pick" id="pred-count-pick">
+            <span class="cp-label">เลือกรูปแบบก่อน แล้วค่อยกดเริ่ม</span>
+            <div class="scope-pick">
+              <button class="active" data-pamount="full">เต็มทั้งชุด</button>
+              <button data-pamount="20">20 ข้อ</button>
+              <button data-pamount="30">30 ข้อ</button>
+              <button data-pamount="40">40 ข้อ</button>
+              <button data-pamount="50">50 ข้อ</button>
+            </div>
+            <span class="cp-sublabel">วิชาที่ออก (เลือกได้หลายวิชา)</span>
+            <div class="scope-pick subj-pick">
+              <button class="checked" data-psubject="analytical">① คิดวิเคราะห์</button>
+              <button class="checked" data-psubject="ethics">② ข้าราชการที่ดี</button>
+              <button class="checked" data-psubject="english">③ ภาษาอังกฤษ</button>
+            </div>
+          </div>
+          <button class="btn btn-outline" id="pred-start">🔮 เริ่มทำข้อสอบเก็ง 2569</button>
+        </div>
         <button class="menu-card" id="toggle-subjects">
           <div class="ico">📚</div>
           <div class="mc-text"><b>ฝึกแยกรายวิชา</b><span>เลือกฝึกเจาะลึกทีละวิชา</span></div>

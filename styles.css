@@ -774,10 +774,14 @@ mark { background: #fff2a8; color: inherit; padding: 0 3px; border-radius: 4px; 
 .study-group-head.sg-english { color: #c2740a; border-color: #f3e2c2; }
 .study-group-head.sg-civil { color: #7c3aed; border-color: #e0d3fb; }
 /* เนื้อหาบทเรียนในโมดัล "อ่านเสริม" */
-.wt-lesson { border: 1px solid var(--line); border-left: 4px solid var(--green); border-radius: 13px; padding: 12px 14px; margin-bottom: 12px; background: var(--card); }
-.wt-lesson-h { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15px; color: var(--green-dark); margin-bottom: 7px; }
-.wt-lesson-h .wt-ic { font-size: 19px; }
-.wt-lesson .study-inner { display: block; padding: 0; }
+.wt-lesson { border: 1px solid var(--line); border-left: 4px solid var(--green); border-radius: 13px; padding: 10px 14px; margin-bottom: 10px; background: var(--card); }
+.wt-lesson-h { width: 100%; display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 15px; color: var(--green-dark); text-align: left; cursor: pointer; }
+.wt-lesson-h .wt-ic { font-size: 19px; flex: none; }
+.wt-lesson-h .wt-ttl { flex: 1; min-width: 0; }
+.wt-lesson-h .wt-arrow { flex: none; color: var(--muted); font-size: 16px; transition: transform .2s; }
+.wt-lesson.open .wt-lesson-h .wt-arrow { transform: rotate(180deg); }
+.wt-lesson .wt-lesson-body { display: none; padding: 0; }
+.wt-lesson.open .wt-lesson-body { display: block; animation: fadeSlide .22s ease; }
 [data-theme="dark"] .wt-lesson { background: #11140f; }
 
 /* ============================================================
