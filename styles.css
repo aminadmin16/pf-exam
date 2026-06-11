@@ -929,3 +929,12 @@ mark { background: #fff2a8; color: inherit; padding: 0 3px; border-radius: 4px; 
 .wt-cover { font-size: 12.5px; line-height: 1.7; color: var(--muted); background: var(--surface-2, #f4f7f5); border-radius: 10px; padding: 8px 11px; margin: 2px 0 10px; }
 .wt-cover b { color: var(--green-dark); font-weight: 700; }
 [data-theme="dark"] .wt-cover { background: #161b16; }
+
+/* การ์ด "แนวข้อสอบยากขึ้น (AI Fable5)" — โทนม่วงไล่เฉด ให้รู้ว่าพิเศษ */
+.menu-card.hard-ai { border: 1.5px solid #c4b5fd; background: linear-gradient(135deg, #faf8ff, #f3efff); }
+.menu-card.hard-ai .ico { background: linear-gradient(135deg, #ede9fe, #ddd6fe); }
+.menu-card.hard-ai .mc-text b { color: #6d28d9; }
+[data-theme="dark"] .menu-card.hard-ai { background: linear-gradient(135deg, #1d1830, #251d3d); border-color: #4c3a78; }
+[data-theme="dark"] .menu-card.hard-ai .mc-text b { color: #c4b5fd; }
+[data-theme="dark"] .menu-card.hard-ai .ico { background: #2d2350; }
+#hard-pick .scope-pick button { font-weight: 700; }

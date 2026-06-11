@@ -60,12 +60,13 @@ rows("core").forEach((r, i) => {
   const e = checkRow(choices, ans, clean(r.question), clean(r.explanation));
   if (e) { issues.push("core แถว " + (i + 2) + ": " + e); return; }
   if (SUBJECT_ORDER.indexOf(subject) === -1) { issues.push("core แถว " + (i + 2) + ": subject ไม่ถูก (" + subject + ")"); return; }
-  const k = subject + "|" + norm(r.question) + "|" + choices.map(norm).join("~");
+  const k = subject + "|" + norm(r.question) + "|" + norm(r.passage) + "|" + choices.map(norm).join("~");   // รวม passage — ข้อเงื่อนไขสัญลักษณ์ใช้โจทย์กลางเหมือนกันแต่เงื่อนไขต่างกันใน passage
   if (seenC.has(k)) { issues.push("core แถว " + (i + 2) + ": ซ้ำ"); return; }
   seenC.add(k);
   const item = { id: 0, subject, topic: norm(r.topic), year: parseInt(r.year, 10) || 2566, question: clean(r.question), choices, answer: ans, explanation: clean(r.explanation), freq: parseInt(r.freq, 10) || FREQ_TOPIC[norm(r.topic)] || 3 };
   if (clean(r.passage)) item.passage = clean(r.passage);
   if (truthy(r.predicted)) item.predicted = true;
+  const hd = parseInt(r.hard, 10); if (hd >= 1) item.hard = hd;   // ชุดข้อสอบยาก (AI) — 1/2/3, ว่าง = ข้อปกติ
   core.push(item);
 });
 core.forEach((q, i) => { q.id = i + 1; });
