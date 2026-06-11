@@ -20,13 +20,13 @@
 <body>
   <div class="app">
 
-    <!-- ปุ่มเปลี่ยนธีม (มุมขวาบน) -->
+    <!-- สวิตช์ธีม (มุมขวาบน) — แคปซูล 3 ไอคอน มีตัวเลื่อนวิ่งตาม -->
     <div class="theme-fab" id="theme-fab">
-      <button class="theme-btn" id="theme-toggle" aria-label="เปลี่ยนธีม">🎨</button>
-      <div class="theme-menu" id="theme-menu">
-        <button data-theme-set="light">☀️ โหมดสว่าง</button>
-        <button data-theme-set="dark">🌙 โหมดมืด</button>
-        <button data-theme-set="reading">📖 โหมดอ่าน (โทนอุ่น)</button>
+      <div class="theme-seg" id="theme-seg" role="group" aria-label="เปลี่ยนธีม">
+        <span class="ts-thumb" aria-hidden="true"></span>
+        <button data-theme-set="light" title="โหมดสว่าง" aria-label="โหมดสว่าง">☀️</button>
+        <button data-theme-set="dark" title="โหมดมืด" aria-label="โหมดมืด">🌙</button>
+        <button data-theme-set="reading" title="โหมดอ่าน (โทนอุ่น)" aria-label="โหมดอ่าน">📖</button>
       </div>
     </div>
 

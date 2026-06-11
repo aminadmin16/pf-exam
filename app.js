@@ -102,6 +102,8 @@
     document.documentElement.setAttribute("data-theme", t);
     try { localStorage.setItem("kp_theme", t); } catch (e) {}
     document.querySelectorAll("[data-theme-set]").forEach((b) => b.classList.toggle("active", b.getAttribute("data-theme-set") === t));
+    const seg = $("theme-seg");                      // เลื่อนตัวชี้ของสวิตช์ธีมไปช่องที่เลือก
+    if (seg) seg.style.setProperty("--ti", String(Math.max(0, THEME_ORDER.indexOf(t))));
   }
   const THEME_ORDER = ["light", "dark", "reading"];
   const THEME_ICON = { light: "☀️", dark: "🌙", reading: "📖" };
@@ -136,7 +138,6 @@
     else nav.style.display = "none";
     const fab = $("theme-fab"); if (fab) fab.style.display = (id === "screen-quiz") ? "none" : "";
     if (id === "screen-quiz") syncQuizThemeIcon();   // เริ่มทำข้อสอบแล้ว อัปไอคอนปุ่มธีมให้ตรงธีมปัจจุบัน
-    const tm = $("theme-menu"); if (tm) tm.classList.remove("show");
     window.scrollTo({ top: 0, behavior: "auto" });
   }
 
@@ -390,6 +391,39 @@
     countUp($("meta-percent"), r.pct || 0, "%");
     if (r.kind !== "kp") countUp($("ss-pct"), r.pct || 0, "%");
   }
+  /* ฉลอง/ปลอบใจบนการ์ดผลรวม — ผ่าน: คอนเฟตติพุ่งจากกลางการ์ด · ไม่ผ่าน: ดาวลอยขึ้นเบา ๆ */
+  function celebrate() {
+    const r = lastResult; if (!r) return;
+    const banner = $("overall-banner"); if (!banner) return;
+    const win = r.kind === "sample" ? r.pct >= 60 : (r.kind === "kp" ? r.overallPass : r.pass);
+    const layer = document.createElement("div"); layer.className = "celebrate-layer";
+    if (win) {
+      const colors = ["#ffd166", "#7ae582", "#74c0fc", "#ff8fa3", "#c8b6ff", "#fff"];
+      for (let i = 0; i < 26; i++) {
+        const p = document.createElement("i"); p.className = "cf-p";
+        p.style.background = colors[i % colors.length];
+        p.style.setProperty("--tx", (Math.random() * 300 - 150).toFixed(0) + "px");
+        p.style.setProperty("--ty", (-(Math.random() * 150 + 30)).toFixed(0) + "px");
+        p.style.setProperty("--rz", (Math.random() * 720 - 360).toFixed(0) + "deg");
+        p.style.animationDelay = (Math.random() * 0.25).toFixed(2) + "s";
+        p.style.animationDuration = (0.9 + Math.random() * 0.7).toFixed(2) + "s";
+        layer.appendChild(p);
+      }
+    } else {
+      const stars = ["✨", "🌟", "💛", "💪"];
+      for (let i = 0; i < 8; i++) {
+        const s = document.createElement("span"); s.className = "cf-star";
+        s.textContent = stars[i % stars.length];
+        s.style.left = (8 + Math.random() * 84).toFixed(0) + "%";
+        s.style.animationDelay = (Math.random() * 0.9).toFixed(2) + "s";
+        s.style.animationDuration = (1.6 + Math.random() * 0.9).toFixed(2) + "s";
+        layer.appendChild(s);
+      }
+    }
+    banner.appendChild(layer);
+    try { if (navigator.vibrate) navigator.vibrate(win ? [25, 60, 25, 60, 60] : 15); } catch (e) {}
+    setTimeout(() => layer.remove(), 2800);
+  }
 
   /* ============================================================
      แสดงข้อสอบ
@@ -398,6 +432,8 @@
     const q = state.questions[state.current], total = state.questions.length, idx = state.current;
     $("q-index").textContent = idx + 1; $("q-total").textContent = total;
     $("progress-fill").style.width = ((idx + 1) / total * 100) + "%";
+    const qa = $("quiz-area") || document.querySelector(".qwrap");   // เปลี่ยนข้อ → คำถามสไลด์เข้ามานุ่ม ๆ
+    if (qa) { qa.classList.remove("qswap"); void qa.offsetWidth; qa.classList.add("qswap"); }
 
     const chip = $("subject-chip"), yc = $("year-chip");
     if (isSpecialQ(q)) {
@@ -433,11 +469,14 @@
     $("btn-explain").classList.toggle("open", rev);
     syncExplainBtn();
   }
+  let lastChoiceQ = -1;   // ทยอยโชว์ช้อยส์เฉพาะตอนเปลี่ยนข้อ (กดเลือกคำตอบไม่ต้องเล่นซ้ำ)
   function renderChoices() {
     const q = state.questions[state.current], idx = state.current, chosen = state.answers[idx], rev = state.revealed[idx], box = $("choices");
+    const fresh = lastChoiceQ !== idx; lastChoiceQ = idx;
     box.innerHTML = "";
     q.choices.forEach((text, i) => {
       const b = document.createElement("button"); b.className = "choice";
+      if (fresh) { b.classList.add("enter"); b.style.animationDelay = (i * 50) + "ms"; }
       b.innerHTML = '<span class="letter">' + LETTERS[i] + '</span><span class="c-text">' + escapeHtml(text) + '</span><span class="mark"></span>';
       if (rev) { b.classList.add("disabled"); if (i === q.answer) { b.classList.add("correct"); b.querySelector(".mark").textContent = "✓"; } else if (i === chosen) { b.classList.add("wrong"); b.querySelector(".mark").textContent = "✗"; } }
       else if (i === chosen) b.classList.add("selected");
@@ -545,22 +584,45 @@
       sum.classList.remove("loading");
       const banner = $("overall-banner");
       if (banner) { banner.classList.remove("pop"); void banner.offsetWidth; banner.classList.add("pop"); }  // การ์ดผลรวมเด้งขึ้นมาแล้วลอยกลับเข้าที่
-      setTimeout(animateSummary, 620);     // รอการ์ดเด้งเข้าที่ก่อน แล้วค่อยเล่นอนิเมชั่นสรุปผล (ตัวเลข/กราฟ)
+      setTimeout(celebrate, 540);          // การ์ดเด้งเข้าที่ → คอนเฟตติฉลอง / ดาวให้กำลังใจ
+      setTimeout(animateSummary, 620);     // แล้วค่อยเล่นอนิเมชั่นสรุปผล (ตัวเลข/กราฟ)
     }, 1400);                              // loading 1400ms ก่อนเข้าหน้าสรุปผล
   }
+
+  /* ข้อความชม/ปลอบใจ — สุ่มทุกครั้ง ให้คนทำรู้สึกมีกำลังใจไม่จำเจ */
+  const MSG_WIN = [
+    "ยอดเยี่ยมมาก! ความพยายามไม่เคยโกหก 🏆",
+    "สุดยอดไปเลย เก่งมาก ๆ 👏",
+    "ฟอร์มดีมาก รักษาระดับนี้ไว้ถึงวันสอบจริงนะ ✨",
+    "เยี่ยมที่สุด! อ่านมาดีมากจริง ๆ 🎉",
+    "เก่งขนาดนี้ สนามจริงก็ไม่ต้องกลัวแล้ว 💚",
+  ];
+  const MSG_GOOD = [
+    "ทำได้ดีมาก ใกล้เป้าแล้ว ลองอีกชุดเลย 👍",
+    "มาถูกทางแล้ว เก็บจุดที่พลาดอีกนิดเดียว ✨",
+    "ดีขึ้นเรื่อย ๆ แบบนี้แหละ สู้ต่ออีกนิด 💪",
+  ];
+  const MSG_CHEER = [
+    "ไม่เป็นไรนะ วันนี้คือการซ้อม วันสอบจริงคือของเรา 💪",
+    "ทุกคนที่สอบผ่าน เคยไม่ผ่านมาก่อนทั้งนั้น สู้ต่อนะ 🔥",
+    "คะแนนรอบนี้แค่บอกว่าต้องเสริมตรงไหน ไม่ได้บอกว่าเราไม่เก่ง ✨",
+    "เกือบแล้ว! ทบทวนเฉลยอีกหน่อย รอบหน้าต้องดีขึ้นแน่ 🌱",
+    "พักสายตาแป๊บนึง แล้วค่อยกลับมาลุยใหม่ เราเชื่อในตัวคุณนะ 💚",
+  ];
+  function pickMsg(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 
   function renderSummary(res) {
     lastResult = res;
     const isKp = res.kind === "kp";
     $("summary-sub").textContent = (isKp || res.kind === "subject") ? state.title + " · " + levelLabel(state.level) : state.title;
-    const pass = isKp ? res.overallPass : res.pass;
+    const pass = res.kind === "sample" ? res.pct >= 60 : (isKp ? res.overallPass : res.pass);
     const banner = $("overall-banner"); banner.className = "overall-banner " + (pass ? "pass" : "fail");
     if (res.kind === "sample") {
       $("overall-big").textContent = "ทำได้ " + res.pct + "%";
-      $("overall-small").textContent = res.pct >= 80 ? "เยี่ยมมาก! 🎉 แม่นขึ้นเรื่อย ๆ" : res.pct >= 60 ? "ทำได้ดี ลองอีกชุดได้เลย" : "ทบทวนเฉลยแล้วลองใหม่นะ เดี๋ยวก็ขึ้น 💪";
+      $("overall-small").textContent = res.pct >= 80 ? pickMsg(MSG_WIN) : res.pct >= 60 ? pickMsg(MSG_GOOD) : pickMsg(MSG_CHEER);
     } else {
       $("overall-big").textContent = pass ? "🎉 ผ่านเกณฑ์" : "ยังไม่ผ่านเกณฑ์";
-      $("overall-small").textContent = pass ? "ยอดเยี่ยมมาก! ทำได้ตามเกณฑ์" : "ทบทวนเฉลยแล้วลองใหม่อีกครั้งนะ";
+      $("overall-small").textContent = pass ? pickMsg(MSG_WIN) : pickMsg(MSG_CHEER);
     }
 
     $("kp-result").style.display = isKp ? "" : "none";
@@ -994,6 +1056,7 @@
     fillLibStats();
     renderLibraryGroups();
     const body = $("study-body"); body.innerHTML = "";
+    let order = 0;                                   // ไล่จังหวะการ์ดทยอยโผล่
     STUDY_GROUPS.forEach((g) => {
       const cards = (window.STUDY_NOTES || []).filter((n) => studyGroupKey(n) === g.key);
       if (!cards.length) return;
@@ -1004,6 +1067,7 @@
       cards.forEach((n) => {
         const card = document.createElement("div");
         card.className = "study-card" + (n.pinned ? " open" : "");
+        card.style.animationDelay = Math.min(order++ * 22, 240) + "ms";
         // ปุ่ม "กลับไปลองทำข้อสอบ" — เฉพาะการ์ดในหมวด ข/ค ที่จับคู่กับแบงก์ได้
         const targetBank = bankIdForStudyCard(n.id);
         const backHtml = targetBank ? '<div class="study-back-wrap"><button class="study-back" data-bank="' + escapeHtml(targetBank) + '" type="button">📝 กลับไปลองทำข้อสอบ</button></div>' : '';
@@ -1062,11 +1126,13 @@
      ============================================================ */
   function renderReview() {
     const body = $("review-body"); body.innerHTML = "";
+    let shown = 0;                                   // นับเฉพาะใบที่แสดง เพื่อไล่จังหวะอนิเมชั่นเข้า
     state.questions.forEach((q, i) => {
       const chosen = state.answers[i], isCorrect = chosen === q.answer, answered = chosen !== null;
       if (reviewFilter === "wrong" && isCorrect) return;
       if (reviewFilter === "correct" && !isCorrect) return;
       const card = document.createElement("div"); card.className = "review-card" + (isCorrect ? "" : " is-wrong");
+      card.style.animationDelay = Math.min(shown++ * 24, 240) + "ms";
       const color = qColor(q);
       const ylab = isSpecialQ(q) ? "" : (q.predicted ? '<span class="rc-year predicted">🔮 เก็ง 2569</span>' : '<span class="rc-year">ปี ' + q.year + "</span>");
       const fr = freqHtml(q);
@@ -1100,8 +1166,8 @@
      มี popup → ปิด popup · กำลังทำข้อสอบ → ถามยืนยันออก · หน้าย่อยอื่น → กลับหน้าแรก · อยู่หน้าแรก → ออกแอป */
   function capApp() { try { return window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.App; } catch (e) { return null; } }
   function kpPushGuard() { try { history.pushState({ kpBack: 1 }, ""); } catch (e) {} }
-  function kpAnyOverlayOpen() { return document.querySelector(".modal-overlay.show") != null || ($("theme-menu") && $("theme-menu").classList.contains("show")); }
-  function kpCloseOverlays() { document.querySelectorAll(".modal-overlay.show").forEach((m) => m.classList.remove("show")); if ($("theme-menu")) $("theme-menu").classList.remove("show"); }
+  function kpAnyOverlayOpen() { return document.querySelector(".modal-overlay.show") != null; }
+  function kpCloseOverlays() { document.querySelectorAll(".modal-overlay.show").forEach((m) => m.classList.remove("show")); }
   function kpActive(id) { const el = $(id); return el != null && el.classList.contains("active"); }
   function onSystemBack() {
     if (kpAnyOverlayOpen()) { kpCloseOverlays(); kpPushGuard(); return; }
@@ -1294,9 +1360,10 @@
     document.querySelectorAll("[data-year]").forEach((el) => el.addEventListener("click", () => startYear(parseInt(el.getAttribute("data-year"), 10))));
 
     const pb = $("partB-pick"), pc = $("partC-pick");
-    (window.SPECIAL_BANK_ORDER || []).forEach((b) => {
+    (window.SPECIAL_BANK_ORDER || []).forEach((b, bi) => {
       const m = window.SPECIAL_BANK_META[b];
       const wrap = document.createElement("div"); wrap.className = "bank-row"; wrap.setAttribute("data-bank", b);
+      wrap.style.animationDelay = Math.min(bi * 22, 220) + "ms";
       const btn = document.createElement("button"); btn.className = "btn btn-outline special-btn";
       btn.innerHTML = '<span>' + m.icon + " " + escapeHtml(m.short) + '</span><span class="sb-count">' + m.count + " ข้อ</span>";
       btn.addEventListener("click", () => startSpecial(b));
@@ -1361,9 +1428,7 @@
 
     // ธีม สว่าง/มืด/อ่าน
     applyTheme((function () { try { return localStorage.getItem("kp_theme") || "light"; } catch (e) { return "light"; } })());
-    $("theme-toggle").addEventListener("click", (e) => { e.stopPropagation(); $("theme-menu").classList.toggle("show"); });
-    document.querySelectorAll("[data-theme-set]").forEach((b) => b.addEventListener("click", () => { applyTheme(b.getAttribute("data-theme-set")); $("theme-menu").classList.remove("show"); }));
-    document.addEventListener("click", (e) => { if (!$("theme-fab").contains(e.target)) $("theme-menu").classList.remove("show"); });
+    document.querySelectorAll("[data-theme-set]").forEach((b) => b.addEventListener("click", () => applyTheme(b.getAttribute("data-theme-set"))));
     $("confirm-modal").addEventListener("click", (e) => { if (e.target === $("confirm-modal")) $("confirm-modal").classList.remove("show"); });
     if (!window.DONATE || !window.DONATE.enabled) document.querySelectorAll('[data-action="donate"]').forEach((el) => { el.style.display = "none"; });
 
