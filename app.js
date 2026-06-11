@@ -886,7 +886,7 @@
       (subjBars ? '<div class="hs-section-t">คะแนนเฉลี่ยรายวิชา</div>' + subjBars : "") +
       (chips ? '<div class="hs-section-t">เรื่องที่ควรเสริม (พลาดบ่อย)</div>' + chips : "") +
       '<div class="hs-reco">💡 ' + reco + '</div>' + weakBtn + '</div>' +
-      '<div class="hs-listhead"><span class="hs-section-t">📋 รายการที่ทำทั้งหมด</span><button class="btn-danger" id="history-clear">ล้างประวัติ</button></div>';
+      '<div class="hs-listhead"><span class="hs-section-t">📋 รายการที่ทำทั้งหมด</span><button class="hist-clear" id="history-clear" type="button"><span class="hc-ic">🗑</span> ล้างประวัติ</button></div>';
 
     if (topWeak.length) { const wb = $("hist-weak-btn"); if (wb) wb.addEventListener("click", () => startWeakFrom({ topics: topWeak, kind: "position" })); }
     const hc = $("history-clear");

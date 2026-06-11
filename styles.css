@@ -917,6 +917,13 @@ mark { background: #fff2a8; color: inherit; padding: 0 3px; border-radius: 4px; 
 /* หัวรายการประวัติ + ปุ่มล้างประวัติ (ย้ายลงมาจาก header เพื่อไม่ชนแคปซูลธีม) */
 .hs-listhead { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 18px 4px 8px; }
 .hs-listhead .hs-section-t { margin: 0; }
+/* ปุ่มล้างประวัติ — pill เล็ก โทนแดงนุ่ม มีไอคอนถังขยะ */
+.hist-clear { display: inline-flex; align-items: center; gap: 5px; flex: none; padding: 7px 13px; border-radius: 999px; background: var(--red-bg, #fdecec); color: var(--red, #e23b3b); border: 1px solid var(--red-border, #f3c2c2); font-size: 12.5px; font-weight: 700; cursor: pointer; transition: transform .12s, background .15s, box-shadow .15s; }
+.hist-clear:hover { background: var(--red, #e23b3b); color: #fff; border-color: var(--red, #e23b3b); }
+.hist-clear:active { transform: scale(.95); }
+.hist-clear .hc-ic { font-size: 13px; }
+[data-theme="dark"] .hist-clear { background: #2a1717; border-color: #5a2a2a; color: #ff9a9a; }
+[data-theme="dark"] .hist-clear:hover { background: #c43838; color: #fff; }
 
 /* บรรทัด "เรื่องที่ยังพลาด" ในบทเรียนของโมดัลอ่านเสริม */
 .wt-cover { font-size: 12.5px; line-height: 1.7; color: var(--muted); background: var(--surface-2, #f4f7f5); border-radius: 10px; padding: 8px 11px; margin: 2px 0 10px; }
