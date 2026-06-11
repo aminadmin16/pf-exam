@@ -816,6 +816,65 @@ window.STUDY_NOTES = [
     ]
   },
   {
+    "id": "eng-tense12",
+    "icon": "⏰",
+    "title": "Tense ครบ 12 ช่อง — สูตร + คำสัญญาณ",
+    "tag": "ภาษาอังกฤษ",
+    "blocks": [
+      {
+        "p": "Tense มีแค่ ==3 เวลา × 4 ลักษณะ = 12 ช่อง== เท่านั้น — มองเป็นตารางแล้วจะไม่งงอีกเลย: **Simple** (จริงทั่วไป) · **Continuous** (กำลังเกิด) · **Perfect** (เกิดก่อน/เสร็จแล้ว) · **Perfect Continuous** (เกิดก่อนแบบต่อเนื่องยาวนาน)"
+      },
+      {
+        "h": "🟢 ปัจจุบัน (Present)",
+        "points": [
+          "**Simple** = จริงทั่วไป, กิจวัตร → ==S + V1 (s/es)== — She often **cooks** dinner.",
+          "**Continuous** = กำลังเกิด (ตอนนี้) → ==S + is/am/are + V.ing== — She **is cooking** now.",
+          "**Perfect** = เกิดอดีตลากมาถึงตอนนี้ → ==S + has/have + V3== — She **has cooked** since she was 15.",
+          "**Perfect Continuous** = เกิดอดีตถึงตอนนี้ ต่อเนื่องไม่หยุด → ==S + has/have + been + V.ing== — She **has been cooking** for three hours."
+        ]
+      },
+      {
+        "trick": "คำสัญญาณ Present: ==now / right now / at the moment / Look! / Currently / Nowadays== → Continuous · ==always เสมอ / usually โดยปกติ / often บ่อยๆ / sometimes บางครั้ง / seldom แทบจะไม่== → Simple · ==since ตั้งแต่ / for เป็นเวลา== → Perfect"
+      },
+      {
+        "h": "🟠 อดีต (Past)",
+        "points": [
+          "**Simple** = เกิดในอดีต จบแล้ว → ==S + V2== — She **cooked** dinner yesterday.",
+          "**Continuous** = กำลังเกิดในอดีต แล้วมีอีกเหตุการณ์ ==มาแทรก== → ==S + was/were + V.ing== — She **was cooking** when I arrived.",
+          "**Perfect** = เหตุการณ์ที่ ==เกิดก่อน== อีกเหตุการณ์ในอดีต → ==S + had + V3== — She **had already cooked** when I arrived.",
+          "**Perfect Continuous** = เกิดก่อนแบบ ==ต่อเนื่องนาน== → ==S + had + been + V.ing== — She **had been cooking** for three hours before I arrived."
+        ]
+      },
+      {
+        "trick": "คำสัญญาณ Past: ==yesterday เมื่อวาน / last night คืนที่แล้ว / three days ago สามวันก่อน== — เจอ ==ago / last / yesterday== ห้ามตอบ has/have เด็ดขาด (กับดักยอดฮิต!)"
+      },
+      {
+        "h": "🔵 อนาคต (Future)",
+        "points": [
+          "**Simple** = จะทำ → ==S + will + V1== — She **will cook** dinner tonight.",
+          "**Continuous** = จะกำลังทำ (เวลานั้น) → ==S + will + be + V.ing== — She **will be cooking** this evening.",
+          "**Perfect** = จะทำเสร็จ (ภายในเวลานั้น) → ==S + will + have + V3== — She **will have cooked** dinner by 7 pm.",
+          "**Perfect Continuous** = จะทำมานานแล้ว ณ เวลานั้น → ==S + will + have + been + V.ing== — She **will have been cooking** for three hours at 7 pm."
+        ]
+      },
+      {
+        "trick": "คำสัญญาณ Future: ==tomorrow พรุ่งนี้ / tonight คืนนี้ / next week สัปดาห์หน้า / this Friday== → Simple · ==by 7 pm / by next week== (ภายใน...) → **Perfect** — เห็น **by + เวลา** ให้นึกถึง will have + V3 ทันที"
+      },
+      {
+        "h": "🔁 Passive Voice — ประธานถูกกระทำ",
+        "points": [
+          "สูตรแม่บท: ==be + V3== เสมอ — แค่เปลี่ยนรูป be ให้ตรง Tense",
+          "Present Simple → ==is/am/are + V3== · Past Simple → ==was/were + V3== · Future Simple → ==will be + V3==",
+          "Continuous → เติม ==being==: is/am/are + being + V3 (Present) · was/were + being + V3 (Past)",
+          "Perfect → เติม ==been==: has/have + been + V3 (Present) · had + been + V3 (Past) · will have been + V3 (Future)"
+        ]
+      },
+      {
+        "trick": "ทริคจำตาราง 12 ช่องใน 3 วินาที: แกนเวลาเปลี่ยนแค่ ==กริยาช่วยตัวแรก== (is→was→will be / has→had→will have) ส่วนแกนลักษณะ: **Continuous = be+V.ing** · **Perfect = have+V3** · **Perfect Continuous = have been+V.ing** — ผสมกันได้ทั้งตาราง · ส่วน **Passive จำคำเดียว: be+V3** แทรกตามเวลา"
+      }
+    ]
+  },
+  {
     "id": "ga-vocab",
     "icon": "📚",
     "title": "English: Vocabulary",
