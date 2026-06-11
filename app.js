@@ -1413,25 +1413,6 @@
     if (isNativeApp()) { const card = $("home-download"); if (card) card.style.display = "none"; }   // อยู่ในแอปแล้ว ไม่ต้องชวนโหลด
   }
 
-  /* ตัวนับผู้เข้าใช้งาน — นับ 1 ครั้งต่อ session, อ่านอย่างเดียวเมื่อรีเฟรช · ถ้าไม่ตั้งค่า/ล้มเหลว = ซ่อนเงียบ */
-  function initVisitCounter() {
-    const url = (window.VISIT_COUNTER_URL || "").trim();
-    const el = $("visit-counter"), num = $("visit-count");
-    if (!url || !el || !num) return;
-    let firstThisSession = false;
-    try { if (!sessionStorage.getItem("kp_visit_counted")) { firstThisSession = true; sessionStorage.setItem("kp_visit_counted", "1"); } } catch (e) { firstThisSession = true; }
-    const q = url + (url.indexOf("?") >= 0 ? "&" : "?") + "hit=" + (firstThisSession ? "1" : "0");
-    const ctrl = ("AbortController" in window) ? new AbortController() : null;
-    if (ctrl) setTimeout(() => { try { ctrl.abort(); } catch (e) {} }, 7000);
-    fetch(q, ctrl ? { signal: ctrl.signal } : undefined)
-      .then((r) => r.json())
-      .then((d) => {
-        const c = d && (d.count != null ? d.count : d.total);
-        if (typeof c === "number" && c > 0) { num.textContent = c.toLocaleString("th-TH"); el.hidden = false; }
-      })
-      .catch(() => {});   // เงียบ ๆ ถ้าโหลดไม่ได้ ไม่ให้กระทบหน้าเว็บ
-  }
-
   /* ============================================================
      ผูก Event
      ============================================================ */
@@ -1552,7 +1533,6 @@
     showScreen("screen-home");
     initDownloadPromo();
     initBackHandler();
-    initVisitCounter();
   }
   function updateStructureCriteria() { const a = window.SUBJECTS.analytical, el = $("struct-analytical"); if (el) el.textContent = "100 คะแนน · ผ่าน " + a.passPercent[currentLevel] + "%"; }
   function syncFilterUI() { document.querySelectorAll("#review-filter .chip-btn").forEach((el) => el.classList.toggle("active", el.getAttribute("data-filter") === reviewFilter)); }

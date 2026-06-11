@@ -26,12 +26,3 @@ window.DONATE = {
   developerFacebookName: "Satja Chaiseanpha",
   developerFacebookUrl: "https://www.facebook.com/search/top?q=Satja%20Chaiseanpha"  // ← แนะนำให้เปลี่ยนเป็นลิงก์โปรไฟล์จริงของคุณ เช่น https://www.facebook.com/your.profile
 };
-
-/* ============================================================
-   ตัวนับผู้เข้าใช้งาน (โชว์บนหน้าแรก) — วาง URL ของ Google Apps Script Web App ที่นี่
-   • ปล่อยว่าง "" = ซ่อนตัวนับ (ไม่มีอะไรพัง)
-   • วิธีทำ: สร้าง Google Sheet ใหม่ → เมนู Extensions › Apps Script → วางโค้ดจากไฟล์
-     visit-counter.gs (อยู่ในโปรเจกต์นี้) → Deploy เป็น Web App
-     (Execute as: Me, Who has access: Anyone) → คัดลอก URL ที่ลงท้าย /exec มาวางด้านล่าง
-   ============================================================ */
-window.VISIT_COUNTER_URL = "";   // เช่น "https://script.google.com/macros/s/AKfycb...../exec"
