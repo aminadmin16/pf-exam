@@ -727,22 +727,40 @@
     if (t.indexOf("Grammar") === 0) return "ga-grammar";
     if (t.indexOf("Vocabulary") === 0) return "ga-vocab";
     if (t.indexOf("Reading") === 0) return "ga-reading";
+    // หัวข้อจากแบงก์ ภาค ข/ค (เช่น "การประกันคุณภาพ" ของ พ.ร.บ.การศึกษาฯ) → การ์ดกฎหมายใบนั้นโดยตรง
+    const bk = bankForTopic(t);
+    if (bk) return studyCardIdForBank(bk);
     if (/จริยธรรม|ธรรมาภิบาล|ข้าราชการ|เศรษฐกิจพอเพียง|ราชการแผ่นดิน|ปกครอง|ละเมิด|ผลประโยชน์|จิตสาธารณะ/.test(t)) return "law";
     return null;
   }
+  /* ดัชนี "หัวข้อย่อย → แบงก์" สร้างจากคลังข้อสอบจริง ครอบคลุมทุกหัวข้อของทุก พ.ร.บ. อัตโนมัติ */
+  let _topicBankIdx = null;
+  function bankForTopic(t) {
+    if (!_topicBankIdx) {
+      _topicBankIdx = {};
+      (window.SPECIAL_BANK_ORDER || []).forEach((b) => (window.SPECIAL_BANKS[b] || []).forEach((q) => {
+        if (q.topic && !_topicBankIdx[q.topic]) _topicBankIdx[q.topic] = b;
+      }));
+    }
+    return _topicBankIdx[t] || null;
+  }
   function openWeakTricks() {
     if (!lastResult || !lastResult.topics.targets.length) return;
-    const seen = {}; let html = "";
+    const groups = {}, order = [], loose = [];      // รวมหัวข้อที่ชี้ไปการ์ดเดียวกัน ไม่ให้ซ้ำเป็นสิบใบ
     lastResult.topics.targets.forEach((t) => {
       const cid = cardIdForTopic(t);
-      const card = cid ? studyCardById(cid) : null;
-      if (card) {
-        if (seen[cid]) return;
-        seen[cid] = true;
-        html += '<div class="wt-lesson"><div class="wt-lesson-h"><span class="wt-ic">' + card.icon + '</span><span>' + escapeHtml(card.title) + '</span></div><div class="study-inner wt-lesson-body">' + studyBlocksHtml(card.blocks) + "</div></div>";
-      } else {
-        html += '<div class="wt-item"><div class="wt-topic">📌 ' + escapeHtml(t) + '</div><div class="wt-tip">💡 ' + escapeHtml(tipForTopic(t)) + "</div></div>";
-      }
+      if (cid && studyCardById(cid)) { if (!groups[cid]) { groups[cid] = []; order.push(cid); } groups[cid].push(t); }
+      else loose.push(t);
+    });
+    let html = "";
+    order.forEach((cid) => {
+      const card = studyCardById(cid), cover = groups[cid];
+      html += '<div class="wt-lesson"><div class="wt-lesson-h"><span class="wt-ic">' + card.icon + '</span><span>' + escapeHtml(card.title) + '</span></div>'
+        + (cover.length ? '<div class="wt-cover">📌 เรื่องที่ยังพลาด: <b>' + cover.map(escapeHtml).join("</b> · <b>") + '</b></div>' : "")
+        + '<div class="study-inner wt-lesson-body">' + studyBlocksHtml(card.blocks) + "</div></div>";
+    });
+    loose.forEach((t) => {
+      html += '<div class="wt-item"><div class="wt-topic">📌 ' + escapeHtml(t) + '</div><div class="wt-tip">💡 ' + escapeHtml(tipForTopic(t)) + "</div></div>";
     });
     $("wt-body").innerHTML = html || '<div class="ana-empty">— ไม่มีเนื้อหาที่ต้องเสริม</div>';
     $("weak-trick-modal").classList.add("show");
@@ -824,9 +842,11 @@
       (subjBars ? '<div class="hs-section-t">คะแนนเฉลี่ยรายวิชา</div>' + subjBars : "") +
       (chips ? '<div class="hs-section-t">เรื่องที่ควรเสริม (พลาดบ่อย)</div>' + chips : "") +
       '<div class="hs-reco">💡 ' + reco + '</div>' + weakBtn + '</div>' +
-      '<div class="hs-section-t" style="margin:18px 4px 8px">📋 รายการที่ทำทั้งหมด</div>';
+      '<div class="hs-listhead"><span class="hs-section-t">📋 รายการที่ทำทั้งหมด</span><button class="btn-danger" id="history-clear">ล้างประวัติ</button></div>';
 
     if (topWeak.length) { const wb = $("hist-weak-btn"); if (wb) wb.addEventListener("click", () => startWeakFrom({ topics: topWeak, kind: "position" })); }
+    const hc = $("history-clear");
+    if (hc) hc.addEventListener("click", () => { showConfirm("ต้องการล้างประวัติทั้งหมดหรือไม่?", () => { saveHistory([]); renderHistory(); toast("ล้างประวัติเรียบร้อยแล้ว"); }); });
 
     hist.forEach((h) => {
       const card = document.createElement("div"); card.className = "history-card";
@@ -1426,7 +1446,6 @@
     on("review-back", "click", () => showScreen("screen-summary"));
     document.querySelectorAll("#review-filter .chip-btn").forEach((el) => el.addEventListener("click", () => { reviewFilter = el.getAttribute("data-filter"); syncFilterUI(); renderReview(); }));
 
-    on("history-clear", "click", () => { showConfirm("ต้องการล้างประวัติทั้งหมดหรือไม่?", () => { saveHistory([]); renderHistory(); toast("ล้างประวัติเรียบร้อยแล้ว"); }); });
 
     // บริจาค / สนับสนุน
     on("donate-close", "click", closeDonate);

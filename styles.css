@@ -909,3 +909,12 @@ mark { background: #fff2a8; color: inherit; padding: 0 3px; border-radius: 4px; 
 .hs-chart .hsc-col span { font-size: 10px; font-weight: 700; color: var(--muted); line-height: 1; }
 @keyframes barGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @media (prefers-reduced-motion: reduce) { .hs-chart .hsc-col i { animation: none !important; } }
+
+/* หัวรายการประวัติ + ปุ่มล้างประวัติ (ย้ายลงมาจาก header เพื่อไม่ชนแคปซูลธีม) */
+.hs-listhead { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 18px 4px 8px; }
+.hs-listhead .hs-section-t { margin: 0; }
+
+/* บรรทัด "เรื่องที่ยังพลาด" ในบทเรียนของโมดัลอ่านเสริม */
+.wt-cover { font-size: 12.5px; line-height: 1.7; color: var(--muted); background: var(--surface-2, #f4f7f5); border-radius: 10px; padding: 8px 11px; margin: 2px 0 10px; }
+.wt-cover b { color: var(--green-dark); font-weight: 700; }
+[data-theme="dark"] .wt-cover { background: #161b16; }
