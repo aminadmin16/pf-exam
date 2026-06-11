@@ -803,12 +803,24 @@
     const chips = topWeak.length ? '<div class="hs-chips">' + topWeak.map((t) => '<span class="hs-chip">' + escapeHtml(t) + "</span>").join("") + "</div>" : "";
     const weakBtn = topWeak.length ? '<button class="btn btn-primary" id="hist-weak-btn">📝 ฝึกเรื่องที่ควรเสริม (รวมจากประวัติ)</button>' : "";
 
+    // กราฟแท่งคะแนนย้อนหลัง (เก่า → ล่าสุด) ให้เห็นพัฒนาการด้วยตา
+    let chartHtml = "";
+    if (n >= 2) {
+      const lastN = hist.slice(0, 12).reverse();
+      chartHtml = '<div class="hs-section-t">คะแนนย้อนหลัง (เก่า → ล่าสุด)</div><div class="hs-chart">' + lastN.map((h, i) => {
+        const p = h.pct != null ? h.pct : (h.totalQ ? Math.round(h.totalCorrect / h.totalQ * 100) : 0);
+        const cls = p >= 60 ? "good" : "bad";
+        return '<div class="hsc-col" title="' + escapeHtml(h.dateLabel || "") + '"><i class="' + cls + '" style="height:' + Math.max(6, p) + '%;animation-delay:' + (i * 45) + 'ms"></i><span>' + p + '</span></div>';
+      }).join("") + "</div>";
+    }
+
     body.innerHTML =
-      '<div class="hist-summary"><h3>📊 สรุปพัฒนาการจากประวัติของคุณ</h3>' +
+      '<div class="hist-summary"><h3>📊 สรุปพัฒนาการจากการทำข้อสอบของคุณ</h3>' +
       '<div class="hs-stats"><div class="hs-stat"><div class="v">' + n + '</div><div class="l">ครั้งที่ทำ</div></div>' +
       '<div class="hs-stat"><div class="v">' + passRate + '%</div><div class="l">สอบผ่าน</div></div>' +
       '<div class="hs-stat"><div class="v">' + avgPct + '%</div><div class="l">คะแนนเฉลี่ย</div></div></div>' +
       (trendHtml ? '<div class="hs-trend">' + trendHtml + '</div>' : "") +
+      chartHtml +
       (subjBars ? '<div class="hs-section-t">คะแนนเฉลี่ยรายวิชา</div>' + subjBars : "") +
       (chips ? '<div class="hs-section-t">เรื่องที่ควรเสริม (พลาดบ่อย)</div>' + chips : "") +
       '<div class="hs-reco">💡 ' + reco + '</div>' + weakBtn + '</div>' +
