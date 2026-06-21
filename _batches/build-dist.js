@@ -5,7 +5,7 @@ const path = require("path");
 
 const src = path.resolve(__dirname, "..");
 const dist = path.join(src, "dist");
-const files = ["index.html", "styles.css", "app.js", "questions.js", "donate-config.js", "study-notes.js", "sw.js", "manifest.json"];
+const files = ["index.html", "styles.css", "app.js", "questions.js", "position-data.js", "donate-config.js", "study-notes.js", "sw.js", "manifest.json"];
 const dirs = ["vendor", "assets", "icons"];
 
 fs.rmSync(dist, { recursive: true, force: true });

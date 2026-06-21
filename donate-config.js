@@ -24,5 +24,17 @@ window.DONATE = {
 
   // ผู้พัฒนา — แสดงลิงก์ Facebook ใต้ QR (กดที่ชื่อเพื่อไปหน้าโปรไฟล์)
   developerFacebookName: "Satja Chaiseanpha",
-  developerFacebookUrl: "https://www.facebook.com/search/top?q=Satja%20Chaiseanpha"  // ← แนะนำให้เปลี่ยนเป็นลิงก์โปรไฟล์จริงของคุณ เช่น https://www.facebook.com/your.profile
+  developerFacebookUrl: "https://www.facebook.com/search/top?q=Satja%20Chaiseanpha",  // ← แนะนำให้เปลี่ยนเป็นลิงก์โปรไฟล์จริงของคุณ เช่น https://www.facebook.com/your.profile
+
+  // เปิดแท็บใหม่เมื่อกด "ส่งคำตอบ" — สุ่มลิงก์จาก shopeeUrls (ว่าง = ไม่เปิด / ไม่แสดง Ad)
+  shopeeUrls: [
+    "https://s.shopee.co.th/8pja1egnWL",
+    "https://s.shopee.co.th/50WrV4PDSx",
+    "https://s.shopee.co.th/2LW6KDTtU0",
+    "https://s.shopee.co.th/50WrVKRgq2",
+    "https://s.shopee.co.th/3Vi3iomVyZ",
+    "https://s.shopee.co.th/2g8wjNXWMM"
+  ],
+  shopeeIcon: "assets/shopee-icon.svg",
+  shopeeNote: "คลิกเพื่อเปิด Shopee ชั่วคราวตามนโยบายรักษาความเร็วเซิร์ฟเวอร์ฟรี (กดเปิดแล้วสลับจอกลับมาได้เลย)"
 };

@@ -51,10 +51,22 @@
       { id: "lawcouncil", name: "นักกฎหมายกฤษฎีกา", icon: "⚖️", banks: ["constitution", "civilservant", "procurement"] },
       { id: "justice", name: "นักวิชาการยุติธรรม", icon: "👨‍⚖️", banks: ["constitution", "civilservant", "info"] },
       { id: "foreign", name: "นักวิเทศสัมพันธ์", icon: "🌐", banks: ["constitution", "strategy", "civilservant"] }
+    ]},
+    { group: "ด้านวิศวกรรมและช่างเทคนิค", icon: "🏗️", positions: [
+      { id: "civileng", name: "วิศวกรโยธา", icon: "🏗️", banks: ["constitution", "pdpa", "procurement"] },
+      { id: "eleceng", name: "วิศวกรไฟฟ้า", icon: "⚡", banks: ["constitution", "pdpa", "procurement"] },
+      { id: "architect", name: "สถาปนิก", icon: "📐", banks: ["constitution", "local", "procurement"] },
+      { id: "civiltech", name: "นายช่างโยธา", icon: "🧱", banks: ["constitution", "local", "procurement"] },
+      { id: "electech", name: "นายช่างไฟฟ้า", icon: "🔌", banks: ["constitution", "local", "procurement"] }
     ]}
   ];
   const POSITIONS = [];
   POSITION_GROUPS.forEach((g) => g.positions.forEach((p) => POSITIONS.push({ id: p.id, name: p.name, banks: p.banks, group: g.group, icon: p.icon || g.icon })));
+
+  /* คุณลักษณะส่วนบุคคล (ประเมินครั้งที่ 2 — สอบสัมภาษณ์) มาตรฐานเดียวกันทุกตำแหน่ง ตามผังจริง */
+  const INTERVIEW_TRAITS = ["การแก้ไขปัญหาและการตัดสินใจ", "แนวคิดพัฒนาตนเอง", "ความคิดริเริ่มสร้างสรรค์", "บุคลิกภาพ", "เชาวน์ปัญญาไหวพริบ"];
+  function posBlueprint(id) { return (window.POSITION_BLUEPRINTS || {})[id] || null; }
+  function posQuestions(id) { return ((window.POSITION_QUESTIONS || {})[id] || []); }
 
   let state = {
     kind: "kp", mode: "full", level: "undergrad", feedback: "instant",
@@ -146,6 +158,7 @@
   /* ---------- อัตราการออก (ดาว) ---------- */
   function freqLabel(f) { return ["", "นาน ๆ ครั้ง", "ออกบ้าง", "ออกปานกลาง", "ออกบ่อย", "ออกเกือบทุกปี"][f] || "ออกปานกลาง"; }
   function freqHtml(q) {
+    if (q.posExam) return '<span class="freq-badge skill">📋 ความรู้เฉพาะตำแหน่ง (ภาค ข)</span>';
     if (q.predicted) return '<span class="freq-badge pred">🔮 ข้อเก็งปี 2569 · คาดว่าจะออก</span>';
     if (q.freq) {
       let stars = "";
@@ -343,8 +356,15 @@
   function startPosition(posId) {
     const pos = POSITIONS.find((p) => p.id === posId); if (!pos) return;
     let set = [];
-    const per = Math.max(1, Math.ceil(20 / pos.banks.length));   // ภาค ข ~20 ข้อ (ตามตำแหน่ง ไม่รวม ภาค ก)
-    pos.banks.forEach((b) => { set = set.concat(shuffle(srcFilter(window.SPECIAL_BANKS[b] || [])).slice(0, per)); });
+    /* ข้อเขียนเฉพาะตำแหน่ง: ใช้คลังเฉพาะตำแหน่งก่อน (ถ้ามี) แล้วเสริมจากแบงก์กฎหมายที่เกี่ยวข้องให้ครบ ~20 */
+    const own = shuffle(posQuestions(posId).slice());
+    set = set.concat(own.slice(0, 20));
+    if (set.length < 20) {
+      const need = 20 - set.length;
+      const per = Math.max(1, Math.ceil(need / pos.banks.length));
+      pos.banks.forEach((b) => { set = set.concat(shuffle(srcFilter(window.SPECIAL_BANKS[b] || [])).slice(0, per)); });
+      set = set.slice(0, Math.max(20, own.length));
+    }
     const cpool = shuffle(srcFilter((window.SPECIAL_BANKS.sjt_service || []).concat(window.SPECIAL_BANKS.sjt_integrity || [])));
     set = set.concat(cpool.slice(0, 10));   // ภาค ค ~10 ข้อ
     state.kind = "position"; state.mode = "position"; state.positionId = posId; state.bankId = null; state.subjectKey = null; state.weakSource = null; state.level = currentLevel; state.feedback = currentFeedback;
@@ -634,18 +654,21 @@
   }
 
   function finishExam() {
-    state.finished = true; stopTimer();
-    const res = computeResult(); renderSummary(res); saveAttempt(res);
+    state.finished = true;
+    stopTimer();
+    const res = computeResult();
+    renderSummary(res);
+    saveAttempt(res);
     const sum = $("screen-summary");
-    sum.classList.add("loading");          // เข้าหน้าสรุปเลย แล้วโชว์เป็นเงา + สปินเนอร์บนหน้าเดียวกัน
+    sum.classList.add("loading");
     showScreen("screen-summary");
     setTimeout(() => {
       sum.classList.remove("loading");
       const banner = $("overall-banner");
-      if (banner) { banner.classList.remove("pop"); void banner.offsetWidth; banner.classList.add("pop"); }  // การ์ดผลรวมเด้งขึ้นมาแล้วลอยกลับเข้าที่
-      setTimeout(celebrate, 540);          // การ์ดเด้งเข้าที่ → คอนเฟตติฉลอง / ดาวให้กำลังใจ
-      setTimeout(animateSummary, 620);     // แล้วค่อยเล่นอนิเมชั่นสรุปผล (ตัวเลข/กราฟ)
-    }, 1400);                              // loading 1400ms ก่อนเข้าหน้าสรุปผล
+      if (banner) { banner.classList.remove("pop"); void banner.offsetWidth; banner.classList.add("pop"); }
+      setTimeout(celebrate, 540);
+      setTimeout(animateSummary, 620);
+    }, 1400);
   }
 
   /* ข้อความชม/ปลอบใจ — สุ่มทุกครั้ง ให้คนทำรู้สึกมีกำลังใจไม่จำเจ */
@@ -1202,13 +1225,49 @@
   function openPosition(id) {
     const p = POSITIONS.find((x) => x.id === id); if (!p) return;
     $("posdetail-title").textContent = p.icon + " " + p.name;
+    const bp = posBlueprint(id);
+    const qn = posQuestions(id).length;
+
+    /* ผังหลักเกณฑ์การเลือกสรร (รูปแบบประกาศจริง: ประเมินครั้งที่ 1 ข้อเขียน + ครั้งที่ 2 สัมภาษณ์ = 200) */
+    const written = (bp && bp.writtenTopics && bp.writtenTopics.length) ? bp.writtenTopics : null;
+    const writtenRows = written
+      ? '<ul class="pbp-list">' + written.map((t) => "<li>" + escapeHtml(t) + "</li>").join("") + "</ul>"
+      : '<div class="pbp-soon">📝 กำลังเรียบเรียงหัวข้อความรู้เฉพาะตำแหน่ง</div>';
+    const traitRows = '<ul class="pbp-list">' + INTERVIEW_TRAITS.map((t) => "<li>" + escapeHtml(t) + "</li>").join("") + "</ul>";
+
+    const blueprint =
+      '<div class="pbp-card">' +
+        '<div class="pbp-cap">หลักเกณฑ์การเลือกสรร — ' + escapeHtml(p.name) + '</div>' +
+        '<table class="pbp-table">' +
+          '<thead><tr><th>หลักเกณฑ์การเลือกสรร</th><th>คะแนนเต็ม</th><th>วิธีการประเมิน</th></tr></thead>' +
+          '<tbody>' +
+            '<tr><td class="pbp-eval">' +
+              '<div class="pbp-e-h"><b>การประเมินครั้งที่ 1</b><span class="pbp-tag">สอบข้อเขียน (ปรนัย/อัตนัย)</span></div>' +
+              '<div class="pbp-e-sub">ความรู้ความสามารถเฉพาะตำแหน่ง</div>' + writtenRows +
+            '</td><td class="pbp-score">100</td><td class="pbp-method">สอบข้อเขียน</td></tr>' +
+            '<tr><td class="pbp-eval">' +
+              '<div class="pbp-e-h"><b>การประเมินครั้งที่ 2</b><span class="pbp-tag">สัมภาษณ์</span></div>' +
+              '<div class="pbp-e-sub">ประเมินคุณลักษณะส่วนบุคคล</div>' + traitRows +
+            '</td><td class="pbp-score">100</td><td class="pbp-method">สอบสัมภาษณ์</td></tr>' +
+            '<tr class="pbp-sum"><td>รวม</td><td class="pbp-score">200</td><td></td></tr>' +
+          '</tbody>' +
+        '</table>' +
+      '</div>';
+
     const chip = (b) => { const m = window.SPECIAL_BANK_META[b]; return '<button class="pd-chip" data-bank="' + b + '">' + m.icon + " " + escapeHtml(m.short) + ' <i>' + m.count + ' ข้อ</i></button>'; };
     const cBanks = ["sjt_service", "sjt_integrity", "interview"];
+
+    const practice =
+      '<div class="pd-block"><div class="pd-h"><span class="pchip pb">ฝึกข้อเขียน</span> แนวข้อสอบความรู้เฉพาะตำแหน่ง</div>' +
+        (qn ? '<div class="pd-note">มีแนวข้อสอบเฉพาะตำแหน่งนี้ <b>' + qn + ' ข้อ</b> + แนวกฎหมายที่เกี่ยวข้อง</div>'
+            : '<div class="pd-note">ดึงจากคลังแนวข้อสอบที่เกี่ยวข้อง: ' + p.banks.map((b) => escapeHtml(window.SPECIAL_BANK_META[b].short)).join(" · ") + '</div>') +
+      '</div>' +
+      '<div class="pd-block"><div class="pd-h"><span class="pchip pc">ฝึกสัมภาษณ์/ความเหมาะสม</span> แนวข้อสอบประเมินคุณลักษณะ</div><div class="pd-chips">' + cBanks.map(chip).join("") + '</div></div>';
+
     $("position-detail").innerHTML =
-      '<div class="pd-intro">ตำแหน่ง <b>' + escapeHtml(p.name) + '</b> เน้นสอบ <b>ภาค ข</b> (ความรู้เฉพาะตำแหน่ง) และ <b>ภาค ค</b> (ความเหมาะสมกับตำแหน่ง) ดังนี้</div>' +
-      '<div class="pd-block"><div class="pd-h"><span class="pchip pb">ภาค ข</span> ความรู้เฉพาะตำแหน่งนี้ (แนวข้อสอบ)</div><div class="pd-chips">' + p.banks.map(chip).join("") + '</div></div>' +
-      '<div class="pd-block"><div class="pd-h"><span class="pchip pc">ภาค ค</span> ความเหมาะสมกับตำแหน่ง (แนวข้อสอบ)</div><div class="pd-chips">' + cBanks.map(chip).join("") + '</div></div>' +
-      '<div class="pd-prop">📊 ชุดจำลองตามตำแหน่ง: ภาค ข ~20 · ภาค ค ~10 (รวม ~30 ข้อ)</div>' +
+      '<div class="pd-intro">ก่อนสอบ ลองดู <b>หลักเกณฑ์การเลือกสรร</b> ของตำแหน่งนี้ แล้วกดเริ่มฝึกชุดจำลองด้านล่างได้เลย</div>' +
+      blueprint + practice +
+      '<div class="pd-prop">📊 ชุดจำลองตามตำแหน่ง: ข้อเขียนเฉพาะตำแหน่ง ~20 · ความเหมาะสม ~10 (รวม ~30 ข้อ)</div>' +
       '<button class="btn btn-primary" id="pd-start">▶ เริ่มชุดจำลองตามตำแหน่งนี้</button>';
     $("position-detail").querySelectorAll(".pd-chip[data-bank]").forEach((el) => el.addEventListener("click", () => startSpecial(el.getAttribute("data-bank"))));
     $("pd-start").addEventListener("click", () => startPosition(id));
@@ -1379,6 +1438,29 @@
   /* ============================================================
      ตรวจคำตอบก่อนส่ง (โหมดเฉลยตอนจบ) — ข้ามข้อได้ แล้วกลับมาทำ
      ============================================================ */
+  function shopeeUrlList() {
+    const d = window.DONATE;
+    if (!d) return [];
+    const urls = Array.isArray(d.shopeeUrls) ? d.shopeeUrls : (d.shopeeUrl ? [d.shopeeUrl] : []);
+    return urls.map((u) => String(u).trim()).filter(Boolean);
+  }
+  function pickShopeeUrl() {
+    const urls = shopeeUrlList();
+    if (!urls.length) return null;
+    return urls[Math.floor(Math.random() * urls.length)];
+  }
+  function shopeeSubmitBtnHtml(label) {
+    const d = window.DONATE;
+    if (!d || !shopeeUrlList().length) return '<button class="btn btn-primary" id="ck-submit">' + label + "</button>";
+    const icon = escapeHtml(d.shopeeIcon || "assets/shopee-icon.svg");
+    const note = escapeHtml(d.shopeeNote || "คลิกเพื่อเปิด Shopee ชั่วคราวตามนโยบายรักษาความเร็วเซิร์ฟเวอร์ฟรี (กดเปิดแล้วสลับจอกลับมาได้เลย)");
+    return '<button class="btn btn-primary ck-submit-go" id="ck-submit">' +
+      '<span class="ck-submit-row"><span class="ck-submit-lbl">' + label + '</span>' +
+      '<span class="ck-shopee-badge"><img src="' + icon + '" alt="" width="20" height="20" class="shopee-ico" />' +
+      '<span class="shopee-lbl">Shopee</span><span class="shopee-ad">Ad</span></span></span>' +
+      '<span class="ck-shopee-note">' + note + "</span></button>";
+  }
+
   function openCheck() {
     const total = state.questions.length;
     let answered = 0;
@@ -1401,12 +1483,17 @@
         '<button class="btn btn-primary" id="ck-submit" disabled>🔒 ส่งคำตอบ (ต้องทำให้ครบก่อน)</button>' +
         '<div class="check-note">⚠️ ต้องทำให้ครบทุกข้อก่อนจึงจะส่งคำตอบได้</div>' + resume;
     } else {
-      act.innerHTML = '<button class="btn btn-primary" id="ck-submit">✅ ส่งคำตอบ</button>' + resume;
+      act.innerHTML = shopeeSubmitBtnHtml("✅ ส่งคำตอบ") + resume;
     }
     const goto = $("ck-goto");
     if (goto) goto.addEventListener("click", () => { const f = state.answers.findIndex((a) => a === null); closeCheck(); if (f >= 0) { state.current = f; renderQuiz(); } });
     const sb = $("ck-submit");
-    if (sb && !sb.disabled) sb.addEventListener("click", () => { closeCheck(); finishExam(); });
+    if (sb && !sb.disabled) sb.addEventListener("click", () => {
+      closeCheck();
+      const u = pickShopeeUrl();
+      if (u) window.open(u, "_blank", "noopener,noreferrer");
+      finishExam();
+    });
     $("ck-resume").addEventListener("click", closeCheck);
     $("check-modal").classList.add("show");
   }

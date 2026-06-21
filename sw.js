@@ -2,10 +2,10 @@
    เก็บไฟล์แอป + คลังข้อสอบไว้ในเครื่องของผู้ใช้ → โหลดครั้งแรกครั้งเดียว
    หลังจากนั้นเปิดเร็วทันใจ ใช้ได้ออฟไลน์ และแทบไม่ยิงโหลดจากเซิร์ฟเวอร์อีกเลย (host เบาสุด)
    *** อัปเดตเนื้อหา: เปลี่ยนเลขเวอร์ชัน CACHE ด้านล่าง แล้ว SW จะดึงของใหม่ให้รอบเดียว *** */
-const CACHE = "kp-exam-v61";
+const CACHE = "kp-exam-v62";
 const CORE = [
   "./", "./index.html", "./styles.css", "./app.js", "./questions.js",
-  "./donate-config.js", "./study-notes.js", "./manifest.json",
+  "./position-data.js", "./donate-config.js", "./study-notes.js", "./manifest.json",
   "./vendor/qrcode-generator.js", "./assets/donate-qr.png",
   "./icons/icon-192.png", "./icons/icon-512.png", "./icons/icon-maskable-512.png"
 ];
