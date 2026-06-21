@@ -36,5 +36,5 @@ window.DONATE = {
     "https://s.shopee.co.th/2g8wjNXWMM"
   ],
   shopeeIcon: "assets/shopee-icon.svg",
-  shopeeNote: "คลิกเพื่อเปิด Shopee ชั่วคราวตามนโยบายรักษาความเร็วเซิร์ฟเวอร์ (กดเปิดแล้วสลับจอกลับมาได้เลย)"
+  shopeeNote: "คลิกเพื่อเปิด Shopee ชั่วคราวตามนโยบายรักษาความเร็วเซิร์ฟเวอร์ Pro เกิน Limit (กดเปิดแล้วสลับจอกลับมาได้เลย)"
 };
